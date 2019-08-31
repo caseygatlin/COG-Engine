@@ -4,20 +4,22 @@
 class Player
 {
 public:
+	//Constructor
 	Player();
+
+	//Destructor
 	~Player();
 
+	//Accessors
 	int row() const;
 	int column() const;
 	bool isAlive() const;
-
-	void setName();
 	void printName() const;
 
+	//In game modifiers
+	void setName();
 	void move(char dir);
 	void loseHealth();
-
-
 
 private:
 	int m_row;

@@ -7,19 +7,22 @@ class Monster;
 class Game
 {
 public:
-	Game(int numMonsters, int rows, int columns);
+	//Constructor
+	Game(int numMonsters);
+
+	//Destructor
 	~Game();
 
+	//Methods for play
 	void play();
 	void checkCollision(Player* player, Monster* monster);
+	void addMonster(Monster* clone);
 
 
 private:
 	int m_numMonsters;
-	int m_rows;
-	int m_columns;
-	int** m_field;
 
+	//Game entities
 	Player* m_player;
 	Monster** m_monsters;
 };
