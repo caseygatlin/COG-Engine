@@ -3,7 +3,9 @@
 
 namespace Engine
 {
-	void Init() {}
+	void Init();
+
+	void Shutdown();
 }
 
 

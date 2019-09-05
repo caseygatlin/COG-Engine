@@ -2,10 +2,15 @@
 #include <iostream>
 
 
-int main()
+namespace Engine
 {
-	Engine::Init();
+	void Init()
+	{
+		std::cout << "Engine Initialized.\n";
+	}
 
-	std::cout << "Welcome to MonsterChase.\n";
-	std::cout << "Bye!\n";
+	void Shutdown()
+	{
+		std::cout << "Shutting down...\n";
+	}
 }
