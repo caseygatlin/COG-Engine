@@ -36,7 +36,7 @@ void Game::play()
 		m_monsters[i]->setName();
 	}
 	std::cout << "What would you like to name the Player: ";
-	m_player->setName();
+	//m_player->setName();
 
 
 	//Main game loop
@@ -91,8 +91,8 @@ void Game::play()
 
 		//State player position
 		std::cout << "Player ";
-		m_player->printName();
-		std::cout << " at [" << m_player->row() << ", " << m_player->column() << "]" << std::endl;
+		//m_player->printName();
+		//std::cout << " at [" << m_player->row() << ", " << m_player->column() << "]" << std::endl;
 
 		//Get user input and update player position if needed
 		std::cout << "Press A to move left, D to move right, W to move up, S to move down, or Q to quit" << std::endl;
@@ -118,6 +118,7 @@ void Game::play()
 //Player loses health if a monster is on the same spot
 void Game::checkCollision(Player* player, Monster* monster)
 {
+	/*
 	if (player->column() == monster->column() && player->row() == monster->row())
 	{
 		player->loseHealth();
@@ -134,6 +135,7 @@ void Game::checkCollision(Player* player, Monster* monster)
 		}
 			
 	}
+	*/
 		
 }
 
@@ -165,3 +167,4 @@ void Game::addMonster(Monster* clone)
 	m_monsters[m_numMonsters - 1] = new Monster(*clone, 10);
 	m_monsters[m_numMonsters - 1]->move();
 }
+

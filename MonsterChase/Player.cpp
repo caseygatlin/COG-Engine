@@ -1,31 +1,12 @@
 #include "Player.h"
 #include <iostream>
 
-//Constructor, sets health and position
-Player::Player()
-{
-	m_health = 1;
-	m_row = 0;
-	m_column = 0;
-	m_name = nullptr;
-}
+
 
 //Destructor
 Player::~Player()
 {
 	delete[] m_name;
-}
-
-//Returns player's row
-int Player::row() const
-{
-	return m_row;
-}
-
-//Returns player's column
-int Player::column() const
-{
-	return m_column;
 }
 
 //Returns player state
@@ -35,7 +16,7 @@ bool Player::isAlive() const
 }
 
 //Sets user-defined name
-void Player::setName()
+void Player::setName(char* name)
 {
 	//Defines an empty name in case of no user input
 	int numLetters = 1;
@@ -61,6 +42,7 @@ void Player::setName()
 	}
 }
 
+/*
 //Prints the name of the player, letter by letter
 void Player::printName() const
 {
@@ -71,6 +53,7 @@ void Player::printName() const
 		k++;
 	}
 }
+*/
 
 //Moves the character in a direction passed to it
 void Player::move(char dir)
@@ -78,16 +61,16 @@ void Player::move(char dir)
 	switch (dir)
 	{
 	case 'w':
-		m_row++;
+		setY(getPosition().getY() + 1);
 		break;
 	case 'a':
-		m_column--;
+		setX(getPosition().getX() - 1);
 		break;
 	case 's':
-		m_row--;
+		setY(getPosition().getY() - 1);
 		break;
 	case 'd':
-		m_column++;
+		setX(getPosition().getX() + 1);
 		break;
 	default:
 		break;
@@ -96,7 +79,7 @@ void Player::move(char dir)
 }
 
 //Reduces player health by 1
-void Player::loseHealth()
+void Player::takeDamage()
 {
 	m_health--;
 }

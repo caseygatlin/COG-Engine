@@ -8,9 +8,13 @@
 
 #include <iostream>
 #include "Game.h"
+#include "Engine.h"
+#include "String.h"
 
 int main()
 {
+	/*
+	Engine::Init();
 	//Prompt for number of monsters
 	int numMonsters;
 	bool askAgain = true;
@@ -33,7 +37,8 @@ int main()
 	Game game(numMonsters);
 	game.play();
 
-
+	Engine::Shutdown();
+	*/
 
 	return 0;
 }
