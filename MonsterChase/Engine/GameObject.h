@@ -5,20 +5,20 @@
 
 namespace Engine
 {
+	//Class for all objects with a position
 	class GameObject
 	{
 	public:
-		GameObject(float x, float y) : m_position(x, y) {}
+		//Constructors
+		GameObject();
+		GameObject(Point2D position) : m_position(position.X(), position.Y()) {}
 
-
+		//Accessor
 		Point2D getPosition() const;
-		void setX(float x);
-		void setY(float y);
 
-		virtual void move();
-
-	private:
+	protected:
 		Point2D m_position;
+
 	};
 
 }
