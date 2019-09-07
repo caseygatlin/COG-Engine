@@ -1,8 +1,6 @@
 #ifndef Game_h
 #define Game_h
-
-class Player;
-class Monster;
+#include "Character.h"
 
 class Game
 {
@@ -15,16 +13,16 @@ public:
 
 	//Methods for play
 	void play();
-	void checkCollision(Player* player, Monster* monster);
-	void addMonster(Monster* clone);
+	void setName(Engine::Character* characterObj);
+	void addMonster(Engine::Character* monsterClone);
 
 
 private:
 	int m_numMonsters;
 
 	//Game entities
-	Player* m_player;
-	Monster** m_monsters;
+	Engine::Character* m_player;
+	Engine::Character** m_monsters; //An array of monsters
 };
 
 #endif /* Game_h */
