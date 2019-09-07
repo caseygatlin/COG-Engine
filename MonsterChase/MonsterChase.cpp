@@ -1,5 +1,5 @@
 //Casey Gatlin
-//Last updated 8/30/19
+//Last updated 9/06/19
 //
 //This program runs a simple game where the player must
 //avoid running into monsters on a 2D grid by selecting 
@@ -9,12 +9,12 @@
 #include <iostream>
 #include "Game.h"
 #include "Engine.h"
-#include "String.h"
 
 int main()
 {
-	/*
+	//Announce engine start
 	Engine::Init();
+
 	//Prompt for number of monsters
 	int numMonsters;
 	bool askAgain = true;
@@ -37,8 +37,8 @@ int main()
 	Game game(numMonsters);
 	game.play();
 
+	//Announce engine shutdown
 	Engine::Shutdown();
-	*/
 
 	return 0;
 }
