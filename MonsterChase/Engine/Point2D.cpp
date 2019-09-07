@@ -46,6 +46,33 @@ namespace Engine
 		return p;
 	}
 
+	//Multiplication
+	Point2D Point2D::operator*(const Point2D rhs)
+	{
+		int x = m_x * rhs.m_x;
+		int y = m_y * rhs.m_y;
+		Point2D p(x, y);
+		return p;
+	}
+
+	//Division
+	Point2D Point2D::operator/(const Point2D rhs)
+	{
+		int x = m_x / rhs.m_x;
+		int y = m_y / rhs.m_y;
+		Point2D p(x, y);
+		return p;
+	}
+
+	//Modulo
+	Point2D Point2D::operator%(const Point2D rhs)
+	{
+		int x = m_x % rhs.m_x;
+		int y = m_y % rhs.m_y;
+		Point2D p(x, y);
+		return p;
+	}
+
 	//Prefix increment
 	Point2D& Point2D::operator++()
 	{
@@ -108,6 +135,31 @@ namespace Engine
 		m_y -= rhs.m_y;
 		return (*this);
 	}
+
+	//Multiplication assignment
+	Point2D& Point2D::operator*=(Point2D rhs)
+	{
+		m_x *= rhs.m_x;
+		m_y *= rhs.m_y;
+		return (*this);
+	}
+
+	//Division assignment
+	Point2D& Point2D::operator/=(Point2D rhs)
+	{
+		m_x /= rhs.m_x;
+		m_y /= rhs.m_y;
+		return (*this);
+	}
+
+	//Modulo assignment
+	Point2D& Point2D::operator%=(Point2D rhs)
+	{
+		m_x %= rhs.m_x;
+		m_y %= rhs.m_y;
+		return (*this);
+	}
+
 
 	//Ostream <<
 	std::ostream& operator<<(std::ostream& out, const Point2D& point)

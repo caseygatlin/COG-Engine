@@ -23,6 +23,15 @@ namespace Engine
 		//Subtraction
 		Point2D operator-(const Point2D rhs);
 
+		//Multiplication
+		Point2D operator*(const Point2D rhs);
+
+		//Division
+		Point2D operator/(const Point2D rhs);
+
+		//Modulo
+		Point2D operator%(const Point2D rhs);
+
 		//Increment
 		Point2D& operator++();
 		Point2D operator++(int);
@@ -42,6 +51,15 @@ namespace Engine
 
 		//Subtraction assignment
 		Point2D& operator-=(Point2D rhs);
+
+		//Multiplication assignment
+		Point2D& operator*=(Point2D rhs);
+
+		//Division assignment
+		Point2D& operator/=(Point2D rhs);
+
+		//Modulo assignment
+		Point2D& operator%=(Point2D rhs);
 
 		//Ostream <<
 		friend std::ostream& operator<<(std::ostream& out, const Point2D& point);
