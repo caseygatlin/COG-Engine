@@ -3,8 +3,8 @@
 
 namespace Engine
 {
+	//Announces engine states
 	void Init();
-
 	void Shutdown();
 }
 

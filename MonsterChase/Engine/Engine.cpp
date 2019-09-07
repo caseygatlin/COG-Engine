@@ -4,13 +4,15 @@
 
 namespace Engine
 {
+	//Announces engine initialization
 	void Init()
 	{
-		std::cout << "Engine Initialized.\n";
+		std::cout << "Engine Initialized.\n\n";
 	}
 
+	//Announces engine shutdown
 	void Shutdown()
 	{
-		std::cout << "Shutting down...\n";
+		std::cout << "\nShutting down...\n";
 	}
 }
