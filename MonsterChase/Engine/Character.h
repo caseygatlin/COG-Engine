@@ -20,7 +20,7 @@ namespace Engine
 		}
 
 		//Constructor given a position and health
-		Character(Point2D position, int health = 1) : GameObject(position)
+		explicit Character(Point2D position, int health = 1) : GameObject(position)
 		{
 			m_health = health;
 			m_nameLength = 0;

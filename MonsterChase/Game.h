@@ -6,7 +6,7 @@ class Game
 {
 public:
 	//Constructor
-	Game(int numMonsters);
+	explicit Game(int numMonsters);
 
 	//Destructor
 	~Game();

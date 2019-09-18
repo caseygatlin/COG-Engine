@@ -11,7 +11,7 @@ namespace Engine
 	public:
 		//Constructors
 		GameObject() : m_position(0, 0) {}
-		GameObject(Point2D position) : m_position(position.X(), position.Y()) {}
+		explicit GameObject(Point2D position) : m_position(position.X(), position.Y()) {}
 
 		//Accessor
 		Point2D getPosition() const;
