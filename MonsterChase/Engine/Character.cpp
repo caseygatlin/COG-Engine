@@ -47,6 +47,7 @@ namespace Engine
 	//Sets name to a given name
 	void Character::setName(char* name, int length)
 	{
+		delete m_name;
 		m_name = new char[length];
 		m_nameLength = length;
 
