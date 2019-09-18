@@ -10,7 +10,7 @@ namespace Engine
 	{
 	public:
 		//Constructors
-		GameObject();
+		GameObject() : m_position(0, 0) {}
 		GameObject(Point2D position) : m_position(position.X(), position.Y()) {}
 
 		//Accessor
