@@ -13,7 +13,7 @@ Game::Game(int numMonsters)
 	m_numMonsters = numMonsters;
 	m_monsters = new Engine::Character* [numMonsters];
 
-	//Initialize player
+	//Instantiate player
 	m_player = new Engine::Character();
 
 	//Set names, positions, and health of monsters
@@ -33,6 +33,52 @@ Game::Game(int numMonsters)
 	std::cout << "What would you like to name the Player: ";
 	setName(m_player);
 }
+
+Game::Game(const Game& src)
+{
+	//Copy player
+	m_player = new Engine::Character();
+	*m_player = *(src.m_player);
+
+	//Create an array of monsters the same size as src
+	m_numMonsters = src.m_numMonsters;
+	m_monsters = new Engine::Character*[m_numMonsters];
+
+	//Copy monsters
+	for (int i = 0; i < m_numMonsters; i++)
+	{
+		m_monsters[i] = new Engine::Character();
+		*(m_monsters[i]) = *(src.m_monsters[i]);
+	}
+}
+
+Game& Game::operator=(const Game& src)
+{
+	//Check for aliasing
+	if (&src == this)
+		return (*this);
+
+	//Destruct current game
+	for (int i = 0; i < m_numMonsters; i++)
+		delete m_monsters[i];
+	delete[] m_monsters;
+
+	delete m_player;
+
+	//Copy over src game
+	m_player = new Engine::Character();
+	*m_player = *(src.m_player);
+
+	m_numMonsters = src.m_numMonsters;
+	m_monsters = new Engine::Character*[m_numMonsters];
+
+	for (int i = 0; i < m_numMonsters; i++)
+	{
+		m_monsters[i] = new Engine::Character();
+		*(m_monsters[i]) = *(src.m_monsters[i]);
+	}
+}
+	
 
 //Destructor, frees monster array and player
 Game::~Game()

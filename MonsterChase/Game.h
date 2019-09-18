@@ -8,6 +8,12 @@ public:
 	//Constructor
 	explicit Game(int numMonsters);
 
+	//Copy constructor
+	Game(const Game& src);
+
+	//Assignment operator
+	Game& operator=(const Game& src);
+
 	//Destructor
 	~Game();
 
