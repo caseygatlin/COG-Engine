@@ -14,52 +14,19 @@ namespace Engine
 		//Copy constructor
 		Point2D(const Point2D& src);
 
-		//Assignment operator
+		//Assignment operators
 		Point2D& operator=(const Point2D& src);
+		Point2D& operator+=(Point2D rhs);
+		Point2D& operator-=(Point2D rhs);
+		Point2D& operator*=(Point2D rhs);
+		Point2D& operator/=(Point2D rhs);
+		Point2D& operator%=(Point2D rhs);
 
-		//Addition
-		Point2D operator+(const Point2D rhs);
-
-		//Subtraction
-		Point2D operator-(const Point2D rhs);
-
-		//Multiplication
-		Point2D operator*(const Point2D rhs);
-
-		//Division
-		Point2D operator/(const Point2D rhs);
-
-		//Modulo
-		Point2D operator%(const Point2D rhs);
-
-		//Increment
+		//Postfix and prefix operators
 		Point2D& operator++();
 		Point2D operator++(int);
-
-		//Decrement
 		Point2D& operator--();
-		Point2D operator--(int);
-
-		//Equal to
-		bool operator==(Point2D const& rhs) const;
-
-		//Not equal to
-		bool operator!=(Point2D const& rhs);
-
-		//Addition assignment
-		Point2D& operator+=(Point2D rhs);
-
-		//Subtraction assignment
-		Point2D& operator-=(Point2D rhs);
-
-		//Multiplication assignment
-		Point2D& operator*=(Point2D rhs);
-
-		//Division assignment
-		Point2D& operator/=(Point2D rhs);
-
-		//Modulo assignment
-		Point2D& operator%=(Point2D rhs);
+		Point2D operator--(int);		
 
 		//Ostream <<
 		friend std::ostream& operator<<(std::ostream& out, const Point2D& point);
@@ -74,7 +41,20 @@ namespace Engine
 		int m_y;
 	};
 
+	//Mathematical operations
+	Point2D operator+(const Point2D lhs, const Point2D rhs);
+	Point2D operator-(const Point2D lhs, const Point2D rhs);
+	Point2D operator*(const Point2D lhs, const Point2D rhs);
+	Point2D operator/(const Point2D lhs, const Point2D rhs);
+	Point2D operator%(const Point2D lhs, const Point2D rhs);
 
+	// Equal /Not Equal to
+	bool operator==(Point2D const& lhs, Point2D const& rhs);
+	bool operator!=(Point2D const& lhs, Point2D const& rhs);
+	
 }
+
+
+
 
 #endif

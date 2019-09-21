@@ -16,7 +16,7 @@ namespace Engine
 		m_y = src.m_y;
 	}
 
-	//Assignment operator
+	//Assignment operators
 	Point2D& Point2D::operator=(const Point2D& src)
 	{
 		if (&src == this)
@@ -28,49 +28,39 @@ namespace Engine
 		return (*this);
 	}
 
-	//Addition
-	Point2D Point2D::operator+(const Point2D rhs)
+	Point2D& Point2D::operator+=(Point2D rhs)
 	{
-		int x = m_x + rhs.m_x;
-		int y = m_y + rhs.m_y;
-		Point2D p(x, y);
-		return p;
+		m_x += rhs.m_x;
+		m_y += rhs.m_y;
+		return (*this);
 	}
 
-	//Subtraction
-	Point2D Point2D::operator-(const Point2D rhs)
+	Point2D& Point2D::operator-=(Point2D rhs)
 	{
-		int x = m_x - rhs.m_x;
-		int y = m_y - rhs.m_y;
-		Point2D p(x, y);
-		return p;
+		m_x -= rhs.m_x;
+		m_y -= rhs.m_y;
+		return (*this);
 	}
 
-	//Multiplication
-	Point2D Point2D::operator*(const Point2D rhs)
+	Point2D& Point2D::operator*=(Point2D rhs)
 	{
-		int x = m_x * rhs.m_x;
-		int y = m_y * rhs.m_y;
-		Point2D p(x, y);
-		return p;
+		m_x *= rhs.m_x;
+		m_y *= rhs.m_y;
+		return (*this);
 	}
 
-	//Division
-	Point2D Point2D::operator/(const Point2D rhs)
+	Point2D& Point2D::operator/=(Point2D rhs)
 	{
-		int x = m_x / rhs.m_x;
-		int y = m_y / rhs.m_y;
-		Point2D p(x, y);
-		return p;
+		m_x /= rhs.m_x;
+		m_y /= rhs.m_y;
+		return (*this);
 	}
 
-	//Modulo
-	Point2D Point2D::operator%(const Point2D rhs)
+	Point2D& Point2D::operator%=(Point2D rhs)
 	{
-		int x = m_x % rhs.m_x;
-		int y = m_y % rhs.m_y;
-		Point2D p(x, y);
-		return p;
+		m_x %= rhs.m_x;
+		m_y %= rhs.m_y;
+		return (*this);
 	}
 
 	//Prefix increment
@@ -107,67 +97,12 @@ namespace Engine
 		return p;
 	}
 
-
-	//Equal to
-	bool Point2D::operator==(Point2D const& rhs) const
-	{
-		return (m_x == rhs.m_x && m_y == rhs.m_y);
-	}
-
-	//Not equal to
-	bool Point2D::operator!=(Point2D const& rhs)
-	{
-		return !(m_x == rhs.m_x && m_y == rhs.m_y);
-	}
-
-	//Addition assignment
-	Point2D& Point2D::operator+=(Point2D rhs)
-	{
-		m_x += rhs.m_x;
-		m_y += rhs.m_y;
-		return (*this);
-	}
-
-	//Subtraction assignment
-	Point2D& Point2D::operator-=(Point2D rhs)
-	{
-		m_x -= rhs.m_x;
-		m_y -= rhs.m_y;
-		return (*this);
-	}
-
-	//Multiplication assignment
-	Point2D& Point2D::operator*=(Point2D rhs)
-	{
-		m_x *= rhs.m_x;
-		m_y *= rhs.m_y;
-		return (*this);
-	}
-
-	//Division assignment
-	Point2D& Point2D::operator/=(Point2D rhs)
-	{
-		m_x /= rhs.m_x;
-		m_y /= rhs.m_y;
-		return (*this);
-	}
-
-	//Modulo assignment
-	Point2D& Point2D::operator%=(Point2D rhs)
-	{
-		m_x %= rhs.m_x;
-		m_y %= rhs.m_y;
-		return (*this);
-	}
-
-
 	//Ostream <<
 	std::ostream& operator<<(std::ostream& out, const Point2D& point)
 	{
 		out << "[" << point.m_x << ", " << point.m_y << "]";
 		return out;
 	}
-
 
 	//Getters
 	int Point2D::X() const
@@ -179,4 +114,57 @@ namespace Engine
 	{
 		return m_y;
 	}
+
+	//Mathematical operations
+	Point2D operator+(const Point2D lhs, const Point2D rhs)
+	{
+		int x = lhs.X() + rhs.X();
+		int y = lhs.Y() + rhs.Y();
+		Point2D p(x, y);
+		return p;
+	}
+
+	Point2D operator-(const Point2D lhs, const Point2D rhs)
+	{
+		int x = lhs.X() - rhs.X();
+		int y = lhs.Y() - rhs.Y();
+		Point2D p(x, y);
+		return p;
+	}
+
+	Point2D operator*(const Point2D lhs, const Point2D rhs)
+	{
+		int x = lhs.X() * rhs.X();
+		int y = lhs.Y() * rhs.Y();
+		Point2D p(x, y);
+		return p;
+	}
+
+	Point2D operator/(const Point2D lhs, const Point2D rhs)
+	{
+		int x = lhs.X() / rhs.X();
+		int y = lhs.Y() / rhs.Y();
+		Point2D p(x, y);
+		return p;
+	}
+
+	Point2D operator%(const Point2D lhs, const Point2D rhs)
+	{
+		int x = lhs.X() % rhs.X();
+		int y = lhs.Y() % rhs.Y();
+		Point2D p(x, y);
+		return p;
+	}
+
+	//Equal / Not Equal to
+	bool operator==(Point2D const& lhs, Point2D const& rhs)
+	{
+		return (lhs.X() == rhs.X() && lhs.Y() == rhs.Y());
+	}
+
+	bool operator!=(Point2D const& lhs, Point2D const& rhs)
+	{
+		return !(lhs.X() == rhs.X() && lhs.Y() == rhs.Y());
+	}
+
 }
