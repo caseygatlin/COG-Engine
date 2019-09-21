@@ -77,6 +77,8 @@ Game& Game::operator=(const Game& src)
 		m_monsters[i] = new Engine::Character();
 		*(m_monsters[i]) = *(src.m_monsters[i]);
 	}
+
+	return (*this);
 }
 	
 
