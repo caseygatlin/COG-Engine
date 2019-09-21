@@ -23,9 +23,12 @@ Game::Game(int numMonsters)
 		int yPos = std::rand() % 200 - 99;
 		int monsterHealth = std::rand() % 10 + 4;
 
+#pragma warning (suppress: 6386)
 		m_monsters[i] = new Engine::Character(Engine::Point2D(xPos, yPos), monsterHealth);
 
 		std::cout << "What would you like to name Monster " << i << ": ";
+
+#pragma warning (suppress: 6385)
 		setName(m_monsters[i]);
 	}
 

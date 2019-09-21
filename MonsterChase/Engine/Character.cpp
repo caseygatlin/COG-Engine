@@ -11,8 +11,7 @@ namespace Engine
 			return (*this);
 		
 		//Destruct current character
-		if (m_name != nullptr)
-			delete[] m_name;
+		delete[] m_name;
 
 		//Copy over src character
 		m_position = src.m_position;
@@ -34,8 +33,7 @@ namespace Engine
 	//Destructor
 	Character::~Character()
 	{
-		if (m_name != nullptr)
-			delete[] m_name;
+		delete[] m_name;
 	}
 
 	//Returns name
