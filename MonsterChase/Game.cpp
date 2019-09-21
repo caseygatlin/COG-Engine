@@ -11,7 +11,7 @@ Game::Game(int numMonsters)
 {
 	//Create array of monsters
 	m_numMonsters = numMonsters;
-	m_monsters = new Engine::Character* [numMonsters];
+	m_monsters = new Engine::Character* [m_numMonsters];
 
 	//Instantiate player
 	m_player = new Engine::Character();
@@ -23,12 +23,12 @@ Game::Game(int numMonsters)
 		int yPos = std::rand() % 200 - 99;
 		int monsterHealth = std::rand() % 10 + 4;
 
-#pragma warning (suppress: 6386)
+#pragma warning (suppress: 6386) //Am allocating the correct number of monsters so didn't feel like it was neccesary to fix
 		m_monsters[i] = new Engine::Character(Engine::Point2D(xPos, yPos), monsterHealth);
 
 		std::cout << "What would you like to name Monster " << i << ": ";
 
-#pragma warning (suppress: 6385)
+#pragma warning (suppress: 6385) //Am accessing the correct number of monsters so didn't feel like it was neccesary to fix
 		setName(m_monsters[i]);
 	}
 
