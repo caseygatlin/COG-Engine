@@ -2,6 +2,18 @@
 
 namespace Engine
 {
+	//Assignment operators
+	inline Point2D& Point2D::operator=(const Point2D& src)
+	{
+		if (&src == this)
+			return (*this);
+
+		m_x = src.m_x;
+		m_y = src.m_y;
+
+		return (*this);
+	}
+
 	inline Point2D& Point2D::operator+=(Point2D rhs)
 	{
 		m_x += rhs.m_x;

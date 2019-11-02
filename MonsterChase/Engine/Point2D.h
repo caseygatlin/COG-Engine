@@ -9,13 +9,13 @@ namespace Engine
 	{
 	public:
 		//Constructor
-		Point2D(int x = 0, int y = 0);
+		Point2D(int x = 0, int y = 0) : m_x(x), m_y(y) {}
 
 		//Copy constructor
-		Point2D(const Point2D& src);
+		Point2D(const Point2D& src) : m_x(src.m_x), m_y(src.m_y) {}
 
 		//Assignment operators
-		Point2D& operator=(const Point2D& src);
+		inline Point2D& operator=(const Point2D& src);
 		inline Point2D& operator+=(Point2D rhs);
 		inline Point2D& operator-=(Point2D rhs);
 		inline Point2D& operator*=(Point2D rhs);
