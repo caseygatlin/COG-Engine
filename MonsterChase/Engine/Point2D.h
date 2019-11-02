@@ -16,24 +16,24 @@ namespace Engine
 
 		//Assignment operators
 		Point2D& operator=(const Point2D& src);
-		Point2D& operator+=(Point2D rhs);
-		Point2D& operator-=(Point2D rhs);
-		Point2D& operator*=(Point2D rhs);
-		Point2D& operator/=(Point2D rhs);
-		Point2D& operator%=(Point2D rhs);
+		inline Point2D& operator+=(Point2D rhs);
+		inline Point2D& operator-=(Point2D rhs);
+		inline Point2D& operator*=(Point2D rhs);
+		inline Point2D& operator/=(Point2D rhs);
+		inline Point2D& operator%=(Point2D rhs);
 
 		//Postfix and prefix operators
-		Point2D& operator++();
-		Point2D operator++(int);
-		Point2D& operator--();
-		Point2D operator--(int);		
+		inline Point2D& operator++();
+		inline Point2D operator++(int);
+		inline Point2D& operator--();
+		inline Point2D operator--(int);
 
 		//Ostream <<
-		friend std::ostream& operator<<(std::ostream& out, const Point2D& point);
+		inline friend std::ostream& operator<<(std::ostream& out, const Point2D& point);
 		
 		//Getters
-		int X() const;
-		int Y() const;
+		inline int X() const;
+		inline int Y() const;
 
 	private:
 		//X and Y coordinates
@@ -42,19 +42,19 @@ namespace Engine
 	};
 
 	//Mathematical operations
-	Point2D operator+(const Point2D lhs, const Point2D rhs);
-	Point2D operator-(const Point2D lhs, const Point2D rhs);
-	Point2D operator*(const Point2D lhs, const Point2D rhs);
-	Point2D operator/(const Point2D lhs, const Point2D rhs);
-	Point2D operator%(const Point2D lhs, const Point2D rhs);
+	inline Point2D operator+(const Point2D lhs, const Point2D rhs);
+	inline Point2D operator-(const Point2D lhs, const Point2D rhs);
+	inline Point2D operator*(const Point2D lhs, const Point2D rhs);
+	inline Point2D operator/(const Point2D lhs, const Point2D rhs);
+	inline Point2D operator%(const Point2D lhs, const Point2D rhs);
 
 	// Equal /Not Equal to
-	bool operator==(Point2D const& lhs, Point2D const& rhs);
-	bool operator!=(Point2D const& lhs, Point2D const& rhs);
+	inline bool operator==(Point2D const& lhs, Point2D const& rhs);
+	inline bool operator!=(Point2D const& lhs, Point2D const& rhs);
 	
 }
 
-
+#include "Point2D-inl.h"
 
 
 #endif
