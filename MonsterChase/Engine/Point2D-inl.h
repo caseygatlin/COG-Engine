@@ -14,35 +14,35 @@ namespace Engine
 		return (*this);
 	}
 
-	inline Point2D& Point2D::operator+=(Point2D rhs)
+	inline Point2D& Point2D::operator+=(const Point2D& rhs)
 	{
 		m_x += rhs.m_x;
 		m_y += rhs.m_y;
 		return (*this);
 	}
 
-	inline Point2D& Point2D::operator-=(Point2D rhs)
+	inline Point2D& Point2D::operator-=(const Point2D& rhs)
 	{
 		m_x -= rhs.m_x;
 		m_y -= rhs.m_y;
 		return (*this);
 	}
 
-	inline Point2D& Point2D::operator*=(Point2D rhs)
+	inline Point2D& Point2D::operator*=(const Point2D& rhs)
 	{
 		m_x *= rhs.m_x;
 		m_y *= rhs.m_y;
 		return (*this);
 	}
 
-	inline Point2D& Point2D::operator/=(Point2D rhs)
+	inline Point2D& Point2D::operator/=(const Point2D& rhs)
 	{
 		m_x /= rhs.m_x;
 		m_y /= rhs.m_y;
 		return (*this);
 	}
 
-	inline Point2D& Point2D::operator%=(Point2D rhs)
+	inline Point2D& Point2D::operator%=(const Point2D& rhs)
 	{
 		m_x %= rhs.m_x;
 		m_y %= rhs.m_y;
