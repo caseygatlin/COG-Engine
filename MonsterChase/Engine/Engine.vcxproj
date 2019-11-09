@@ -28,6 +28,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="IGOComponent.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Point2D-inl.h" />
     <ClInclude Include="Point2D.h" />
