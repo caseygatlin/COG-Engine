@@ -2,6 +2,7 @@
 
 #include "IGOComponent.h"
 #include "GameObject.h"
+#include "ComponentType.h"
 
 
 
@@ -12,8 +13,10 @@ namespace Engine
 	{
 	public:
 		FollowPlayerMovement(const GameObject* i_player) : m_playerToFollow(i_player) {}
+		~FollowPlayerMovement() { m_playerToFollow = nullptr; }
 
 		void Update(GameObject& i_gameObject);
+		inline ComponentType GetComponentType() const;
 
 
 	private:
@@ -21,3 +24,5 @@ namespace Engine
 
 	};
 }
+
+#include "FollowPlayerMovement-inl.h"

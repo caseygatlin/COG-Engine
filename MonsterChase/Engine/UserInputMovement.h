@@ -2,7 +2,7 @@
 
 #include "IGOComponent.h"
 #include "GameObject.h"
-
+#include "ComponentType.h"
 
 
 namespace Engine
@@ -14,6 +14,9 @@ namespace Engine
 		UserInputMovement() {};
 
 		void Update(GameObject& i_gameObject);
+		inline ComponentType GetComponentType() const;
 
 	};
 }
+
+#include "UserInputMovement-inl.h"

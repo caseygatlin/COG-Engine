@@ -1,6 +1,11 @@
 #include "GameObject.h"
 #include "Point2D.h"
 #include "IGOComponent.h"
+#include "ComponentType.h"
+#include "UserInputMovement.h"
+#include "FollowPlayerMovement.h"
+#include <stdlib.h>
+#include <vector>
 
 
 namespace Engine
@@ -14,18 +19,19 @@ namespace Engine
 
 		//Destruct current character
 		delete[] m_name;
-		for (int i = 0; i < m_numComponents; i++)
+		while (!m_components.empty())
 		{
-			delete m_components[i];
+			free(static_cast<void*>(m_components[m_components.size() - 1]));
+			m_components.erase(m_components.end());
 		}
-		delete[] m_components;
 
-		//Copy over src character
+		//Copy over src character non-pointer vars
 		m_position = i_src.m_position;
-		m_numComponents = i_src.m_numComponents;
+		m_health = i_src.m_health;
 		m_dir = i_src.m_dir;
 		m_nameLength = i_src.m_nameLength;
 
+		//Copy over name
 		if (m_nameLength != 0)
 		{
 			m_name = new char[m_nameLength];
@@ -33,18 +39,39 @@ namespace Engine
 				m_name[i] = i_src.m_name[i];
 		}
 		else
-			m_name = nullptr;
-
-		if (m_numComponents != 0)
 		{
-			m_components = new IGOComponent*[m_numComponents];
-			for (int i = 0; i < m_numComponents; i++)
+			m_name = nullptr;
+		}
+
+		//Copy over components
+		if (!i_src.m_components.empty())
+		{
+			for (int i = 0; i < i_src.m_components.size(); i++)
 			{
-				m_components[i] = i_src.m_components[i]; //TODO: Account for assigning of components
+				ComponentType compType = i_src.m_components[i]->GetComponentType();
+				IGOComponent* compToAdd;
+
+
+				switch (compType)
+				{
+				case USER_INPUT_MOVEMENT:
+					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(UserInputMovement)));
+					break;
+				case FOLLOW_PLAYER_MOVEMENT:
+					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(FollowPlayerMovement)));
+					break;
+				default:
+					compToAdd = nullptr;
+					break;
+				}
+
+				if (compToAdd)
+				{
+					*compToAdd = *(i_src.m_components[i]);
+					m_components.push_back(compToAdd);
+				}
 			}
 		}
-		else
-			m_components = nullptr;
 
 
 		return (*this);
@@ -55,32 +82,73 @@ namespace Engine
 	{
 		delete[] m_name;
 
-		for (int i = 0; i < m_numComponents; i++)
+		for (int i = 0; i < m_components.size(); i++)
 		{
-			delete m_components[i];
+			free(static_cast<void*>(m_components[i]));
 		}
 
-		delete[] m_components;
 	}
 
-
-	//Returns current position
-	Point2D GameObject::getPosition() const
+	GameObject::GameObject(const GameObject& i_src, int i_health)
 	{
-		return m_position;
+		//Copy over src character non-pointer vars
+		m_position = i_src.m_position;
+		m_dir = i_src.m_dir;
+		m_nameLength = i_src.m_nameLength;
+		
+		// Change health if specified
+		if (i_health == -1)
+		{
+			m_health = i_src.m_health;
+		}
+		else
+		{
+			m_health = i_health;
+		}
+
+		//Copy over name
+		if (m_nameLength != 0)
+		{
+			m_name = new char[m_nameLength];
+			for (int i = 0; i < m_nameLength; i++)
+				m_name[i] = i_src.m_name[i];
+		}
+		else
+		{
+			m_name = nullptr;
+		}
+
+		//Copy over components
+		if (!(i_src.m_components.empty()))
+		{
+			for (int i = 0; i < i_src.m_components.size(); i++)
+			{
+				ComponentType compType = i_src.m_components[i]->GetComponentType();
+				IGOComponent* compToAdd;
+
+
+				switch (compType)
+				{
+				case USER_INPUT_MOVEMENT:
+					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(UserInputMovement)));
+					break;
+				case FOLLOW_PLAYER_MOVEMENT:
+					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(FollowPlayerMovement)));
+					break;
+				default:
+					compToAdd = nullptr;
+					break;
+				}
+
+				if (compToAdd)
+				{
+					*compToAdd = *(i_src.m_components[i]);
+					m_components.push_back(compToAdd);
+				}
+			}
+		}
 	}
 
-	// Returns current direction
-	char GameObject::getDir() const
-	{
-		return m_dir;
-	}
-
-	//Returns name
-	char* GameObject::getName() const
-	{
-		return m_name;
-	}
 
 	// Sets the name of the GameObject
 	void GameObject::setName(char* i_name, int i_length)
@@ -90,51 +158,15 @@ namespace Engine
 		m_nameLength = i_length;
 
 		for (int i = 0; i < i_length; i++)
+		{
 			m_name[i] = i_name[i];
-	}
-
-
-	// Changes the current direction of the object
-	void GameObject::changeDir(char& i_dir)
-	{
-		m_dir = i_dir;
-	}
-
-	// Adds a given point to current location
-	void GameObject::changePosition(const Point2D& i_addPoint)
-	{
-		m_position += i_addPoint;
-	}
-
-	// Attaches a component
-	void GameObject::Attach(IGOComponent* i_component)
-	{
-		m_numComponents++;
-
-		IGOComponent** newComponents = new IGOComponent*[m_numComponents];
-
-		if (m_numComponents > 1)
-		{
-			for (int i = 0; i < m_numComponents - 1; i++)
-			{
-				newComponents[i] = m_components[i];
-			}
-			delete [] m_components;
 		}
-		else
-		{
-			delete m_components;
-		}
-
-		newComponents[m_numComponents - 1] = i_component;
-
-		m_components = newComponents;
 	}
 
 	// Updates each component
 	void GameObject::Update()
 	{
-		for (int i = 0; i > m_numComponents; i++)
+		for (int i = 0; i < m_components.size(); i++)
 		{
 			m_components[i]->Update(*this);
 		}

@@ -28,4 +28,5 @@ namespace Engine
 			i_gameObject.changePosition(Point2D(0, 1));
 		}
 	}
+
 }

@@ -21,16 +21,13 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FollowPlayerMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UserInputMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,9 +39,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Point2D.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Physics.h">
@@ -60,6 +54,18 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInputMovement.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentType.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowPlayerMovement-inl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInputMovement-inl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject-inl.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
