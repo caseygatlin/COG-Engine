@@ -1,20 +1,27 @@
-#include <iostream>		//cout
-#include <conio.h>		//_getch
-#include <stdlib.h>		//rand
-#include "Game.h"		//Game
-#include "Character.h"	//Characters
-#include "Point2D.h"	//Positions
-#include "Physics.h"	//Collisions
+#include <iostream>					//cout
+#include <conio.h>					//_getch
+#include <stdlib.h>					//rand
+#include "Game.h"					//Game
+#include "IGOComponent.h"			//Components
+#include "FollowPlayerMovement.h"	//Components
+#include "UserInputMovement.h"		//Components
+#include "Point2D.h"				//Positions
+#include "Physics.h"				//Collisions
 
 //Constructor
 Game::Game(int numMonsters)
 {
 	//Create array of monsters
 	m_numMonsters = numMonsters;
-	m_monsters = new Engine::Character* [m_numMonsters];
+	m_monsters = new Engine::GameObject* [m_numMonsters];
 
 	//Instantiate player
-	m_player = new Engine::Character();
+	m_player = new Engine::GameObject();
+	
+	// Attach movement component to player
+	Engine::UserInputMovement* pPlayerMovement = new Engine::UserInputMovement();
+	m_player->Attach(pPlayerMovement);
+
 
 	//Set names, positions, and health of monsters
 	for (int i = 0; i < m_numMonsters; i++)
@@ -24,10 +31,14 @@ Game::Game(int numMonsters)
 		int monsterHealth = std::rand() % 10 + 4;
 
 #pragma warning (suppress: 6386) //Am allocating the correct number of monsters so didn't feel like it was neccesary to fix
-		m_monsters[i] = new Engine::Character(Engine::Point2D(xPos, yPos), monsterHealth);
+		m_monsters[i] = new Engine::GameObject(Engine::Point2D(xPos, yPos), monsterHealth);
+		
+		// Attach movement component to monster
+		Engine::FollowPlayerMovement* pMonsterMovement = new Engine::FollowPlayerMovement(m_player);
+		m_monsters[i]->Attach(pMonsterMovement);
 
+		// Set the name of the monster
 		std::cout << "What would you like to name Monster " << i << ": ";
-
 #pragma warning (suppress: 6385) //Am accessing the correct number of monsters so didn't feel like it was neccesary to fix
 		setName(m_monsters[i]);
 	}
@@ -40,17 +51,17 @@ Game::Game(int numMonsters)
 Game::Game(const Game& src)
 {
 	//Copy player
-	m_player = new Engine::Character();
+	m_player = new Engine::GameObject();
 	*m_player = *(src.m_player);
 
 	//Create an array of monsters the same size as src
 	m_numMonsters = src.m_numMonsters;
-	m_monsters = new Engine::Character*[m_numMonsters];
+	m_monsters = new Engine::GameObject*[m_numMonsters];
 
 	//Copy monsters
 	for (int i = 0; i < m_numMonsters; i++)
 	{
-		m_monsters[i] = new Engine::Character();
+		m_monsters[i] = new Engine::GameObject();
 		*(m_monsters[i]) = *(src.m_monsters[i]);
 	}
 }
@@ -69,15 +80,15 @@ Game& Game::operator=(const Game& src)
 	delete m_player;
 
 	//Copy over src game
-	m_player = new Engine::Character();
+	m_player = new Engine::GameObject();
 	*m_player = *(src.m_player);
 
 	m_numMonsters = src.m_numMonsters;
-	m_monsters = new Engine::Character*[m_numMonsters];
+	m_monsters = new Engine::GameObject*[m_numMonsters];
 
 	for (int i = 0; i < m_numMonsters; i++)
 	{
-		m_monsters[i] = new Engine::Character();
+		m_monsters[i] = new Engine::GameObject();
 		*(m_monsters[i]) = *(src.m_monsters[i]);
 	}
 
@@ -103,18 +114,16 @@ void Game::play()
 	//Main game loop
 	char input = 'c';
 	int turnNumber = 1;
-	while (input != 'q' && m_player->isAlive())
+	while (input != 'q' && m_player->IsAlive())
 	{
 		//Age monsters and update position
 		for (int i = 0; i < m_numMonsters; i++)
 		{
 			//If a monster lives, update and display position
-			m_monsters[i]->loseHealth();
-			if (m_monsters[i]->isAlive())
+			m_monsters[i]->ReduceHealth();
+			if (m_monsters[i]->IsAlive())
 			{
-				//Move monster
-				int numSpaces = std::rand() % 11 - 5;
-				m_monsters[i]->moveNumSpaces(numSpaces);
+				m_monsters[i]->Update();
 
 				//Say where it is
 				std::cout << "Monster "
@@ -139,9 +148,9 @@ void Game::play()
 				m_numMonsters--;
 
 				//Resize the array
-				Engine::Character** tempArr = new Engine::Character*[m_numMonsters];
+				Engine::GameObject** tempArr = new Engine::GameObject*[m_numMonsters];
 				for (int j = 0; j < m_numMonsters; j++)
-					tempArr[j] = new Engine::Character(*m_monsters[j]);
+					tempArr[j] = new Engine::GameObject(*m_monsters[j]);
 				delete[] m_monsters;
 				m_monsters = tempArr;
 
@@ -170,7 +179,8 @@ void Game::play()
 		}
 		
 		//Update player position if needed
-		m_player->moveDir(input);
+		m_player->changeDir(input);
+		m_player->Update();
 				
 
 		//Reduce player health if collision detected
@@ -180,7 +190,7 @@ void Game::play()
 			if (Engine::Physics::checkCollision(m_player, m_monsters[i]))
 			{
 				//If player is now dead, announce death
-				if (!m_player->isAlive())
+				if (!m_player->IsAlive())
 				{
 					std::cout << std::endl
 						<< "Monster " 
@@ -193,7 +203,7 @@ void Game::play()
 		}
 
 		//If the player is still alive, check to add a monster
-		if (m_player->isAlive())
+		if (m_player->IsAlive())
 			//If the turn number is a multiple of 5 or there are few monsters, add a monster
 			if (turnNumber % 5 == 0 || m_numMonsters <= 3 )
 				addMonster(m_monsters[turnNumber % m_numMonsters]);
@@ -207,7 +217,7 @@ void Game::play()
 }
 
 
-void Game::setName(Engine::Character* characterObj)
+void Game::setName(Engine::GameObject* characterObj)
 {
 	//Defines an empty name in case of no user input
 	int numLetters = 1;
@@ -237,7 +247,7 @@ void Game::setName(Engine::Character* characterObj)
 }
 
 //Clones a current monster and adds it to the game
-void Game::addMonster(Engine::Character* monsterClone)
+void Game::addMonster(Engine::GameObject* monsterClone)
 {
 	//Announces the new monster
 	std::cout << std::endl
@@ -253,12 +263,12 @@ void Game::addMonster(Engine::Character* monsterClone)
 	m_numMonsters++;
 
 	//Resize the array
-	Engine::Character** tempArr = new Engine::Character*[m_numMonsters];
+	Engine::GameObject** tempArr = new Engine::GameObject*[m_numMonsters];
 	for (int j = 0; j < m_numMonsters - 1; j++)
-		tempArr[j] = new Engine::Character(*m_monsters[j]);
+		tempArr[j] = new Engine::GameObject(*m_monsters[j]);
 	delete[] m_monsters;
 	m_monsters = tempArr;
 
 	//Add the clone to the last position in the array
-	m_monsters[m_numMonsters - 1] = new Engine::Character(*monsterClone, 10);
+	m_monsters[m_numMonsters - 1] = new Engine::GameObject(*monsterClone, 10);
 }
