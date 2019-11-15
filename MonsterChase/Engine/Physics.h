@@ -5,14 +5,14 @@
 
 namespace Engine
 {
-	class Character; //for Character*
+	class GameObject;
 
 	//Namespace for all classes and methods related to physics
 	namespace Physics
 	{
 		//Takes away player health and returns true if collided
 		//false otherwise
-		bool checkCollision(Character* player, Character* enemy);
+		bool checkCollision(GameObject* player, GameObject* enemy);
 	
 	}
 }
