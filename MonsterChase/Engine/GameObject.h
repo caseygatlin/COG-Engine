@@ -69,7 +69,7 @@ namespace Engine
 		inline	void ReduceHealth();
 
 		// Updates each component
-		void Update();
+				void Update();
 
 	private:
 		Point2D						m_position;
