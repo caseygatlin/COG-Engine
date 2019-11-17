@@ -9,10 +9,10 @@ namespace Engine
 	{
 	public:
 		//Constructor
-		Point2D(const int& x = 0, const int& y = 0) : m_x(x), m_y(y) {}
+		Point2D(const int& x = 0, const int& y = 0) : m_x(x), m_y(y)				{}
 
 		//Copy constructor
-		Point2D(const Point2D& src) : m_x(src.m_x), m_y(src.m_y) {}
+		Point2D(const Point2D& src)					: m_x(src.m_x), m_y(src.m_y)	{}
 
 		//Assignment operators
 		inline Point2D& operator=(const Point2D& src);
@@ -24,9 +24,9 @@ namespace Engine
 
 		//Postfix and prefix operators
 		inline Point2D& operator++();
-		inline Point2D operator++(int);
+		inline Point2D	operator++(int);
 		inline Point2D& operator--();
-		inline Point2D operator--(int);
+		inline Point2D	operator--(int);
 
 		//Ostream <<
 		inline friend std::ostream& operator<<(std::ostream& out, const Point2D& point);
@@ -42,15 +42,15 @@ namespace Engine
 	};
 
 	//Mathematical operations
-	inline Point2D operator+(const Point2D lhs, const Point2D rhs);
-	inline Point2D operator-(const Point2D lhs, const Point2D rhs);
-	inline Point2D operator*(const Point2D lhs, const Point2D rhs);
-	inline Point2D operator/(const Point2D lhs, const Point2D rhs);
-	inline Point2D operator%(const Point2D lhs, const Point2D rhs);
+	inline Point2D	operator+(const Point2D lhs, const Point2D rhs);
+	inline Point2D	operator-(const Point2D lhs, const Point2D rhs);
+	inline Point2D	operator*(const Point2D lhs, const Point2D rhs);
+	inline Point2D	operator/(const Point2D lhs, const Point2D rhs);
+	inline Point2D	operator%(const Point2D lhs, const Point2D rhs);
 
 	// Equal /Not Equal to
-	inline bool operator==(Point2D const& lhs, Point2D const& rhs);
-	inline bool operator!=(Point2D const& lhs, Point2D const& rhs);
+	inline bool		operator==(Point2D const& lhs, Point2D const& rhs);
+	inline bool		operator!=(Point2D const& lhs, Point2D const& rhs);
 	
 }
 
