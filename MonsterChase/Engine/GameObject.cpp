@@ -4,6 +4,7 @@
 #include "ComponentType.h"
 #include "UserInputMovement.h"
 #include "FollowPlayerMovement.h"
+#include "RandomDeath.h"
 #include <stdlib.h>
 #include <vector>
 
@@ -28,7 +29,7 @@ namespace Engine
 		for (int i = 0; i < m_components.size(); i++)
 		{
 
-			free(m_components[i]);
+			delete m_components[i];
 
 		}
 
@@ -79,11 +80,16 @@ namespace Engine
 				{
 
 				case ComponentType::USER_INPUT_MOVEMENT:
-					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(UserInputMovement)));
+					compToAdd = new UserInputMovement();
 					break;
+
 				case ComponentType::FOLLOW_PLAYER_MOVEMENT:
-					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(FollowPlayerMovement)));
+					compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
 					break;
+
+				case ComponentType::RANDOM_DEATH:
+					compToAdd = new RandomDeath();
+
 				default:
 					compToAdd = nullptr;
 					break;
@@ -93,7 +99,6 @@ namespace Engine
 				if (compToAdd)
 				{
 
-					*compToAdd = *(i_src.m_components[i]);
 					m_components.push_back(compToAdd);
 
 				}
@@ -114,7 +119,7 @@ namespace Engine
 		for (int i = 0; i < m_components.size(); i++)
 		{
 
-			free(m_components[i]);
+			delete m_components[i];
 
 		}
 
@@ -190,9 +195,14 @@ namespace Engine
 				case ComponentType::USER_INPUT_MOVEMENT:
 					compToAdd = new UserInputMovement();
 					break;
+
 				case ComponentType::FOLLOW_PLAYER_MOVEMENT:
 					compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
 					break;
+
+				case ComponentType::RANDOM_DEATH:
+					compToAdd = new RandomDeath();
+
 				default:
 					compToAdd = nullptr;
 					break;

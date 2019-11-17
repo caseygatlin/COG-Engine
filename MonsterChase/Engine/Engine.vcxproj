@@ -23,6 +23,7 @@
     <ClCompile Include="FollowPlayerMovement.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="RandomDeath.cpp" />
     <ClCompile Include="UserInputMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +37,8 @@
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Point2D-inl.h" />
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="RandomDeath-inl.h" />
+    <ClInclude Include="RandomDeath.h" />
     <ClInclude Include="UserInputMovement-inl.h" />
     <ClInclude Include="UserInputMovement.h" />
   </ItemGroup>

@@ -8,6 +8,7 @@
 namespace Engine
 {
 
+	// Component for moving from input given by the user
 	class UserInputMovement : public IGOComponent
 	{
 	public:

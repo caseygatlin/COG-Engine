@@ -30,6 +30,9 @@
     <ClCompile Include="Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RandomDeath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -66,6 +69,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObject-inl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomDeath.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomDeath-inl.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

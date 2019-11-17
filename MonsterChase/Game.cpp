@@ -5,6 +5,7 @@
 #include "IGOComponent.h"			//Components
 #include "FollowPlayerMovement.h"	//Components
 #include "UserInputMovement.h"		//Components
+#include "RandomDeath.h"			//Components
 #include "Point2D.h"				//Positions
 #include "Physics.h"				//Collisions
 
@@ -46,6 +47,15 @@ Game::Game(int numMonsters)
 		Engine::FollowPlayerMovement* pMonsterMovement = new Engine::FollowPlayerMovement(m_player);
 
 		m_monsters[i]->Attach(pMonsterMovement);
+
+		// Every other monster has a 10% chance of dying
+		if (i % 2 == 0)
+		{
+
+			Engine::RandomDeath* pRandomDeath = new Engine::RandomDeath();
+			m_monsters[i]->Attach(pRandomDeath);
+
+		}
 
 
 		// Set the name of the monster

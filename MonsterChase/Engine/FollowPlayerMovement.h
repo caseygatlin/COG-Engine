@@ -9,6 +9,7 @@
 namespace Engine
 {
 
+	// Component for following another GameObject
 	class FollowPlayerMovement : public IGOComponent
 	{
 	public:
