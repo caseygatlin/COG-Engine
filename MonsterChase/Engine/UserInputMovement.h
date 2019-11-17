@@ -13,9 +13,9 @@ namespace Engine
 	public:
 		UserInputMovement() {};
 
-		void Update(GameObject& i_gameObject);
-		inline ComponentType GetComponentType() const;
-		const void* GetMemberVariables() const { return nullptr; }
+				void			Update(GameObject& i_gameObject);
+		inline	ComponentType	GetComponentType()		const;
+				const void*		GetMemberVariables()	const { return nullptr; }
 
 	};
 }
