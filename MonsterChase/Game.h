@@ -32,11 +32,12 @@ public:
 	void checkCollisions();
 
 private:
-	int m_numMonsters;
+
+	int						m_numMonsters;
 
 	//Game entities
-	Engine::GameObject* m_player;
-	Engine::GameObject** m_monsters; //An array of monsters
+	Engine::GameObject*		m_player;
+	Engine::GameObject**	m_monsters; //An array of monsters
 };
 
 #endif /* Game_h */
