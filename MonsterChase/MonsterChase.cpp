@@ -15,21 +15,30 @@ int main()
 	//Announce engine start
 	Engine::Init();
 
+
 	//Prompt for number of monsters
-	int numMonsters;
-	bool askAgain = true;
+	int		numMonsters;
+	bool	askAgain		= true;
+
 	while (askAgain)
 	{
-		std::cout << "How many monsters to start: ";
-		std::cin >> numMonsters;
+
+		std::cout	<< "How many monsters to start: ";
+		std::cin	>> numMonsters;
 
 		if (numMonsters <= 0)
 		{
+
 			std::cout << "Invalid number of monsters." << std::endl;
 			askAgain = true;
+
 		}
 		else
+		{
+			
 			askAgain = false;
+
+		}
 	}
 	
 
