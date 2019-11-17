@@ -4,7 +4,7 @@
 //This program runs a simple game where the player must
 //avoid running into monsters on a 2D grid by selecting 
 //a direction in which to move. Monsters are occasionally
-//cloned, and move randomly.
+//cloned and follow the player.
 
 #include <iostream>
 #include "Game.h"

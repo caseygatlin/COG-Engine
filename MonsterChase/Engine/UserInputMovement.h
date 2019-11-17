@@ -15,6 +15,7 @@ namespace Engine
 
 		void Update(GameObject& i_gameObject);
 		inline ComponentType GetComponentType() const;
+		const void* GetMemberVariables() const { return nullptr; }
 
 	};
 }

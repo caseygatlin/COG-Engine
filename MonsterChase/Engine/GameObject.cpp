@@ -19,11 +19,11 @@ namespace Engine
 
 		//Destruct current character
 		delete[] m_name;
-		while (!m_components.empty())
+		for (int i = 0; i < m_components.size(); i++)
 		{
-			free(static_cast<void*>(m_components[m_components.size() - 1]));
-			m_components.erase(m_components.end());
+			free(m_components[i]);
 		}
+		m_components.~vector();
 
 		//Copy over src character non-pointer vars
 		m_position = i_src.m_position;
@@ -80,12 +80,16 @@ namespace Engine
 	// Destructor
 	GameObject::~GameObject()
 	{
+
+		
 		delete[] m_name;
 
 		for (int i = 0; i < m_components.size(); i++)
 		{
-			free(static_cast<void*>(m_components[i]));
+			free(m_components[i]);
 		}
+		m_components.~vector();
+
 
 	}
 
@@ -130,10 +134,10 @@ namespace Engine
 				switch (compType)
 				{
 				case USER_INPUT_MOVEMENT:
-					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(UserInputMovement)));
+					compToAdd = new UserInputMovement();
 					break;
 				case FOLLOW_PLAYER_MOVEMENT:
-					compToAdd = static_cast<IGOComponent*>(malloc(sizeof(FollowPlayerMovement)));
+					compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
 					break;
 				default:
 					compToAdd = nullptr;
@@ -142,7 +146,6 @@ namespace Engine
 
 				if (compToAdd)
 				{
-					*compToAdd = *(i_src.m_components[i]);
 					m_components.push_back(compToAdd);
 				}
 			}

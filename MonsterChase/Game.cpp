@@ -116,60 +116,9 @@ void Game::play()
 	int turnNumber = 1;
 	while (input != 'q' && m_player->IsAlive())
 	{
-		//Age monsters and update position
-		for (int i = 0; i < m_numMonsters; i++)
-		{
-			//If a monster lives, update and display position
-			m_monsters[i]->ReduceHealth();
-			if (m_monsters[i]->IsAlive())
-			{
-				m_monsters[i]->Update();
-
-				//Say where it is
-				std::cout << "Monster "
-					<< m_monsters[i]->getName()
-					<< " at "
-					<< m_monsters[i]->getPosition()
-					<< std::endl;
-			}
-
-			//If a monster dies, delete it and resize monster array
-			else
-			{
-				//Announce monster death
-				std::cout << "Monster " 
-					<< m_monsters[i]->getName() 
-					<< " has died!" 
-					<< std::endl;
-
-				//Delete the dead monster
-				*m_monsters[i] = *m_monsters[m_numMonsters - 1];
-				delete m_monsters[m_numMonsters - 1];
-				m_numMonsters--;
-
-				//Resize the array
-				Engine::GameObject** tempArr = new Engine::GameObject*[m_numMonsters];
-				for (int j = 0; j < m_numMonsters; j++)
-					tempArr[j] = new Engine::GameObject(*m_monsters[j]);
-				delete[] m_monsters;
-				m_monsters = tempArr;
-
-				//Iterate over the dead monster's replacement in the array
-				i--;
-			}
-				
-		}
-
-		//State player position
-		std::cout << "Player "
-			<< m_player->getName()
-			<< " at "
-			<< m_player->getPosition()
-			<< std::endl;
-
-		//Get user input
-		std::cout << "Press A to move left, D to move right, W to move up, S to move down, or Q to quit" << std::endl << std::endl;
-		input = _getch();
+		updateMonsters();
+		statePlayerLocation();
+		getUserInput(input);
 
 		//Exit the loop if Q is entered
 		if (input == 'q')
@@ -178,29 +127,8 @@ void Game::play()
 			break;
 		}
 		
-		//Update player position if needed
-		m_player->changeDir(input);
-		m_player->Update();
-				
-
-		//Reduce player health if collision detected
-		for (int i = 0; i < m_numMonsters; i++)
-		{
-			//If there's a collision, check if player is dead
-			if (Engine::Physics::checkCollision(m_player, m_monsters[i]))
-			{
-				//If player is now dead, announce death
-				if (!m_player->IsAlive())
-				{
-					std::cout << std::endl
-						<< "Monster " 
-						<< m_monsters[i]->getName() 
-						<< " killed Player " 
-						<< m_player->getName() 
-						<< std::endl;
-				}
-			}
-		}
+		updatePlayer(input);
+		checkCollisions();
 
 		//If the player is still alive, check to add a monster
 		if (m_player->IsAlive())
@@ -258,17 +186,124 @@ void Game::addMonster(Engine::GameObject* monsterClone)
 		<< std::endl;
 
 
-
 	//Increases number of monsters
 	m_numMonsters++;
 
 	//Resize the array
 	Engine::GameObject** tempArr = new Engine::GameObject*[m_numMonsters];
+
 	for (int j = 0; j < m_numMonsters - 1; j++)
+	{
 		tempArr[j] = new Engine::GameObject(*m_monsters[j]);
+	}
+
 	delete[] m_monsters;
 	m_monsters = tempArr;
 
 	//Add the clone to the last position in the array
 	m_monsters[m_numMonsters - 1] = new Engine::GameObject(*monsterClone, 10);
+
+}
+
+void Game::updateMonsters()
+{
+	//Age monsters and update position
+	for (int i = 0; i < m_numMonsters; i++)
+	{
+		//If a monster lives, update and display position
+		m_monsters[i]->ReduceHealth();
+		if (m_monsters[i]->IsAlive())
+		{
+			m_monsters[i]->Update();
+
+			//Say where it is
+			std::cout << "Monster "
+				<< m_monsters[i]->getName()
+				<< " at "
+				<< m_monsters[i]->getPosition()
+				<< std::endl;
+		}
+
+		//If a monster dies, delete it and resize monster array
+		else
+		{
+			//Announce monster death
+			std::cout << "Monster "
+				<< m_monsters[i]->getName()
+				<< " has died!"
+				<< std::endl;
+
+			//Delete the dead monster
+
+			if (i == m_numMonsters - 1)
+			{
+				delete m_monsters[m_numMonsters - 1];
+				i++;
+			}
+			else
+			{
+				delete m_monsters[i];
+				m_monsters[i] = new Engine::GameObject(*m_monsters[m_numMonsters - 1]);
+				delete m_monsters[m_numMonsters - 1];
+			}
+			
+			m_numMonsters--;
+
+			//Resize the array
+			Engine::GameObject** tempArr = new Engine::GameObject*[m_numMonsters];
+			for (int j = 0; j < m_numMonsters; j++)
+				tempArr[j] = new Engine::GameObject(*m_monsters[j]);
+			delete[] m_monsters;
+			m_monsters = tempArr;
+
+			//Iterate over the dead monster's replacement in the array
+			i--;
+		}
+	}
+}
+
+void Game::updatePlayer(char& i_input)
+{
+	//Update player position if needed
+	m_player->changeDir(i_input);
+	m_player->Update();
+}
+
+void Game::statePlayerLocation() const
+{
+	//State player position
+	std::cout << "Player "
+		<< m_player->getName()
+		<< " at "
+		<< m_player->getPosition()
+		<< std::endl;
+}
+
+void Game::getUserInput(char& o_input) const
+{
+	//Get user input
+	std::cout << "Press A to move left, D to move right, W to move up, S to move down, or Q to quit" << std::endl << std::endl;
+	o_input = _getch();
+}
+
+void Game::checkCollisions()
+{
+	//Reduce player health if collision detected
+	for (int i = 0; i < m_numMonsters; i++)
+	{
+		//If there's a collision, check if player is dead
+		if (Engine::Physics::checkCollision(m_player, m_monsters[i]))
+		{
+			//If player is now dead, announce death
+			if (!m_player->IsAlive())
+			{
+				std::cout << std::endl
+					<< "Monster "
+					<< m_monsters[i]->getName()
+					<< " killed Player "
+					<< m_player->getName()
+					<< std::endl;
+			}
+		}
+	}
 }

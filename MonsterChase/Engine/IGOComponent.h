@@ -13,6 +13,7 @@ namespace Engine
 
 		virtual void Update(GameObject& i_gameObject) = 0;
 		virtual ComponentType GetComponentType() const = 0;
+		virtual const void* GetMemberVariables() const = 0;
 
 	};
 }
