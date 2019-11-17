@@ -2,9 +2,11 @@
 
 namespace Engine
 {
-	enum ComponentType
+	enum class ComponentType
 	{
+
 		FOLLOW_PLAYER_MOVEMENT,
 		USER_INPUT_MOVEMENT,
+
 	};
 }

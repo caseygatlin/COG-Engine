@@ -6,6 +6,6 @@ namespace Engine
 {
 	inline ComponentType UserInputMovement::GetComponentType() const
 	{
-		return USER_INPUT_MOVEMENT;
+		return ComponentType::USER_INPUT_MOVEMENT;
 	}
 }
