@@ -1,50 +1,20 @@
 //Casey Gatlin
-//Last updated 9/06/19
-//
-//This program runs a simple game where the player must
-//avoid running into monsters on a 2D grid by selecting 
-//a direction in which to move. Monsters are occasionally
-//cloned and follow the player.
+//Last updated 1/17/20
 
 #include <iostream>
 #include "Game.h"
 #include "Engine.h"
+#include <Windows.h>
 
-int main()
+
+int WINAPI wWinMain(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
 {
 	//Announce engine start
 	Engine::Init();
 
 
-	//Prompt for number of monsters
-	int		numMonsters;
-	bool	askAgain		= true;
-
-	while (askAgain)
-	{
-
-		std::cout	<< "How many monsters to start: ";
-		std::cin	>> numMonsters;
-
-		if (numMonsters <= 0)
-		{
-
-			std::cout << "Invalid number of monsters." << std::endl;
-			askAgain = true;
-
-		}
-		else
-		{
-			
-			askAgain = false;
-
-		}
-	}
-	
-
-	//Play the game
-	Game game(numMonsters);
-	game.play();
+    Game game(i_hInstance, i_hPrevInstance, i_lpCmdLine, i_nCmdShow);
+    game.Run();
 
 	//Announce engine shutdown
 	Engine::Shutdown();
@@ -52,3 +22,7 @@ int main()
 
 	return 0;
 }
+
+
+
+
