@@ -14,8 +14,8 @@ void Game::Run()
         GLib::SetKeyStateChangeCallback(Engine::Graphics::TestKeyCallback);
 
         // Create a couple of sprites using our own helper routine CreateSprite
-        m_pGoodGuy = Engine::Graphics::CreateSprite("data\\GoodGuy.dds");
-        m_pBadGuy = Engine::Graphics::CreateSprite("data\\BadGuy.dds");
+        m_pGoodGuy = Engine::Graphics::CreateSprite("Content\\MainCharacter.dds");
+        m_pBadGuy = Engine::Graphics::CreateSprite("Content\\FireMonster.dds");
 
         bool bQuit = false;
 
