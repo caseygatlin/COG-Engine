@@ -33,6 +33,9 @@
     <ClCompile Include="RandomDeath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -75,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="RandomDeath-inl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

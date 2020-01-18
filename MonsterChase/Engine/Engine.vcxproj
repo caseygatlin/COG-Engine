@@ -22,6 +22,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FollowPlayerMovement.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="RandomDeath.cpp" />
     <ClCompile Include="UserInputMovement.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="FollowPlayerMovement.h" />
     <ClInclude Include="GameObject-inl.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="IGOComponent.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Point2D-inl.h" />
