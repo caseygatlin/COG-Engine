@@ -6,7 +6,7 @@
 void Game::Run()
 {
     // IMPORTANT: first we need to initialize GLib
-    bool bSuccess = GLib::Initialize(m_hInstance, m_nCmdShow, "GLibTest", -1, 800, 600);
+    bool bSuccess = GLib::Initialize(m_hInstance, m_nCmdShow, "MonsterChase", -1, 800, 600);
 
     if (bSuccess)
     {
