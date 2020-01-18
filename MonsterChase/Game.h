@@ -1,43 +1,36 @@
-#ifndef Game_h
-#define Game_h
+#pragma once
 
-namespace Engine
+#include <Windows.h>
+
+namespace GLib
 {
-	class GameObject;
+    namespace Sprites
+    {
+        struct Sprite;
+    }
 }
 
 class Game
 {
 public:
-	//Constructor
-	explicit Game(int numMonsters);
+    Game(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow) : 
+        m_pGoodGuy(nullptr), 
+        m_pBadGuy(nullptr),
+        m_hInstance(i_hInstance),
+        m_hPrevInstance(i_hPrevInstance),
+        m_lpCmdLine(i_lpCmdLine),
+        m_nCmdShow(i_nCmdShow)
+    {}
 
-	//Copy constructor
-	Game(const Game& src);
-
-	//Assignment operator
-	Game& operator=(const Game& src);
-
-	//Destructor
-	~Game();
-
-	//Methods for play
-	void play();
-	void setName(Engine::GameObject* characterObj);
-	void addMonster(Engine::GameObject* monsterClone);
-	void updateMonsters();
-	void updatePlayer(char& i_input);
-	void statePlayerLocation() const;
-	void getUserInput(char& o_input) const;
-	void checkCollisions();
+    void Run();
+    
 
 private:
-
-	int						m_numMonsters;
-
-	//Game entities
-	Engine::GameObject*		m_player;
-	Engine::GameObject**	m_monsters; //An array of monsters
+    GLib::Sprites::Sprite* m_pGoodGuy;
+    GLib::Sprites::Sprite* m_pBadGuy;
+    HINSTANCE m_hInstance;
+    HINSTANCE m_hPrevInstance;
+    LPWSTR m_lpCmdLine;
+    int m_nCmdShow;
+	
 };
-
-#endif /* Game_h */
