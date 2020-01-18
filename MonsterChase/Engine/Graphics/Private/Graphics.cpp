@@ -122,14 +122,14 @@ namespace Engine
 
                 if (i_pSprite_1)
                 {
-                    static float			moveDist = .01f;
+                    static float			moveDist = .013f;
                     static float			moveDir = moveDist;
 
                     static GLib::Point2D	Offset = { -180.0f, -100.0f };
 
-                    if (Offset.x < -220.0f)
+                    if (Offset.x < -250.0f)
                         moveDir = moveDist;
-                    else if (Offset.x > -140.0f)
+                    else if (Offset.x > -100.0f)
                         moveDir = -moveDist;
 
                     Offset.x += moveDir;
@@ -139,14 +139,14 @@ namespace Engine
                 }
                 if (i_pSprite_2)
                 {
-                    static float			moveDist = .02f;
+                    static float			moveDist = .01f;
                     static float			moveDir = -moveDist;
 
-                    static GLib::Point2D	Offset = { 180.0f, -100.0f };
+                    static GLib::Point2D	Offset = { 120.0f, -50.0f };
 
                     if (Offset.x > 200.0f)
                         moveDir = -moveDist;
-                    else if (Offset.x < 160.0f)
+                    else if (Offset.x < 100.0f)
                         moveDir = moveDist;
 
                     Offset.x += moveDir;
