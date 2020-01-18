@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IGOComponent.h"
-#include "GameObject.h"
+#include "../../GameObject/Public/GameObject.h"
 #include "ComponentType.h"
 
 

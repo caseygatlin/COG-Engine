@@ -19,35 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="FollowPlayerMovement.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="RandomDeath.cpp" />
-    <ClCompile Include="UserInputMovement.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ComponentType.h" />
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="FollowPlayerMovement-inl.h" />
-    <ClInclude Include="FollowPlayerMovement.h" />
-    <ClInclude Include="GameObject-inl.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Graphics.h" />
-    <ClInclude Include="IGOComponent.h" />
-    <ClInclude Include="Physics.h" />
-    <ClInclude Include="Point2D-inl.h" />
-    <ClInclude Include="Point2D.h" />
-    <ClInclude Include="RandomDeath-inl.h" />
-    <ClInclude Include="RandomDeath.h" />
-    <ClInclude Include="UserInputMovement-inl.h" />
-    <ClInclude Include="UserInputMovement.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\GLib\GLib.vcxproj">
       <Project>{b2ab67de-b7fa-42ba-b060-959487392aea}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Components\Public\ComponentType.h" />
+    <ClInclude Include="Components\Public\FollowPlayerMovement-inl.h" />
+    <ClInclude Include="Components\Public\FollowPlayerMovement.h" />
+    <ClInclude Include="Components\Public\IGOComponent.h" />
+    <ClInclude Include="Components\Public\RandomDeath-inl.h" />
+    <ClInclude Include="Components\Public\RandomDeath.h" />
+    <ClInclude Include="Components\Public\UserInputMovement-inl.h" />
+    <ClInclude Include="Components\Public\UserInputMovement.h" />
+    <ClInclude Include="Containers\Public\Point2D-inl.h" />
+    <ClInclude Include="Containers\Public\Point2D.h" />
+    <ClInclude Include="GameObject\Public\GameObject-inl.h" />
+    <ClInclude Include="GameObject\Public\GameObject.h" />
+    <ClInclude Include="Graphics\Public\Graphics.h" />
+    <ClInclude Include="Physics\Public\Physics.h" />
+    <ClInclude Include="Public\Engine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Components\Private\FollowPlayerMovement.cpp" />
+    <ClCompile Include="Components\Private\RandomDeath.cpp" />
+    <ClCompile Include="Components\Private\UserInputMovement.cpp" />
+    <ClCompile Include="GameObject\Private\GameObject.cpp" />
+    <ClCompile Include="Graphics\Private\Graphics.cpp" />
+    <ClCompile Include="Physics\Private\Physics.cpp" />
+    <ClCompile Include="Private\Engine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

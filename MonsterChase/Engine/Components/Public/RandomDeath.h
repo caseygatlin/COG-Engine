@@ -2,7 +2,7 @@
 
 #include "IGOComponent.h"
 #include "ComponentType.h"
-#include "GameObject.h"
+#include "../../GameObject/Public/GameObject.h"
 
 
 namespace Engine

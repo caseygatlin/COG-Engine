@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "../../GameObject/Public/GameObject.h"
 #include "ComponentType.h"
 
 

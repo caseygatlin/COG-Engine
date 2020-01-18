@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Graphics.h"
+#include "Graphics/Public/Graphics.h"
 #include "GLib.h"
 #include <Windows.h>
 

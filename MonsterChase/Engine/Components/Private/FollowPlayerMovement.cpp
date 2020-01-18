@@ -1,6 +1,6 @@
-#include "FollowPlayerMovement.h"
-#include "Point2D.h"
-#include "GameObject.h"
+#include "../Public/FollowPlayerMovement.h"
+#include "../../Containers/Public/Point2D.h"
+#include "../../GameObject/Public/GameObject.h"
 
 
 namespace Engine

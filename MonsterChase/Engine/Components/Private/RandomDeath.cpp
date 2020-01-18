@@ -1,6 +1,6 @@
 #include <stdlib.h>					//rand
-#include "RandomDeath.h"
-#include "GameObject.h"
+#include "../Public/RandomDeath.h"
+#include "../../GameObject/Public/GameObject.h"
 
 namespace Engine
 {

@@ -1,5 +1,5 @@
-#include "UserInputMovement.h"
-#include "GameObject.h"
+#include "../../Components/Public/UserInputMovement.h"
+#include "../../GameObject/Public/GameObject.h"
 
 namespace Engine
 {

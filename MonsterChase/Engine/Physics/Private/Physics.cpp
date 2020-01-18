@@ -1,5 +1,5 @@
-#include "Physics.h"
-#include "GameObject.h"
+#include "../Public/Physics.h"
+#include "../../GameObject/Public/GameObject.h"
 
 namespace Engine
 {

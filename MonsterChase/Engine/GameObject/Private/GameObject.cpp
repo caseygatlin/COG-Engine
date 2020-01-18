@@ -1,10 +1,10 @@
-#include "GameObject.h"
-#include "Point2D.h"
-#include "IGOComponent.h"
-#include "ComponentType.h"
-#include "UserInputMovement.h"
-#include "FollowPlayerMovement.h"
-#include "RandomDeath.h"
+#include "../Public/GameObject.h"
+#include "../../Containers/Public/Point2D.h"
+#include "../../Components/Public/IGOComponent.h"
+#include "../../Components/Public/ComponentType.h"
+#include "../../Components/Public/UserInputMovement.h"
+#include "../../Components/Public/FollowPlayerMovement.h"
+#include "../../Components/Public/RandomDeath.h"
 #include <stdlib.h>
 #include <vector>
 

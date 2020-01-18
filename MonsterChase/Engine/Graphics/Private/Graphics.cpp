@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "../Public/Graphics.h"
 #include "GLib.h"
 #include <assert.h>
 #include <stdint.h>

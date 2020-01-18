@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "Point2D.h"
+#include "../../Containers/Public/Point2D.h"
 #include <vector>
 
 
