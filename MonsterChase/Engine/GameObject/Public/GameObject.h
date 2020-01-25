@@ -16,7 +16,8 @@ namespace Engine
 	public:
 		//Constructors
 		GameObject() :
-			m_position(0, 0),
+			m_position(-180.0F, 100.0F),
+            m_velocity(0, 0),
 			m_dir('n'),
 			m_health(1),
 			m_name(nullptr),
@@ -25,8 +26,9 @@ namespace Engine
 		{ }
 
 
-		explicit GameObject(const Point2D& position, const int& i_health = 1) :
-			m_position(position.X(), position.Y()), 
+        explicit GameObject(const Point2D& position, const int& i_health = 1) :
+            m_position(position.X(), position.Y()),
+            m_velocity(0, 0),
 			m_dir('n'),
 			m_health(i_health),
 			m_name(nullptr),
@@ -49,6 +51,7 @@ namespace Engine
 		inline	char	getDir()		const;
 		inline	char*	getName()		const;
 		inline	bool	IsAlive()		const;
+        inline  Point2D getVelocity()   const;
 
 
 
@@ -68,11 +71,15 @@ namespace Engine
 		// Reduces health
 		inline	void ReduceHealth();
 
+        inline  void SetVelocity(Point2D i_velocity);
+
+
 		// Updates each component
 				void Update();
 
 	private:
 		Point2D						m_position;
+        Point2D                     m_velocity;
 		char						m_dir;
 		int							m_health;
 		char*						m_name;

@@ -29,6 +29,11 @@ namespace Engine
 		return (m_health > 0);
 	}
 
+    inline Point2D GameObject::getVelocity() const
+    {
+        return m_velocity;
+    }
+
 	// Changes the current direction of the object
 	inline void GameObject::changeDir(char& i_dir)
 	{
@@ -52,6 +57,11 @@ namespace Engine
 	{
 		m_health--;
 	}
+
+    inline void GameObject::SetVelocity(Point2D i_velocity)
+    {
+        m_velocity = i_velocity;
+    }
 
 	
 
