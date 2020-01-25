@@ -12,12 +12,14 @@ int WINAPI wWinMain(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_l
 	//Announce engine start
 	Engine::Init();
 
-
     Game game(i_hInstance, i_hPrevInstance, i_lpCmdLine, i_nCmdShow);
-    game.Run();
+    game.Init();
+
+    Engine::Run();
 
 	//Announce engine shutdown
 	Engine::Shutdown();
+    game.ShutDown();
 
 
 	return 0;
