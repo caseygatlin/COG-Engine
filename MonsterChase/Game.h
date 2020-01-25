@@ -1,6 +1,8 @@
 #pragma once
 
+#include "GameObject/Public/GameObject.h"
 #include <Windows.h>
+#include <vector>
 
 namespace GLib
 {
@@ -14,20 +16,19 @@ class Game
 {
 public:
     Game(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow) : 
-        m_pGoodGuy(nullptr), 
-        m_pBadGuy(nullptr),
+        m_gameObjects(),
         m_hInstance(i_hInstance),
         m_hPrevInstance(i_hPrevInstance),
         m_lpCmdLine(i_lpCmdLine),
         m_nCmdShow(i_nCmdShow)
     {}
 
-    void Run();
+    void Init();
+    void ShutDown();
     
 
 private:
-    GLib::Sprites::Sprite* m_pGoodGuy;
-    GLib::Sprites::Sprite* m_pBadGuy;
+    std::vector<Engine::GameObject*> m_gameObjects;
     HINSTANCE m_hInstance;
     HINSTANCE m_hPrevInstance;
     LPWSTR m_lpCmdLine;

@@ -37,8 +37,12 @@
     <ClInclude Include="GameObject\Public\GameObject-inl.h" />
     <ClInclude Include="GameObject\Public\GameObject.h" />
     <ClInclude Include="Graphics\Public\Graphics.h" />
+    <ClInclude Include="Graphics\Public\RenderData.h" />
+    <ClInclude Include="Input\Public\Input.h" />
     <ClInclude Include="Physics\Public\Physics.h" />
+    <ClInclude Include="Physics\Public\PhysicsInfo.h" />
     <ClInclude Include="Public\Engine.h" />
+    <ClInclude Include="Timing\Public\Timing.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Private\FollowPlayerMovement.cpp" />
@@ -46,8 +50,12 @@
     <ClCompile Include="Components\Private\UserInputMovement.cpp" />
     <ClCompile Include="GameObject\Private\GameObject.cpp" />
     <ClCompile Include="Graphics\Private\Graphics.cpp" />
+    <ClCompile Include="Graphics\Private\RenderData.cpp" />
+    <ClCompile Include="Input\Private\Input.cpp" />
     <ClCompile Include="Physics\Private\Physics.cpp" />
+    <ClCompile Include="Physics\Private\PhysicsInfo.cpp" />
     <ClCompile Include="Private\Engine.cpp" />
+    <ClCompile Include="Timing\Private\Timing.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

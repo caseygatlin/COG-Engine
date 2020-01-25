@@ -1,4 +1,6 @@
 #include "../Public/Graphics.h"
+#include "../Public/RenderData.h"
+#include "../../Public/Engine.h"
 #include "GLib.h"
 #include <assert.h>
 #include <stdint.h>
@@ -10,6 +12,32 @@ namespace Engine
 {
     namespace Graphics
     {
+        void Init(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
+        {
+            // IMPORTANT: first we need to initialize GLib
+            bool bSuccess = GLib::Initialize(i_hInstance, i_nCmdShow, "MonsterChase", -1, 800, 600);
+
+            if (bSuccess)
+            {
+
+
+                // Create a couple of sprites using our own helper routine CreateSprite
+                GLib::Sprites::Sprite* texture1 = Engine::Graphics::CreateSprite("Content\\MainCharacter.dds");
+                GLib::Sprites::Sprite* texture2 = Engine::Graphics::CreateSprite("Content\\FireMonster.dds");
+
+                RenderData rd1;
+                rd1.Init(GetGameObject(0), texture1);
+
+                RenderData rd2;
+                rd2.Init(GetGameObject(1), texture2);
+
+                renderData.push_back(rd1);
+                renderData.push_back(rd2);
+
+                
+            }
+        }
+
         void* LoadFile(const char* i_pFilename, size_t& o_sizeFile)
         {
             assert(i_pFilename != NULL);
@@ -103,63 +131,43 @@ namespace Engine
 #endif // __DEBUG
         }
 
-        bool Init(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
-        {
-            return GLib::Initialize(i_hInstance, i_nCmdShow, "GLibTest", -1, 800, 600);
-        }
 
-        void Present(bool& o_bQuit, GLib::Sprites::Sprite* i_pSprite_1, GLib::Sprites::Sprite* i_pSprite_2)
+        void Present()
         {
-            // IMPORTANT: We need to let GLib do it's thing. 
-            GLib::Service(o_bQuit);
 
-            if (!o_bQuit)
-            {
                 // IMPORTANT: Tell GLib that we want to start rendering
                 GLib::BeginRendering();
                 // Tell GLib that we want to render some sprites
                 GLib::Sprites::BeginRendering();
 
-                if (i_pSprite_1)
+
+                for (int i = 0; i < renderData.size(); i++)
                 {
-                    static float			moveDist = .013f;
-                    static float			moveDir = moveDist;
-
-                    static GLib::Point2D	Offset = { -180.0f, -100.0f };
-
-                    if (Offset.x < -250.0f)
-                        moveDir = moveDist;
-                    else if (Offset.x > -100.0f)
-                        moveDir = -moveDist;
-
-                    Offset.x += moveDir;
-
-                    // Tell GLib to render this sprite at our calculated location
-                    GLib::Sprites::RenderSprite(*i_pSprite_1, Offset, 0.0f);
+                    renderData.at(i).Present();
                 }
-                if (i_pSprite_2)
-                {
-                    static float			moveDist = .01f;
-                    static float			moveDir = -moveDist;
 
-                    static GLib::Point2D	Offset = { 120.0f, -50.0f };
-
-                    if (Offset.x > 200.0f)
-                        moveDir = -moveDist;
-                    else if (Offset.x < 100.0f)
-                        moveDir = moveDist;
-
-                    Offset.x += moveDir;
-
-                    // Tell GLib to render this sprite at our calculated location
-                    GLib::Sprites::RenderSprite(*i_pSprite_2, Offset, 0.0f);
-                }
 
                 // Tell GLib we're done rendering sprites
                 GLib::Sprites::EndRendering();
                 // IMPORTANT: Tell GLib we're done rendering
                 GLib::EndRendering();
+
+        }
+
+        void Shutdown()
+        {
+            for (int i = 0; i < renderData.size(); i++)
+            {
+                renderData.at(i).ReleaseSprite();
             }
+
+            for (int i = 0; i < renderData.size(); i++)
+            {
+                renderData.erase(renderData.begin());
+            }
+
+            // IMPORTANT:  Tell GLib to shutdown, releasing resources.
+            GLib::Shutdown();
         }
     }
 }

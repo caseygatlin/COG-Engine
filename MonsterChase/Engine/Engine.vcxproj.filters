@@ -57,6 +57,24 @@
     <Filter Include="Source Files\Containers\Public">
       <UniqueIdentifier>{d26684e1-3427-4281-89b6-07d7e99cf479}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Timing">
+      <UniqueIdentifier>{f3a4d278-7554-4b3d-ab12-29093b956f20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing\Public">
+      <UniqueIdentifier>{97ed090f-362a-49ed-ade5-db8433a297e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing\Private">
+      <UniqueIdentifier>{d05581b2-1bc0-438e-b949-0220ee874181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{c5783305-9cef-4559-8129-38fe55be2c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Public">
+      <UniqueIdentifier>{732eac8b-f08c-4065-b99b-9564d17dced3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Private">
+      <UniqueIdentifier>{1f91b3be-ee89-4934-9484-b8716eae01c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -104,6 +122,18 @@
     <ClInclude Include="Containers\Public\Point2D-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Timing\Public\Timing.h">
+      <Filter>Source Files\Timing\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Public\Input.h">
+      <Filter>Source Files\Input\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Public\RenderData.h">
+      <Filter>Source Files\Graphics\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Public\PhysicsInfo.h">
+      <Filter>Source Files\Physics\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine.cpp">
@@ -126,6 +156,18 @@
     </ClCompile>
     <ClCompile Include="GameObject\Private\GameObject.cpp">
       <Filter>Source Files\GameObject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Timing\Private\Timing.cpp">
+      <Filter>Source Files\Timing\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Private\Input.cpp">
+      <Filter>Source Files\Input\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Private\RenderData.cpp">
+      <Filter>Source Files\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Private\PhysicsInfo.cpp">
+      <Filter>Source Files\Physics\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
