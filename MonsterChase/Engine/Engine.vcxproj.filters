@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Public">
+      <UniqueIdentifier>{a71ab45c-f55d-4fc9-87ab-789a3d210085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Private">
+      <UniqueIdentifier>{c85b6262-8ff1-4bbd-9207-663199518ce7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{3fb1e0ba-2794-47a0-982e-b6545db48cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\Public">
+      <UniqueIdentifier>{172d97bf-1756-4b2c-8f14-b385e796db3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\Private">
+      <UniqueIdentifier>{a636d8ec-cb3c-43b1-88f9-b62d8746b568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{e9e6d9c7-35ca-4154-969d-9562a0a50ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Public">
+      <UniqueIdentifier>{473735ca-3f7e-4234-a41a-6a1caaa57562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Private">
+      <UniqueIdentifier>{9e237f45-ea58-4c96-9d51-86bfbe48f340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{af1bfa6d-cb05-4742-a053-ecc99791a183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Public">
+      <UniqueIdentifier>{aaba0e2a-ae21-42a5-8224-500fb0125a34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Private">
+      <UniqueIdentifier>{bf321f82-4fc3-43a6-bbb1-750e1fc10a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject">
+      <UniqueIdentifier>{65bbf502-ec3d-4427-894a-08bed08d35bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Public">
+      <UniqueIdentifier>{afdad64a-619f-46a0-890c-869b9b08f842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Private">
+      <UniqueIdentifier>{9c7fe74c-d5c3-4c92-9e00-cff87c4ac65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Containers">
+      <UniqueIdentifier>{bd580707-8035-475e-8fce-57244d7ae796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Containers\Public">
+      <UniqueIdentifier>{d26684e1-3427-4281-89b6-07d7e99cf479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing">
+      <UniqueIdentifier>{f3a4d278-7554-4b3d-ab12-29093b956f20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing\Public">
+      <UniqueIdentifier>{97ed090f-362a-49ed-ade5-db8433a297e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timing\Private">
+      <UniqueIdentifier>{d05581b2-1bc0-438e-b949-0220ee874181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{c5783305-9cef-4559-8129-38fe55be2c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Public">
+      <UniqueIdentifier>{732eac8b-f08c-4065-b99b-9564d17dced3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input\Private">
+      <UniqueIdentifier>{1f91b3be-ee89-4934-9484-b8716eae01c8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Public\Engine.h">
+      <Filter>Source Files\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Public\Physics.h">
+      <Filter>Source Files\Physics\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\ComponentType.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\FollowPlayerMovement.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\FollowPlayerMovement-inl.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\IGOComponent.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\RandomDeath.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\RandomDeath-inl.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\UserInputMovement.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\UserInputMovement-inl.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Public\Graphics.h">
+      <Filter>Source Files\Graphics\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Public\GameObject.h">
+      <Filter>Source Files\GameObject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Public\GameObject-inl.h">
+      <Filter>Source Files\GameObject\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Public\Point2D.h">
+      <Filter>Source Files\Containers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Public\Point2D-inl.h">
+      <Filter>Source Files\Containers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Timing\Public\Timing.h">
+      <Filter>Source Files\Timing\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Public\Input.h">
+      <Filter>Source Files\Input\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Public\RenderData.h">
+      <Filter>Source Files\Graphics\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Public\PhysicsInfo.h">
+      <Filter>Source Files\Physics\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Private\Engine.cpp">
+      <Filter>Source Files\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Private\Physics.cpp">
+      <Filter>Source Files\Physics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Private\FollowPlayerMovement.cpp">
+      <Filter>Source Files\Components\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Private\RandomDeath.cpp">
+      <Filter>Source Files\Components\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Private\UserInputMovement.cpp">
+      <Filter>Source Files\Components\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Private\Graphics.cpp">
+      <Filter>Source Files\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Private\GameObject.cpp">
+      <Filter>Source Files\GameObject\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Timing\Private\Timing.cpp">
+      <Filter>Source Files\Timing\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Private\Input.cpp">
+      <Filter>Source Files\Input\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Private\RenderData.cpp">
+      <Filter>Source Files\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Private\PhysicsInfo.cpp">
+      <Filter>Source Files\Physics\Private</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
