@@ -34,6 +34,11 @@
     <ClInclude Include="Components\Public\UserInputMovement.h" />
     <ClInclude Include="Containers\Public\Point2D-inl.h" />
     <ClInclude Include="Containers\Public\Point2D.h" />
+    <ClInclude Include="Containers\Public\ReferenceCount.h" />
+    <ClInclude Include="Containers\Public\SmartPtr-inl.h" />
+    <ClInclude Include="Containers\Public\SmartPtr.h" />
+    <ClInclude Include="Containers\Public\WeakPtr-inl.h" />
+    <ClInclude Include="Containers\Public\WeakPtr.h" />
     <ClInclude Include="GameObject\Public\GameObject-inl.h" />
     <ClInclude Include="GameObject\Public\GameObject.h" />
     <ClInclude Include="Graphics\Public\Graphics.h" />
