@@ -75,6 +75,9 @@
     <Filter Include="Source Files\Input\Private">
       <UniqueIdentifier>{1f91b3be-ee89-4934-9484-b8716eae01c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{617edae2-df05-4c71-ae0b-8e65b08c2f75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -148,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="Containers\Public\WeakPtr-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="External\json.h">
+      <Filter>Source Files\External</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
