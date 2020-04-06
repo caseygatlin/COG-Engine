@@ -43,7 +43,6 @@ namespace Engine
 			return false;
 		}
 
-
         void Update(float i_dt)
         {
             for (int i = 0; i < physicsInfo.size(); i++)

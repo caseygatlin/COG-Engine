@@ -14,7 +14,6 @@ namespace Engine
             m_drag = i_drag;
         }
 
-
         void PhysicsInfo::Update(float i_dt)
         {
             Point2D forces(0.0F, 0.0F);
@@ -29,8 +28,6 @@ namespace Engine
 
             m_pObject->SetVelocity(m_pObject->getVelocity() + acceleration * i_dt);
             m_pObject->changePosition(m_pObject->getVelocity() * i_dt);
-
         }
-
     }
 }
