@@ -19,7 +19,7 @@ namespace Engine
                 PhysicsInfo pi1;
                 PhysicsInfo pi2;
 
-                pi1.Init(GetGameObject(0), 1.0F, 1.0F);
+                pi1.Init(GetGameObject(0), 10.0F, 1.25F);
                 pi2.Init(GetGameObject(1), 2.0F, 2.0F);
 
                 physicsInfo.push_back(pi1);
