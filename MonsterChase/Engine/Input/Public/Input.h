@@ -6,6 +6,6 @@ namespace Engine
     {
         void Read();
 
-        void MoveUp();
+        void MoveUp(unsigned int i_VKeyID, bool i_bWentDown);
     }
 }

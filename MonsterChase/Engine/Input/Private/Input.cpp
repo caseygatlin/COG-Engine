@@ -12,19 +12,37 @@ namespace Engine
         {
             const size_t	lenBuffer = 65;
             char			Buffer[lenBuffer];
-
             
-
-            if (i_VKeyID == 0x0057 && i_bWentDown == true)
+            char dir = 'n';
+            if (i_bWentDown)
             {
-                char dir = 'u';
-                GetGameObject(0)->changeDir(dir);
+                if (i_VKeyID == 0x0057)
+                {
+                    dir = 'u';
+                }
+                else if (i_VKeyID == 0x0053)
+                {
+                    dir = 'd';
+                }
+                else if (i_VKeyID == 0x0044)
+                {
+                    dir = 'r';
+                }
+                else if (i_VKeyID == 0x0041)
+                {
+                    dir = 'l';
+                }
+                else
+                {
+                    dir = 'n';
+                }
             }
             else
             {
-                char dir = 'u';
-                GetGameObject(0)->changeDir(dir);
+                dir = 'n';
             }
+
+            GetGameObject(0)->changeDir(dir);
 
             sprintf_s(Buffer, lenBuffer, "VKey %c %s\n", GetGameObject(0)->getDir(), i_bWentDown ? "wayDown" : "wayUp");
             OutputDebugStringA(Buffer);
