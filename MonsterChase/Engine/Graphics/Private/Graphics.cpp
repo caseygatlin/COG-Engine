@@ -22,8 +22,8 @@ namespace Engine
 
 
                 // Create a couple of sprites using our own helper routine CreateSprite
-                GLib::Sprites::Sprite* texture1 = Engine::Graphics::CreateSprite("Content\\MainCharacter.dds");
-                GLib::Sprites::Sprite* texture2 = Engine::Graphics::CreateSprite("Content\\FireMonster.dds");
+                GLib::Sprites::Sprite* texture1 = Engine::Graphics::CreateSprite("Content\\Ship.dds");
+                GLib::Sprites::Sprite* texture2 = Engine::Graphics::CreateSprite("Content\\Asteroid.dds");
 
                 RenderData rd1;
                 rd1.Init(GetGameObject(0), texture1);
