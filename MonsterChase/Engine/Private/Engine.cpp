@@ -11,7 +11,6 @@ namespace Engine
 {
     extern std::vector<Engine::GameObject*> g_gameObjects = std::vector<Engine::GameObject*>();
 
-
     GameObject* GetGameObject(int i_index)
     {
         return g_gameObjects.at(i_index);

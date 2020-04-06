@@ -127,6 +127,14 @@ namespace Engine
 		return p;
 	}
 
+	inline Point2D operator*(const Point2D lhs, const float rhs)
+	{
+		float x = lhs.X() * rhs;
+		float y = lhs.Y() * rhs;
+		Point2D p(x, y);
+		return p;
+	}
+
     inline Point2D operator/(const Point2D lhs, const float rhs)
     {
         float x = lhs.X() / rhs;

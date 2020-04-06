@@ -45,6 +45,9 @@ namespace Engine
 	inline Point2D	operator-(const Point2D lhs, const Point2D rhs);
 	inline Point2D	operator*(const Point2D lhs, const Point2D rhs);
 	inline Point2D	operator/(const Point2D lhs, const Point2D rhs);
+
+	//Scalar Mathematics
+	inline Point2D	operator*(const Point2D lhs, const float rhs);
     inline Point2D  operator/(const Point2D lhs, const float rhs);
 
 	// Equal /Not Equal to

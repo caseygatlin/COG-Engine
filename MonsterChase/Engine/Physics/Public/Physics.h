@@ -10,10 +10,6 @@ namespace Engine
 
 	class GameObject;
 
-    
-
-
-
 	//Namespace for all classes and methods related to physics
 	namespace Physics
 	{
@@ -27,7 +23,6 @@ namespace Engine
 		bool checkCollision(GameObject* player, GameObject* enemy);
 	
         void Update(float i_dt);
-
 	}
 }
 
