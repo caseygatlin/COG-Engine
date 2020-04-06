@@ -75,6 +75,15 @@
     <Filter Include="Source Files\Input\Private">
       <UniqueIdentifier>{1f91b3be-ee89-4934-9484-b8716eae01c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{e154027d-9a84-4c92-96a8-14127c76df4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers\Public">
+      <UniqueIdentifier>{d810f8e2-64aa-4453-8460-30328abf62ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers\Private">
+      <UniqueIdentifier>{ea4277b2-38be-455d-a9cb-f9d6ce0cc0d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -149,6 +158,9 @@
     <ClInclude Include="Containers\Public\WeakPtr-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\Public\FloatHelpers.h">
+      <Filter>Source Files\Helpers\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine.cpp">
@@ -183,6 +195,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp">
       <Filter>Source Files\Physics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Private\FloatHelpers.cpp">
+      <Filter>Source Files\Helpers\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

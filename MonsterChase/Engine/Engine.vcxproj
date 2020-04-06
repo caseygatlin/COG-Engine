@@ -43,6 +43,7 @@
     <ClInclude Include="GameObject\Public\GameObject.h" />
     <ClInclude Include="Graphics\Public\Graphics.h" />
     <ClInclude Include="Graphics\Public\RenderData.h" />
+    <ClInclude Include="Helpers\Public\FloatHelpers.h" />
     <ClInclude Include="Input\Public\Input.h" />
     <ClInclude Include="Physics\Public\Physics.h" />
     <ClInclude Include="Physics\Public\PhysicsInfo.h" />
@@ -56,6 +57,7 @@
     <ClCompile Include="GameObject\Private\GameObject.cpp" />
     <ClCompile Include="Graphics\Private\Graphics.cpp" />
     <ClCompile Include="Graphics\Private\RenderData.cpp" />
+    <ClCompile Include="Helpers\Private\FloatHelpers.cpp" />
     <ClCompile Include="Input\Private\Input.cpp" />
     <ClCompile Include="Physics\Private\Physics.cpp" />
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp" />
