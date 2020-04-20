@@ -143,23 +143,17 @@
     <ClInclude Include="Physics\Public\PhysicsInfo.h">
       <Filter>Source Files\Physics\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Containers\Public\SmartPtr.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Containers\Public\WeakPtr.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
     <ClInclude Include="Containers\Public\ReferenceCount.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Containers\Public\SmartPtr-inl.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Containers\Public\WeakPtr-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\Public\FloatHelpers.h">
       <Filter>Source Files\Helpers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Public\Pointers.h">
+      <Filter>Source Files\Containers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Public\Pointers-inl.h">
+      <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
