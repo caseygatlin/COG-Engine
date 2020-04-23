@@ -9,28 +9,6 @@
 
 namespace Engine
 {
-    extern std::vector<Engine::GameObject*> g_gameObjects = std::vector<Engine::GameObject*>();
-
-    GameObject* GetGameObject(int i_index)
-    {
-        return g_gameObjects.at(i_index);
-    }
-
-    void AddGameObject(GameObject* i_gameObject)
-    {
-        g_gameObjects.push_back(i_gameObject);
-    }
-
-    size_t GetNumGameObjects()
-    {
-        return g_gameObjects.size();
-    }
-
-    void EraseGameObject()
-    {
-        g_gameObjects.erase(g_gameObjects.begin());
-    }
-
 
 	//Announces engine initialization
 	void Init()
