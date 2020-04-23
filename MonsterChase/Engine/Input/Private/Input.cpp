@@ -2,6 +2,8 @@
 #include "../GLib/GLib.h"
 #include "../../Graphics/Public/Graphics.h"
 #include "../../Public/Engine.h"
+#include "../../World/Public/World.h"
+#include "../../Containers/Public/Pointers.h"
 #include <Windows.h>
 
 namespace Engine
@@ -10,8 +12,8 @@ namespace Engine
     {
         void MoveUp(unsigned int i_VKeyID, bool i_bWentDown)
         {
-            const size_t	lenBuffer = 65;
-            char			Buffer[lenBuffer];
+            //const size_t	lenBuffer = 65;
+            //char			Buffer[lenBuffer];
             
             char dir = 'n';
             if (i_bWentDown)
@@ -42,10 +44,8 @@ namespace Engine
                 dir = 'n';
             }
 
-            GetGameObject(0)->changeDir(dir);
-
-            sprintf_s(Buffer, lenBuffer, "VKey %c %s\n", GetGameObject(0)->getDir(), i_bWentDown ? "wayDown" : "wayUp");
-            OutputDebugStringA(Buffer);
+            SmartPtr<GameObject> player = World::GetGameObject(0).Acquire();
+            player->changeDir(dir);
         }
 
         void Read()
