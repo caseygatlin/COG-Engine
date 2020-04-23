@@ -20,8 +20,6 @@ namespace Engine
 		//false otherwise
         void Init();
 
-		bool checkCollision(GameObject* player, GameObject* enemy);
-	
         void Update(float i_dt);
 	}
 }
