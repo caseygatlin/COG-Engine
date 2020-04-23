@@ -35,6 +35,7 @@
     <ClInclude Include="Containers\Public\Point2D-inl.h" />
     <ClInclude Include="Containers\Public\Point2D.h" />
     <ClInclude Include="Containers\Public\ReferenceCount.h" />
+    <ClInclude Include="External\json.h" />
     <ClInclude Include="Containers\Public\Pointers-inl.h" />
     <ClInclude Include="Containers\Public\Pointers.h" />
     <ClInclude Include="GameObject\Public\GameObject-inl.h" />
