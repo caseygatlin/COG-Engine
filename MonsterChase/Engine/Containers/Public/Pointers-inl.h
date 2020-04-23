@@ -8,32 +8,97 @@ namespace Engine
 #pragma region Smart Ptr
 
 	template<class T>
-	SmartPtr<T>::SmartPtr(WeakPtr<T>& i_WeakPtr)
+	inline SmartPtr<T>::SmartPtr(T* i_pObject)
+	{
+
+		if (i_pObject)
+		{
+			m_pReferenceCount = new ReferenceCount(1, 0);
+		}
+		else
+		{
+			m_pReferenceCount = nullptr;
+		}
+
+		m_pObject = i_pObject;
+
+	}
+
+	template<class T>
+	inline SmartPtr<T>::SmartPtr(const WeakPtr<T>& i_WeakPtr)
 	{
 		// If there are no smart pointers, create one and set the object to nullptr
 		if (i_WeakPtr.m_pReferenceCount->NumSmartPtrs == 0)
 		{
+
 			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
 			m_pObject = nullptr;
 
-			m_pReferenceCount->NumSmartPtrs++;
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
 		}
 
 		// if there are smart pointers, create one and add reference count
 		else
 		{
+
 			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
 			m_pObject = i_WeakPtr.m_pObject;
 
-			m_pReferenceCount->NumSmartPtrs++;
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
+
 		}
 	}
 
+	template<class T>
+	template<class S>
+	inline SmartPtr<T>::SmartPtr(const WeakPtr<S>& i_WeakPtr)
+	{
+		// If there are no smart pointers, create one and set the object to nullptr
+		if (i_WeakPtr.m_pReferenceCount->NumSmartPtrs == 0)
+		{
+
+			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
+			m_pObject = nullptr;
+
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
+		}
+
+		// if there are smart pointers, create one and add reference count
+		else
+		{
+
+			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
+			m_pObject = i_WeakPtr.m_pObject;
+
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
+
+		}
+	}
 
 	template<class T>
-	SmartPtr<T>& SmartPtr<T>::operator=(SmartPtr& i_src)
+	inline SmartPtr<T>& SmartPtr<T>::operator=(const SmartPtr& i_src)
 	{
-		if (this != &i_src)
+		if (m_pObject != i_src.m_pObject)
 		{
 
 			Release();
@@ -54,10 +119,60 @@ namespace Engine
 	}
 
 	template<class T>
-	SmartPtr<T>& SmartPtr<T>::operator=(WeakPtr<T>& i_src)
+	template<class S>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(const SmartPtr<S>& i_src)
 	{
 		if (m_pObject != i_src.m_pObject)
 		{
+
+			Release();
+
+			m_pReferenceCount = i_src.m_pReferenceCount;
+			m_pObject = i_src.m_pObject;
+
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
+		}
+
+		return (*this);
+	}
+
+	template<class T>
+	template<class S>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(SmartPtr<S>&& i_src)
+	{
+		if (m_pObject != i_src.m_pObject)
+		{
+
+			Release();
+
+			m_pReferenceCount = i_src.m_pReferenceCount;
+			m_pObject = i_src.m_pObject;
+
+			i_src.m_pObject = nullptr;
+			i_src.m_pReferenceCount = nullptr;
+
+			if (m_pReferenceCount)
+			{
+
+				m_pReferenceCount->NumSmartPtrs++;
+
+			}
+		}
+
+		return (*this);
+	}
+
+	template<class T>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(const WeakPtr<T>& i_src)
+	{
+		if (m_pObject != i_src.m_pObject)
+		{
+
 			Release();
 
 			if (i_src.m_pReferenceCount && i_src.m_pReferenceCount->NumSmartPtrs > 0)
@@ -78,11 +193,63 @@ namespace Engine
 		}
 
 		return (*this);
+
+	}
+
+	template<class T>
+	template<class S>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(const WeakPtr<S>& i_src)
+	{
+		if (m_pObject != i_src.m_pObject)
+		{
+
+			Release();
+
+			if (i_src.m_pReferenceCount && i_src.m_pReferenceCount->NumSmartPtrs > 0)
+			{
+
+				m_pObject = i_src.m_pObject;
+				m_pReferenceCount = i_src.m_pReferenceCount;
+
+			}
+
+			else
+			{
+
+				m_pObject = nullptr;
+				m_pReferenceCount = nullptr;
+
+			}
+		}
+
+		return (*this);
+
 	}
 
 
 	template<class T>
-	SmartPtr<T>& SmartPtr<T>::operator=(std::nullptr_t i_nullptr)
+	template<class S>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(WeakPtr<S>&& i_src)
+	{
+		if (m_pObject != i_src.m_pObject)
+		{
+
+			Release();
+
+			m_pObject = i_src.m_pObject;
+			m_pReferenceCount = i_src.m_pReferenceCount;
+
+			i_src.m_pObject = nullptr;
+			i_src.m_pReferenceCount = nullptr;
+
+		}
+
+		return (*this);
+
+	}
+
+	template<class T>
+	inline SmartPtr<T>& SmartPtr<T>::operator=(std::nullptr_t i_nullptr)
 	{
 		Release();
 
@@ -93,38 +260,61 @@ namespace Engine
 	}
 
 	template<class T>
-	SmartPtr<T>::~SmartPtr()
+	inline SmartPtr<T>& SmartPtr<T>::operator=(T* i_src)
+	{
+		if (m_pObject != i_src)
+		{
+
+			Release();
+
+			m_pObject = i_src;
+			
+			if (i_src)
+			{
+				m_pReferenceCount = new ReferenceCount(1, 0);
+			}
+			else
+			{
+				m_pReferenceCount = nullptr;
+			}
+		}
+
+		return (*this);
+	}
+
+	template<class T>
+	inline SmartPtr<T>::~SmartPtr()
 	{
 		Release();
 	}
 
 	template<class T>
-	T* SmartPtr<T>::operator->()
+	inline T* SmartPtr<T>::operator->()
 	{
 		return m_pObject;
 	}
 
 	template<class T>
-	T& SmartPtr<T>::operator*()
+	inline T& SmartPtr<T>::operator*()
 	{
 		return (*m_pObject);
 	}
 
 	template<class T>
-	SmartPtr<T>::operator bool()
+	inline SmartPtr<T>::operator bool()
 	{
 		return m_pObject != nullptr;
 	}
 	
 	template<class T>
-	void SmartPtr<T>::Release()
+	inline void SmartPtr<T>::Release()
 	{
 		if (m_pReferenceCount)
 		{
 			if (--(m_pReferenceCount->NumSmartPtrs) == 0)
 			{
 
-				m_pReferenceCount = nullptr;
+				delete m_pObject;
 
 				if (m_pReferenceCount->NumWeakPtrs == 0)
 				{
@@ -132,6 +322,14 @@ namespace Engine
 					delete m_pReferenceCount;
 
 				}
+				else
+				{
+					m_pReferenceCount = nullptr;
+				}
+			}
+			else
+			{
+				m_pObject = nullptr;
 			}
 		}
 	}
@@ -142,7 +340,50 @@ namespace Engine
 #pragma region Weak Ptr
 
 	template<class T>
-	WeakPtr<T>& WeakPtr<T>::operator=(WeakPtr<T>& i_src)
+	inline WeakPtr<T>& WeakPtr<T>::operator=(const SmartPtr<T>& i_src)
+	{
+
+		if (m_pObject != i_src.m_pObject)
+		{
+
+			Release();
+
+			m_pObject = i_src.m_pObject;
+			m_pReferenceCount = i_src.m_pReferenceCount;
+
+			if (m_pReferenceCount)
+			{
+				m_pReferenceCount->NumWeakPtrs++;
+			}
+		}
+
+		return (*this);
+	}
+
+	template<class T>
+	template<class S>
+	inline WeakPtr<T>& WeakPtr<T>::operator=(const SmartPtr<S>& i_src)
+	{
+
+		if (m_pObject != i_src.m_pObject)
+		{
+
+			Release();
+
+			m_pObject = i_src.m_pObject;
+			m_pReferenceCount = i_src.m_pReferenceCount;
+
+			if (m_pReferenceCount)
+			{
+				m_pReferenceCount->NumWeakPtrs++;
+			}
+		}
+
+		return (*this);
+	}
+
+	template<class T>
+	inline WeakPtr<T>& WeakPtr<T>::operator=(const WeakPtr& i_src)
 	{
 		if (m_pObject != i_src.m_pObject)
 		{
@@ -161,12 +402,11 @@ namespace Engine
 	}
 
 	template<class T>
-	WeakPtr<T>& WeakPtr<T>::operator=(SmartPtr<T>& i_src)
+	template<class S>
+	inline WeakPtr<T>& WeakPtr<T>::operator=(const WeakPtr<S>& i_src)
 	{
-
 		if (m_pObject != i_src.m_pObject)
 		{
-
 			Release();
 
 			m_pObject = i_src.m_pObject;
@@ -178,42 +418,42 @@ namespace Engine
 			}
 		}
 
-		return (*this);
+		return *this;
 	}
 
 	template<class T>
-	WeakPtr<T>& WeakPtr<T>::operator=(std::nullptr_t i_nullptr)
+	inline WeakPtr<T>& WeakPtr<T>::operator=(std::nullptr_t i_nullptr)
 	{
 
 		Release();
 
-		m_pReferenceCount = nullptr;
 		m_pObject = nullptr;
+		m_pReferenceCount = nullptr;
 
 		return (*this);
 
 	}
 
 	template<class T>
-	WeakPtr<T>::~WeakPtr()
+	inline WeakPtr<T>::~WeakPtr()
 	{
 		Release();
 	}
 
 	template<class T>
-	SmartPtr<T> WeakPtr<T>::Acquire()
+	inline SmartPtr<T> WeakPtr<T>::Acquire()
 	{
 		return SmartPtr<T>(*this);
 	}
 
 	template<class T>
-	WeakPtr<T>::operator bool()
+	inline WeakPtr<T>::operator bool()
 	{
 		return m_pReferenceCount->NumSmartPtrs > 0;
 	}
 
 	template<class T>
-	void WeakPtr<T>::Release()
+	inline void WeakPtr<T>::Release()
 	{
 		if (m_pReferenceCount)
 		{
