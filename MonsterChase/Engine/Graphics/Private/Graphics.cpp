@@ -1,6 +1,8 @@
 #include "../Public/Graphics.h"
 #include "../Public/RenderData.h"
 #include "../../Public/Engine.h"
+#include "../../World/Public/World.h"
+#include  "../../Containers/Public/Pointers.h"
 #include "GLib.h"
 #include <assert.h>
 #include <stdint.h>
@@ -25,11 +27,8 @@ namespace Engine
                 GLib::Sprites::Sprite* texture1 = Engine::Graphics::CreateSprite("Content\\Ship.dds");
                 GLib::Sprites::Sprite* texture2 = Engine::Graphics::CreateSprite("Content\\Asteroid.dds");
 
-                RenderData rd1;
-                rd1.Init(GetGameObject(0), texture1);
-
-                RenderData rd2;
-                rd2.Init(GetGameObject(1), texture2);
+                RenderData rd1(World::GetGameObject(0), texture1);
+                RenderData rd2(World::GetGameObject(1), texture2);
 
                 renderData.push_back(rd1);
                 renderData.push_back(rd2);

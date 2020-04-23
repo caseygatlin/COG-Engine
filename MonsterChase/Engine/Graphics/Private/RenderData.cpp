@@ -1,22 +1,18 @@
 #include "../Public/RenderData.h"
 #include "../../GameObject/Public/GameObject.h"
+#include "../../Containers/Public/Pointers.h"
 #include "GLib.h"
 
 namespace Engine
 {
     namespace Graphics
     {
-        void RenderData::Init(GameObject* i_gameObject, GLib::Sprites::Sprite* i_texture)
-        {
-            m_gameObject = i_gameObject;
-            m_texture = i_texture;
-        }
-
-
         void RenderData::Present()
         {
-            
-            Point2D position = m_gameObject->getPosition();
+
+            SmartPtr<GameObject> gameObject = m_gameObject.Acquire();
+
+            Point2D position = gameObject->getPosition();
             GLib::Point2D glibPosition;
             glibPosition = { position.X(), position.Y() };
 
