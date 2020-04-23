@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "../../Containers/Public/Point2D.h"
+#include "../../Containers/Public/Pointers.h"
 #include <vector>
 
 
@@ -14,37 +15,18 @@ namespace Engine
 	class GameObject
 	{
 	public:
-		//Constructors
-		GameObject() :
-			m_position(-180.0F, 100.0F),
-            m_velocity(0, 0),
-			m_dir('n'),
-			m_health(1),
-			m_name(nullptr),
-			m_nameLength(0), 
-			m_components(std::vector<IGOComponent*>()) 
-		{ }
 
-
-        explicit GameObject(const Point2D& position, const int& i_health = 1) :
-            m_position(position.X(), position.Y()),
-            m_velocity(0, 0),
-			m_dir('n'),
-			m_health(i_health),
-			m_name(nullptr),
-			m_nameLength(0), 
-			m_components(std::vector<IGOComponent*>()) 
-		{ }
-
-		// Copy constructor with option to change health
-		GameObject(const GameObject& i_src, int i_health = -1);
+		static SmartPtr<GameObject> CreateGameObject()
+		{
+			SmartPtr<GameObject> gameObject(new GameObject());
+			return gameObject;
+		}
 
 		// Destructor
 		~GameObject();
 
 		// Assignment operator
 		GameObject&		operator=(const GameObject& i_src);
-
 
 		//Accessors --
 		inline	Point2D	getPosition()	const;
@@ -78,6 +60,18 @@ namespace Engine
 				void Update();
 
 	private:
+
+		//Constructors
+		GameObject() :
+			m_position(-180.0F, 100.0F),
+			m_velocity(0, 0),
+			m_dir('n'),
+			m_health(1),
+			m_name(nullptr),
+			m_nameLength(0),
+			m_components(std::vector<IGOComponent*>())
+		{ }
+
 		Point2D						m_position;
         Point2D                     m_velocity;
 		char						m_dir;

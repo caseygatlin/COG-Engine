@@ -78,6 +78,24 @@
     <Filter Include="Source Files\External">
       <UniqueIdentifier>{617edae2-df05-4c71-ae0b-8e65b08c2f75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{e154027d-9a84-4c92-96a8-14127c76df4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers\Public">
+      <UniqueIdentifier>{d810f8e2-64aa-4453-8460-30328abf62ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers\Private">
+      <UniqueIdentifier>{ea4277b2-38be-455d-a9cb-f9d6ce0cc0d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{f6979584-2437-4ef1-81ad-3a046ced0cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World\Public">
+      <UniqueIdentifier>{fdb78989-f8c0-4ff0-a8ca-c25a7f33904d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World\Private">
+      <UniqueIdentifier>{e679d0a7-24a3-4437-a6ff-5d986b2fd8f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -137,20 +155,20 @@
     <ClInclude Include="Physics\Public\PhysicsInfo.h">
       <Filter>Source Files\Physics\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Containers\Public\SmartPtr.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Containers\Public\WeakPtr.h">
-      <Filter>Source Files\Containers\Public</Filter>
-    </ClInclude>
     <ClInclude Include="Containers\Public\ReferenceCount.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Containers\Public\SmartPtr-inl.h">
+    <ClInclude Include="Helpers\Public\FloatHelpers.h">
+      <Filter>Source Files\Helpers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Public\Pointers.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Containers\Public\WeakPtr-inl.h">
+    <ClInclude Include="Containers\Public\Pointers-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Public\World.h">
+      <Filter>Source Files\World\Public</Filter>
     </ClInclude>
     <ClInclude Include="External\json.h">
       <Filter>Source Files\External</Filter>
@@ -189,6 +207,12 @@
     </ClCompile>
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp">
       <Filter>Source Files\Physics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Private\FloatHelpers.cpp">
+      <Filter>Source Files\Helpers\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Private\World.cpp">
+      <Filter>Source Files\World\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

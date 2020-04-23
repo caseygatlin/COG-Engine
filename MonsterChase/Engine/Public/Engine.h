@@ -5,12 +5,6 @@
 
 namespace Engine
 {
-
-    GameObject* GetGameObject(int i_index);
-    void AddGameObject(GameObject* i_gameObject);
-    size_t GetNumGameObjects();
-    void EraseGameObject();
-
 	void Init();
 	void Shutdown();
 

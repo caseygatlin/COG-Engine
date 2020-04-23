@@ -3,6 +3,8 @@
 #include "../Public/PhysicsInfo.h"
 #include "../../Public/Engine.h"
 #include "../../Containers/Public/Point2D.h"
+#include "../../World/Public/World.h"
+#include "../../Containers/Public/Pointers.h"
 #include "GLib.h"
 #include <vector>
 
@@ -14,35 +16,12 @@ namespace Engine
 	{
         void Init()
         {
-            for (int i = 0; i < GetNumGameObjects(); i++)
-            {
-                PhysicsInfo pi1;
-                PhysicsInfo pi2;
+            PhysicsInfo pi1(World::GetGameObject(0), 10.0F, 1.25F);
+            PhysicsInfo pi2(World::GetGameObject(1), 2.0F, 2.0F);
 
-                pi1.Init(GetGameObject(0), 1.0F, 1.0F);
-                pi2.Init(GetGameObject(1), 2.0F, 2.0F);
-
-                physicsInfo.push_back(pi1);
-                physicsInfo.push_back(pi2);
-            }
+            physicsInfo.push_back(pi1);
+            physicsInfo.push_back(pi2);
         }
-
-		//Checks the collision of a player and an enemy
-		//Player loses health if there is a collision
-		bool checkCollision(GameObject* player, GameObject* enemy)
-		{
-
-			if (player->getPosition() == enemy->getPosition())
-			{
-
-				player->ReduceHealth();
-				return true;
-
-			}
-
-			return false;
-		}
-
 
         void Update(float i_dt)
         {

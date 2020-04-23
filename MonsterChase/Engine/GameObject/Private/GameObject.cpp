@@ -129,95 +129,95 @@ namespace Engine
 
 
 
-	// Copy constructor with option to change health
-	GameObject::GameObject(const GameObject& i_src, int i_health)
-	{
+	//// Copy constructor with option to change health
+	//GameObject::GameObject(const GameObject& i_src, int i_health)
+	//{
 
-		//Copy over src character non-pointer vars
-		m_position		= i_src.m_position;
-		m_dir			= i_src.m_dir;
-		m_nameLength	= i_src.m_nameLength;
-		
+	//	//Copy over src character non-pointer vars
+	//	m_position		= i_src.m_position;
+	//	m_dir			= i_src.m_dir;
+	//	m_nameLength	= i_src.m_nameLength;
+	//	
 
-		// Change health if specified
-		if (i_health == -1)
-		{
+	//	// Change health if specified
+	//	if (i_health == -1)
+	//	{
 
-			m_health = i_src.m_health;
+	//		m_health = i_src.m_health;
 
-		}
+	//	}
 
-		else
-		{
+	//	else
+	//	{
 
-			m_health = i_health;
+	//		m_health = i_health;
 
-		}
-
-
-		//Copy over name
-		if (m_nameLength != 0)
-		{
-
-			m_name = new char[m_nameLength];
-
-			for (int i = 0; i < m_nameLength; i++)
-			{
-
-				m_name[i] = i_src.m_name[i];
-
-			}
-
-		}
-
-		else
-		{
-
-			m_name = nullptr;
-
-		}
+	//	}
 
 
-		//Copy over components
-		if (!(i_src.m_components.empty()))
-		{
+	//	//Copy over name
+	//	if (m_nameLength != 0)
+	//	{
 
-			for (int i = 0; i < i_src.m_components.size(); i++)
-			{
+	//		m_name = new char[m_nameLength];
 
-				ComponentType compType = i_src.m_components[i]->GetComponentType();
-				IGOComponent* compToAdd;
+	//		for (int i = 0; i < m_nameLength; i++)
+	//		{
+
+	//			m_name[i] = i_src.m_name[i];
+
+	//		}
+
+	//	}
+
+	//	else
+	//	{
+
+	//		m_name = nullptr;
+
+	//	}
 
 
-				switch (compType)
-				{
+	//	//Copy over components
+	//	if (!(i_src.m_components.empty()))
+	//	{
 
-				case ComponentType::USER_INPUT_MOVEMENT:
-					compToAdd = new UserInputMovement();
-					break;
+	//		for (int i = 0; i < i_src.m_components.size(); i++)
+	//		{
 
-				case ComponentType::FOLLOW_PLAYER_MOVEMENT:
-					compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
-					break;
+	//			ComponentType compType = i_src.m_components[i]->GetComponentType();
+	//			IGOComponent* compToAdd;
 
-				case ComponentType::RANDOM_DEATH:
-					compToAdd = new RandomDeath();
 
-				default:
-					compToAdd = nullptr;
-					break;
+	//			switch (compType)
+	//			{
 
-				}
+	//			case ComponentType::USER_INPUT_MOVEMENT:
+	//				compToAdd = new UserInputMovement();
+	//				break;
 
-				if (compToAdd)
-				{
+	//			case ComponentType::FOLLOW_PLAYER_MOVEMENT:
+	//				compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
+	//				break;
 
-					m_components.push_back(compToAdd);
+	//			case ComponentType::RANDOM_DEATH:
+	//				compToAdd = new RandomDeath();
 
-				}
-			}
-		}
-	}
+	//			default:
+	//				compToAdd = nullptr;
+	//				break;
+
+	//			}
+
+	//			if (compToAdd)
+	//			{
+
+	//				m_components.push_back(compToAdd);
+
+	//			}
+	//		}
+	//	}
+	//}
 
 
 

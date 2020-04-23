@@ -3,6 +3,8 @@
 #include "Physics/Public/Physics.h"
 #include "GameObject/Public/GameObject.h"
 #include "Public/Engine.h"
+#include "World/Public/World.h"
+#include "Containers/Public/Pointers.h"
 #include "GLib.h"
 #include <vector>
 #include <Windows.h>
@@ -10,11 +12,11 @@
 
 void Game::Init()
 {
-    Engine::GameObject* player = new Engine::GameObject();
-    Engine::AddGameObject(player);
-    
-    Engine::GameObject* monster = new Engine::GameObject();
-    Engine::AddGameObject(monster);
+    Engine::SmartPtr<Engine::GameObject> player = Engine::GameObject::CreateGameObject();
+    Engine::World::AddGameObject(player);
+
+    Engine::SmartPtr<Engine::GameObject> monster = Engine::GameObject::CreateGameObject();
+    Engine::World::AddGameObject(monster);
 
     Engine::Graphics::Init(m_hInstance, m_hPrevInstance, m_lpCmdLine, m_nCmdShow);
     Engine::Physics::Init();
@@ -23,12 +25,5 @@ void Game::Init()
 
 void Game::ShutDown()
 {
-    for (int i = 0; i < Engine::GetNumGameObjects(); i++)
-    {
-        delete Engine::GetGameObject(i);
-    }
-    for (int i = 0; i < Engine::GetNumGameObjects(); i++)
-    {
-        Engine::EraseGameObject();
-    }
+    Engine::World::Destroy();
 }

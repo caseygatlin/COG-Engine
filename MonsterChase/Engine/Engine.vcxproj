@@ -35,20 +35,20 @@
     <ClInclude Include="Containers\Public\Point2D-inl.h" />
     <ClInclude Include="Containers\Public\Point2D.h" />
     <ClInclude Include="Containers\Public\ReferenceCount.h" />
-    <ClInclude Include="Containers\Public\SmartPtr-inl.h" />
-    <ClInclude Include="Containers\Public\SmartPtr.h" />
-    <ClInclude Include="Containers\Public\WeakPtr-inl.h" />
-    <ClInclude Include="Containers\Public\WeakPtr.h" />
     <ClInclude Include="External\json.h" />
+    <ClInclude Include="Containers\Public\Pointers-inl.h" />
+    <ClInclude Include="Containers\Public\Pointers.h" />
     <ClInclude Include="GameObject\Public\GameObject-inl.h" />
     <ClInclude Include="GameObject\Public\GameObject.h" />
     <ClInclude Include="Graphics\Public\Graphics.h" />
     <ClInclude Include="Graphics\Public\RenderData.h" />
+    <ClInclude Include="Helpers\Public\FloatHelpers.h" />
     <ClInclude Include="Input\Public\Input.h" />
     <ClInclude Include="Physics\Public\Physics.h" />
     <ClInclude Include="Physics\Public\PhysicsInfo.h" />
     <ClInclude Include="Public\Engine.h" />
     <ClInclude Include="Timing\Public\Timing.h" />
+    <ClInclude Include="World\Public\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Private\FollowPlayerMovement.cpp" />
@@ -57,11 +57,13 @@
     <ClCompile Include="GameObject\Private\GameObject.cpp" />
     <ClCompile Include="Graphics\Private\Graphics.cpp" />
     <ClCompile Include="Graphics\Private\RenderData.cpp" />
+    <ClCompile Include="Helpers\Private\FloatHelpers.cpp" />
     <ClCompile Include="Input\Private\Input.cpp" />
     <ClCompile Include="Physics\Private\Physics.cpp" />
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp" />
     <ClCompile Include="Private\Engine.cpp" />
     <ClCompile Include="Timing\Private\Timing.cpp" />
+    <ClCompile Include="World\Private\World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

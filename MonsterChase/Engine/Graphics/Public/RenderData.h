@@ -1,6 +1,7 @@
 #pragma once
 #include "../GLib/GLib.h"
 #include "../../GameObject/Public/GameObject.h"
+#include "../../Containers/Public/Pointers.h"
 #include <vector>
 
 namespace GLib
@@ -18,18 +19,45 @@ namespace Engine
         class RenderData
         {
         public:
-            RenderData() : 
-                m_gameObject(nullptr), 
-                m_texture(nullptr) 
+            RenderData() :
+                m_gameObject(),
+                m_texture()
             {}
 
-            void Init(GameObject* i_gameObject, GLib::Sprites::Sprite* i_texture);
+            RenderData(WeakPtr<GameObject> i_gameObject, GLib::Sprites::Sprite* i_texture) :
+                m_gameObject(i_gameObject), 
+                m_texture(i_texture)
+            {}
+
+            RenderData(const RenderData& i_src) :
+                m_gameObject(i_src.m_gameObject),
+                m_texture(i_src.m_texture)
+            {}
+
+            RenderData& operator=(RenderData& i_src)
+            {
+                if (this != &i_src)
+                {
+                    m_gameObject = i_src.m_gameObject;
+                    m_texture = i_src.m_texture;
+                }
+
+                return (*this);
+            }
+
+            RenderData& operator=(RenderData&& i_src) noexcept
+            {
+                m_gameObject = i_src.m_gameObject;
+                m_texture = i_src.m_texture;
+
+                return (*this);
+            }
 
             void Present();
             void ReleaseSprite();
 
         private:
-            GameObject* m_gameObject;
+            WeakPtr<GameObject> m_gameObject;
             GLib::Sprites::Sprite* m_texture;
         };
     }
