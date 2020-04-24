@@ -15,10 +15,9 @@ namespace Engine
 	{
         static std::vector<PhysicsInfo> physicsInfo;
 
-
-		//Takes away player health and returns true if collided
-		//false otherwise
         void Init();
+
+		void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo);
 
         void Update(float i_dt);
 	}

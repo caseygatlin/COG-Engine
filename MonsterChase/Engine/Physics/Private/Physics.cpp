@@ -16,11 +16,12 @@ namespace Engine
 	{
         void Init()
         {
-            PhysicsInfo pi1(World::GetGameObject(0), 10.0F, 1.25F);
-            PhysicsInfo pi2(World::GetGameObject(1), 2.0F, 2.0F);
 
-            physicsInfo.push_back(pi1);
-            physicsInfo.push_back(pi2);
+        }
+
+        void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo)
+        {
+            physicsInfo.push_back(i_physicsInfo);
         }
 
         void Update(float i_dt)
