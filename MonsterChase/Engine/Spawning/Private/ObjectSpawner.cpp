@@ -19,6 +19,8 @@ namespace Engine
 {
 	namespace ObjectSpawner
 	{
+		static std::map<std::string, WeakPtr<GameObject>> Controllers;
+
 		void SpawnGameObject(const std::string& i_jsonFileName)
 		{
 			SmartPtr<GameObject> spawnedObject;
@@ -34,6 +36,12 @@ namespace Engine
 				spawnedObject = JSONReader::JSONToGameObject(jsonData);
 
 				World::AddGameObject(spawnedObject);
+
+				std::string controllerName = JSONReader::JSONToController(jsonData);
+				if (!controllerName.empty())
+				{
+					Controllers.insert({ controllerName, World::GetGameObject(World::GetNumGameObjects() - 1) });
+				}
 
 				objectPhysicsInfo = Physics::PhysicsInfo(
 					World::GetGameObject(World::GetNumGameObjects() - 1),
@@ -59,6 +67,13 @@ namespace Engine
 				Graphics::AddRenderData(objectRenderData);
 
 			}
+		}
+
+		void ClearControllers()
+		{
+
+			Controllers.clear();
+
 		}
 	}
 
@@ -114,6 +129,21 @@ namespace Engine
 			}
 
 			return std::string();
+
+		}
+
+		std::string JSONToController(nlohmann::json& i_jsonData)
+		{
+			if (i_jsonData.contains("Controller"))
+			{
+				if (i_jsonData["Controller"].contains("Type"))
+				{
+					return GetTextureFromJSON(i_jsonData["Controller"]["Type"]);
+				}
+			}
+
+			return std::string();
+
 		}
 
 
@@ -127,6 +157,7 @@ namespace Engine
 			}
 
 			return Point2D(0.0F, 0.0F);
+
 		}
 
 		float GetMassFromJSON(const nlohmann::json& i_jsonData)
@@ -139,6 +170,7 @@ namespace Engine
 			}
 
 			return 0.0F;
+
 		}
 
 		float GetDragFromJSON(const nlohmann::json& i_jsonData)
@@ -151,6 +183,7 @@ namespace Engine
 			}
 
 			return 0.0F;
+
 		}
 
 		std::string GetTextureFromJSON(const nlohmann::json& i_jsonData)
@@ -163,6 +196,20 @@ namespace Engine
 			}
 
 			return std::string();
+
+		}
+
+		std::string GetControllerFromJSON(const nlohmann::json& i_jsonData)
+		{
+			if (i_jsonData.is_string())
+			{
+
+				return i_jsonData;
+
+			}
+
+			return std::string();
+
 		}
 
 		std::vector<uint8_t> LoadFile(const std::string& i_fileName)
@@ -200,6 +247,5 @@ namespace Engine
 
 			return fileData;
 		}
-
 	}
 }
