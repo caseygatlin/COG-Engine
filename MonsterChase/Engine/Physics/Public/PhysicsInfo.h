@@ -33,16 +33,27 @@ namespace Engine
 
             PhysicsInfo& operator=(const PhysicsInfo& i_src)
             {
-                m_pObject = i_src.m_pObject;
-                m_mass = i_src.m_mass;
-                m_drag = i_src.m_drag;
+
+                if (this != &i_src)
+                {
+                    m_pObject = i_src.m_pObject;
+                    m_mass = i_src.m_mass;
+                    m_drag = i_src.m_drag;
+                }
+
+                return (*this);
+
             }
 
             PhysicsInfo& operator=(PhysicsInfo&& i_src) noexcept
             {
+
                 m_pObject = i_src.m_pObject;
                 m_mass = i_src.m_mass;
                 m_drag = i_src.m_drag;
+
+                return (*this);
+
             }
 
             void Update(float i_dt);
