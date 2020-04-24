@@ -5,6 +5,7 @@
 #include "Public/Engine.h"
 #include "World/Public/World.h"
 #include "Containers/Public/Pointers.h"
+#include "Spawning/Public/ObjectSpawner.h"
 #include "GLib.h"
 #include <vector>
 #include <Windows.h>
@@ -12,13 +13,11 @@
 
 void Game::Init()
 {
-    Engine::SmartPtr<Engine::GameObject> player = Engine::GameObject::CreateGameObject();
-    Engine::World::AddGameObject(player);
-
-    Engine::SmartPtr<Engine::GameObject> monster = Engine::GameObject::CreateGameObject();
-    Engine::World::AddGameObject(monster);
-
     Engine::Graphics::Init(m_hInstance, m_hPrevInstance, m_lpCmdLine, m_nCmdShow);
+
+    Engine::ObjectSpawner::SpawnGameObject("Content\\PlayerShipData.json");
+    Engine::ObjectSpawner::SpawnGameObject("Content\\AsteroidData.json");
+
     Engine::Physics::Init();
 }
 
