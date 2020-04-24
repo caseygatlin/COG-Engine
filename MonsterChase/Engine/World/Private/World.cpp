@@ -37,7 +37,7 @@ namespace Engine
 			}
 		}
 
-		WeakPtr<GameObject> GetGameObject(const int& i_index)
+		WeakPtr<GameObject> GetGameObject(const size_t& i_index)
 		{
 			WeakPtr<GameObject> gameObject = GameObjects.at(i_index);
 			return gameObject;
