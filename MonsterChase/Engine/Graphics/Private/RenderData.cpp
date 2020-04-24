@@ -7,6 +7,17 @@ namespace Engine
 {
     namespace Graphics
     {
+        RenderData& RenderData::operator=(const RenderData& i_src)
+        {
+            if (this != &i_src)
+            {
+                m_gameObject = i_src.m_gameObject;
+                m_texture = i_src.m_texture;
+            }
+
+            return (*this);
+        }
+
         void RenderData::Present()
         {
 

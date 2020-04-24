@@ -34,16 +34,7 @@ namespace Engine
                 m_texture(i_src.m_texture)
             {}
 
-            RenderData& operator=(RenderData& i_src)
-            {
-                if (this != &i_src)
-                {
-                    m_gameObject = i_src.m_gameObject;
-                    m_texture = i_src.m_texture;
-                }
-
-                return (*this);
-            }
+            RenderData& operator=(const RenderData& i_src);
 
             RenderData& operator=(RenderData&& i_src) noexcept
             {
