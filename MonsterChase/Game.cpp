@@ -25,4 +25,5 @@ void Game::Init()
 void Game::ShutDown()
 {
     Engine::World::Destroy();
+    Engine::ObjectSpawner::ClearControllers();
 }
