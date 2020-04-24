@@ -22,6 +22,12 @@ namespace Engine
 			return gameObject;
 		}
 
+		static SmartPtr<GameObject> CreateGameObject(const Point2D& i_spawnPoint, const Point2D& i_spawnVelocity = Point2D(0.0F, 0.0F))
+		{
+			SmartPtr<GameObject> gameObject(new GameObject(i_spawnPoint, i_spawnVelocity));
+			return gameObject;
+		}
+
 		// Destructor
 		~GameObject();
 
@@ -65,6 +71,16 @@ namespace Engine
 		GameObject() :
 			m_position(-180.0F, 100.0F),
 			m_velocity(0, 0),
+			m_dir('n'),
+			m_health(1),
+			m_name(nullptr),
+			m_nameLength(0),
+			m_components(std::vector<IGOComponent*>())
+		{ }
+
+		GameObject(const Point2D& i_spawnPosition, const Point2D& i_spawnVelocity = Point2D(0.0F, 0.0F)) :
+			m_position(i_spawnPosition),
+			m_velocity(i_spawnVelocity),
 			m_dir('n'),
 			m_health(1),
 			m_name(nullptr),
