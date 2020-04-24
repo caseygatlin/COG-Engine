@@ -1,0 +1,13 @@
+{
+	"Name": "Asteroid",
+	"SpawnPoint": [ -180.0, 100],
+
+	"PhysicsInfo": {
+		"Mass": 2.0,
+		"Drag": 2.0
+	},
+
+	"RenderData": {
+		"Texture": "Content\\Asteroid.dds"
+	}
+}

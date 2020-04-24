@@ -1,0 +1,13 @@
+{
+	"Name": "PlayerShip",
+	"SpawnPoint": [ 0.0, 0.0],
+
+	"PhysicsInfo": {
+		"Mass": 10.0,
+		"Drag": 1.25
+	},
+
+	"RenderData": {
+		"Texture": "Content\\Ship.dds" 
+	}
+}
