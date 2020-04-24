@@ -96,6 +96,15 @@
     <Filter Include="Source Files\World\Private">
       <UniqueIdentifier>{e679d0a7-24a3-4437-a6ff-5d986b2fd8f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Spawning">
+      <UniqueIdentifier>{e80a8872-7ce0-486a-bdac-cd127dda2af9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spawning\Private">
+      <UniqueIdentifier>{b68859c7-5cb0-49aa-9996-f34efaf94811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spawning\Public">
+      <UniqueIdentifier>{76dc9780-c5c6-4cb7-b394-c8965200a8d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -173,6 +182,9 @@
     <ClInclude Include="External\json.h">
       <Filter>Source Files\External</Filter>
     </ClInclude>
+    <ClInclude Include="Spawning\Public\ObjectSpawner.h">
+      <Filter>Source Files\Spawning\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine.cpp">
@@ -213,6 +225,9 @@
     </ClCompile>
     <ClCompile Include="World\Private\World.cpp">
       <Filter>Source Files\World\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawning\Private\ObjectSpawner.cpp">
+      <Filter>Source Files\Spawning\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

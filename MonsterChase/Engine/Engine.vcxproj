@@ -47,6 +47,7 @@
     <ClInclude Include="Physics\Public\Physics.h" />
     <ClInclude Include="Physics\Public\PhysicsInfo.h" />
     <ClInclude Include="Public\Engine.h" />
+    <ClInclude Include="Spawning\Public\ObjectSpawner.h" />
     <ClInclude Include="Timing\Public\Timing.h" />
     <ClInclude Include="World\Public\World.h" />
   </ItemGroup>
@@ -62,6 +63,7 @@
     <ClCompile Include="Physics\Private\Physics.cpp" />
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp" />
     <ClCompile Include="Private\Engine.cpp" />
+    <ClCompile Include="Spawning\Private\ObjectSpawner.cpp" />
     <ClCompile Include="Timing\Private\Timing.cpp" />
     <ClCompile Include="World\Private\World.cpp" />
   </ItemGroup>
