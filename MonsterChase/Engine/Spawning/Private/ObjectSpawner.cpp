@@ -52,7 +52,7 @@ namespace Engine
 				std::string texturePathStr = JSONReader::JSONToTexture(jsonData);
 
 				char* texturePath = new char[texturePathStr.size() + 1];
-				strcpy(texturePath, texturePathStr.c_str());
+				strcpy_s(texturePath, texturePathStr.size() + 1, texturePathStr.c_str());
 
 				GLib::Sprites::Sprite* texture = Graphics::CreateSprite(texturePath);
 
