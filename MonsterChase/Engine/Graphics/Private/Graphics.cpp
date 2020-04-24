@@ -22,19 +22,12 @@ namespace Engine
             if (bSuccess)
             {
 
-
-                // Create a couple of sprites using our own helper routine CreateSprite
-                GLib::Sprites::Sprite* texture1 = Engine::Graphics::CreateSprite("Content\\Ship.dds");
-                GLib::Sprites::Sprite* texture2 = Engine::Graphics::CreateSprite("Content\\Asteroid.dds");
-
-                RenderData rd1(World::GetGameObject(0), texture1);
-                RenderData rd2(World::GetGameObject(1), texture2);
-
-                renderData.push_back(rd1);
-                renderData.push_back(rd2);
-
-                
             }
+        }
+
+        void AddRenderData(const RenderData& i_renderData)
+        {
+            renderData.push_back(i_renderData);
         }
 
         void* LoadFile(const char* i_pFilename, size_t& o_sizeFile)
