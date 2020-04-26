@@ -105,6 +105,42 @@
     <Filter Include="Source Files\Spawning\Public">
       <UniqueIdentifier>{76dc9780-c5c6-4cb7-b394-c8965200a8d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\HashedString">
+      <UniqueIdentifier>{b923eb81-01ea-4694-b19b-dc470966db26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HashedString\Public">
+      <UniqueIdentifier>{63928e7f-136b-4665-9b1a-d40ac24eb909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HashedString\Private">
+      <UniqueIdentifier>{5a222959-a3c9-476e-ada5-0a1856200edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JobSystem">
+      <UniqueIdentifier>{4073c3dd-76cf-42d8-9b95-bfac1aa8ff39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JobSystem\Public">
+      <UniqueIdentifier>{b230e237-295f-4658-8cab-f35c4761230b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JobSystem\Private">
+      <UniqueIdentifier>{d29b4e68-4886-41e6-a508-ed24eaa3753f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Console">
+      <UniqueIdentifier>{68579839-3fef-48cd-b9ac-8d1aec83df12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Console\Public">
+      <UniqueIdentifier>{76f669c4-ace3-4ac3-ace3-5c827ea9ccb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Console\Private">
+      <UniqueIdentifier>{25a411dd-2cd0-4f13-9365-f866ab603955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Synchronization">
+      <UniqueIdentifier>{1f98cebd-e6ff-4ac5-a56c-e93da1792eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Synchronization\Public">
+      <UniqueIdentifier>{53199278-6d81-413d-bce7-82ca1675a86a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Synchronization\Private">
+      <UniqueIdentifier>{00400969-bb9c-4ecc-9d0f-f4cf8b69dc3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -185,6 +221,51 @@
     <ClInclude Include="Spawning\Public\ObjectSpawner.h">
       <Filter>Source Files\Spawning\Public</Filter>
     </ClInclude>
+    <ClInclude Include="HashedString\Public\HashedString.h">
+      <Filter>Source Files\HashedString\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="HashedString\Public\HashedString-inl.h">
+      <Filter>Source Files\HashedString\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\IJob.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\INamed.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\JobRunner.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\JobSystem.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\SharedJobQueue.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSystem\Public\SharedJobQueue-inl.h">
+      <Filter>Source Files\JobSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Console\Public\ConsolePrint.h">
+      <Filter>Source Files\Console\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\Events.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\Mutex.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\ScopeLock.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\Semaphore.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\SingleWriterMultipleReader.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Synchronization\Public\WaitableObject.h">
+      <Filter>Source Files\Synchronization\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine.cpp">
@@ -228,6 +309,33 @@
     </ClCompile>
     <ClCompile Include="Spawning\Private\ObjectSpawner.cpp">
       <Filter>Source Files\Spawning\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="HashedString\Private\HashedString.cpp">
+      <Filter>Source Files\HashedString\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="JobSystem\Private\IJob.cpp">
+      <Filter>Source Files\JobSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="JobSystem\Private\JobRunner.cpp">
+      <Filter>Source Files\JobSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="JobSystem\Private\JobSystem.cpp">
+      <Filter>Source Files\JobSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="JobSystem\Private\SharedJobQueue.cpp">
+      <Filter>Source Files\JobSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Console\Private\ConsolePrint.Win32.cpp">
+      <Filter>Source Files\Console\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Synchronization\Private\Events.cpp">
+      <Filter>Source Files\Synchronization\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Synchronization\Private\Mutex.cpp">
+      <Filter>Source Files\Synchronization\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Synchronization\Private\Semaphore.cpp">
+      <Filter>Source Files\Synchronization\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
