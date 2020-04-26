@@ -167,11 +167,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AsteroidSpawner.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="PlayerShipSpawner.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsteroidSpawner.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="MonsterChase.cpp" />
+    <ClCompile Include="PlayerShipSpawner.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
