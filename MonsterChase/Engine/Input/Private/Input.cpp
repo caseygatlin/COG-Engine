@@ -44,8 +44,11 @@ namespace Engine
                 dir = 'n';
             }
 
-            SmartPtr<GameObject> player = World::GetGameObject(0).Acquire();
-            player->changeDir(dir);
+            if (World::GetNumGameObjects() > 0)
+            {
+                SmartPtr<GameObject> player = World::GetGameObject(0).Acquire();
+                player->changeDir(dir);
+            }
         }
 
         void Read()
