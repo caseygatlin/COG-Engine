@@ -14,10 +14,6 @@ namespace Engine
 	//Namespace for all classes and methods related to physics
 	namespace Physics
 	{
-        void Init()
-        {
-
-        }
 
         void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo)
         {

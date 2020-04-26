@@ -15,8 +15,6 @@ namespace Engine
 	{
         static std::vector<PhysicsInfo> physicsInfo;
 
-        void Init();
-
 		void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo);
 
         void Update(float i_dt);
