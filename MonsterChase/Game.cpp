@@ -13,17 +13,14 @@
 
 void Game::Init()
 {
-    Engine::Graphics::Init(m_hInstance, m_hPrevInstance, m_lpCmdLine, m_nCmdShow);
 
     Engine::ObjectSpawner::SpawnGameObject("Content\\PlayerShipData.json");
     Engine::ObjectSpawner::SpawnGameObject("Content\\AsteroidData.json");
 
-    Engine::Physics::Init();
 }
 
 
 void Game::ShutDown()
 {
-    Engine::World::Destroy();
-    Engine::ObjectSpawner::ClearControllers();
+
 }

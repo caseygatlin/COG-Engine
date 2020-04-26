@@ -3,17 +3,29 @@
 #include "../GLib/GLib.h"
 #include "../Input/Public/Input.h"
 #include "../Graphics/Public/Graphics.h"
+#include "../JobSystem/Public/JobSystem.h"
+#include "../Spawning/Public/ObjectSpawner.h"
+#include "../World/Public/World.h"
 #include "../Physics/Public/Physics.h"
-#include <iostream>
+#include "../Console/Public/ConsolePrint.h"
+#include <Windows.h>
+
 
 
 namespace Engine
 {
 
 	//Announces engine initialization
-	void Init()
+	void Init(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
 	{
-		std::cout << "Engine Initialized.\n\n";
+        DEBUG_PRINT("Starting Engine...\n");
+
+
+        Graphics::Init(i_hInstance, i_hPrevInstance, i_lpCmdLine, i_nCmdShow);
+
+        JobSystem::CreateQueue("Default", 2);
+
+        DEBUG_PRINT("Engine Initialized.\n");
 	}
 
     bool QuitRequested()
@@ -43,14 +55,17 @@ namespace Engine
 
             Graphics::Present();
         }
+        
     }
 
 	//Announces engine shutdown
 	void Shutdown()
 	{
-		std::cout << "\nShutting down...\n";
+        DEBUG_PRINT("Engine Shutting Down...\n");
 
         Graphics::Shutdown();
+        World::Destroy();
+        ObjectSpawner::ClearControllers();
 	}
 
     
