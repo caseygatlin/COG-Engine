@@ -33,6 +33,8 @@
     <ClInclude Include="Components\Public\UserInputMovement-inl.h" />
     <ClInclude Include="Components\Public\UserInputMovement.h" />
     <ClInclude Include="Console\Public\ConsolePrint.h" />
+    <ClInclude Include="Containers\Public\Matrix4-inl.h" />
+    <ClInclude Include="Containers\Public\Matrix4.h" />
     <ClInclude Include="Containers\Public\Point2D-inl.h" />
     <ClInclude Include="Containers\Public\Point2D.h" />
     <ClInclude Include="Containers\Public\ReferenceCount.h" />
