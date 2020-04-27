@@ -36,6 +36,8 @@
     <ClInclude Include="Containers\Public\Point2D-inl.h" />
     <ClInclude Include="Containers\Public\Point2D.h" />
     <ClInclude Include="Containers\Public\ReferenceCount.h" />
+    <ClInclude Include="Containers\Public\Vector4-inl.h" />
+    <ClInclude Include="Containers\Public\Vector4.h" />
     <ClInclude Include="External\json.h" />
     <ClInclude Include="Containers\Public\Pointers-inl.h" />
     <ClInclude Include="Containers\Public\Pointers.h" />
