@@ -141,6 +141,9 @@
     <Filter Include="Source Files\Synchronization\Private">
       <UniqueIdentifier>{00400969-bb9c-4ecc-9d0f-f4cf8b69dc3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Containers\Private">
+      <UniqueIdentifier>{21c7dd00-93c9-4e08-9a18-c57fa65e55ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -348,6 +351,9 @@
     </ClCompile>
     <ClCompile Include="Synchronization\Private\Semaphore.cpp">
       <Filter>Source Files\Synchronization\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Containers\Private\Matrix4.cpp">
+      <Filter>Source Files\Containers\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

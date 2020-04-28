@@ -75,6 +75,7 @@
     <ClCompile Include="Components\Private\RandomDeath.cpp" />
     <ClCompile Include="Components\Private\UserInputMovement.cpp" />
     <ClCompile Include="Console\Private\ConsolePrint.Win32.cpp" />
+    <ClCompile Include="Containers\Private\Matrix4.cpp" />
     <ClCompile Include="GameObject\Private\GameObject.cpp" />
     <ClCompile Include="Graphics\Private\Graphics.cpp" />
     <ClCompile Include="Graphics\Private\RenderData.cpp" />
