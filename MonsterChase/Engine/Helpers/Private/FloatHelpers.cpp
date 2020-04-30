@@ -34,7 +34,7 @@ namespace Engine
                 return true;
             }
 
-            return true;
+            return false;
         }
 
         // Float compare to zero
