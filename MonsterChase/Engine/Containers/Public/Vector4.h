@@ -96,6 +96,8 @@ namespace Engine
 	inline Vector4	operator-(const Vector4 i_lhs, const float i_rhs);
 	inline Vector4	operator*(const Vector4 i_lhs, const float i_rhs);
 	inline Vector4  operator/(const Vector4 i_lhs, const float i_rhs);
+	inline Vector4	operator+(const float i_lhs, const Vector4 i_rhs);
+	inline Vector4	operator*(const float i_lhs, const Vector4 i_rhs);
 
 	// Equal /Not Equal to
 	inline bool		operator==(const Vector4& i_lhs, const Vector4& i_rhs);

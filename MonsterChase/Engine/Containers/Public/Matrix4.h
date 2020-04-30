@@ -23,7 +23,11 @@ namespace Engine
 		inline static Matrix4 YRotationMatrix_ColVector(const float& i_angle_Radians);
 		inline static Matrix4 ZRotationMatrix_ColVector(const float& i_angle_Radians);
 
-		Matrix4() 
+		Matrix4() :
+			m_R1C1(0.0f), m_R1C2(0.0f), m_R1C3(0.0f), m_R1C4(0.0f),
+			m_R2C1(0.0f), m_R2C2(0.0f), m_R2C3(0.0f), m_R2C4(0.0f),
+			m_R3C1(0.0f), m_R3C2(0.0f), m_R3C3(0.0f), m_R3C4(0.0f),
+			m_R4C1(0.0f), m_R4C2(0.0f), m_R4C3(0.0f), m_R4C4(0.0f)
 		{}
 		
 		Matrix4(
@@ -86,6 +90,10 @@ namespace Engine
 	Matrix4 operator*(const float& i_lhs, const Matrix4& i_rhs);
 	Vector4 operator*(const Matrix4& i_lhs, const Vector4& i_rhs);
 	Vector4 operator*(const Vector4& i_lhs, const Matrix4& i_rhs);
+
+	// Equal /Not Equal to
+	bool operator==(const Matrix4& i_lhs, const Matrix4& i_rhs);
+	bool operator!=(const Matrix4& i_lhs, const Matrix4& i_rhs);
 
 }
 

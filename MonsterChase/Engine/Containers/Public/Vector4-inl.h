@@ -6,9 +6,6 @@
 
 namespace Engine
 {
-	const Vector4 Vector4::ZeroVector(0.0f, 0.0f, 0.0f, 0.0f);
-	const Vector4 Vector4::OneVector(1.0f, 1.0f, 1.0f, 1.0f);
-
 	inline Vector4& Vector4::operator=(const Vector4& i_rhs)
 	{
 
@@ -310,13 +307,33 @@ namespace Engine
 
 	}
 
+	Vector4 operator+(const float i_lhs, const Vector4 i_rhs)
+	{
+		float x = i_rhs.X() + i_lhs;
+		float y = i_rhs.Y() + i_lhs;
+		float z = i_rhs.Z() + i_lhs;
+		float w = i_rhs.W() + i_lhs;
+
+		return Vector4(x, y, z, w);
+	}
+
+	Vector4 operator*(const float i_lhs, const Vector4 i_rhs)
+	{
+		float x = i_rhs.X() * i_lhs;
+		float y = i_rhs.Y() * i_lhs;
+		float z = i_rhs.Z() * i_lhs;
+		float w = i_rhs.W() * i_lhs;
+
+		return Vector4(x, y, z, w);
+	}
+
 	inline bool operator==(const Vector4& i_lhs, const Vector4& i_rhs)
 	{
 
-		bool xEqual = Helpers::RelativeEpsilonCompareF(i_lhs.X(), i_rhs.X());
-		bool yEqual = Helpers::RelativeEpsilonCompareF(i_lhs.Y(), i_rhs.Y());
-		bool zEqual = Helpers::RelativeEpsilonCompareF(i_lhs.Z(), i_rhs.Z());
-		bool wEqual = Helpers::RelativeEpsilonCompareF(i_lhs.W(), i_rhs.W());
+		bool xEqual = Helpers::RelativeEpsilonCompareF(i_lhs.X(), i_rhs.X(), 0.00001f);
+		bool yEqual = Helpers::RelativeEpsilonCompareF(i_lhs.Y(), i_rhs.Y(), 0.00001f);
+		bool zEqual = Helpers::RelativeEpsilonCompareF(i_lhs.Z(), i_rhs.Z(), 0.00001f);
+		bool wEqual = Helpers::RelativeEpsilonCompareF(i_lhs.W(), i_rhs.W(), 0.00001f);
 
 		return (xEqual && yEqual && zEqual && wEqual);
 
@@ -330,7 +347,8 @@ namespace Engine
 		bool zEqual = Helpers::RelativeEpsilonCompareF(i_lhs.Z(), i_rhs.Z());
 		bool wEqual = Helpers::RelativeEpsilonCompareF(i_lhs.W(), i_rhs.W());
 
-		return !(xEqual && yEqual && zEqual && wEqual);
+
+		return (!xEqual || !yEqual || !zEqual || !wEqual);
 
 	}
 

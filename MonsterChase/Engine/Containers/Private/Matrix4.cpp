@@ -4,6 +4,13 @@
 
 namespace Engine
 {
+	const Matrix4 Matrix4::IdentityMatrix(
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	);
+
 	Matrix4& Matrix4::operator=(const Matrix4& i_rhs)
 	{
 		if (this != &i_rhs)
@@ -338,6 +345,26 @@ namespace Engine
 			dot(i_rhs.GetColumn(3), i_lhs),
 			dot(i_rhs.GetColumn(4), i_lhs)
 			);
+	}
+
+	bool operator==(const Matrix4& i_lhs, const Matrix4& i_rhs)
+	{
+		bool R1Equal = i_lhs.GetRow(1) == i_rhs.GetRow(1);
+		bool R2Equal = i_lhs.GetRow(2) == i_rhs.GetRow(2);
+		bool R3Equal = i_lhs.GetRow(3) == i_rhs.GetRow(3);
+		bool R4Equal = i_lhs.GetRow(4) == i_lhs.GetRow(4);
+
+		return (R1Equal && R2Equal && R3Equal && R4Equal);
+	}
+
+	bool operator!=(const Matrix4& i_lhs, const Matrix4& i_rhs)
+	{
+		bool R1Equal = i_lhs.GetRow(1) == i_rhs.GetRow(1);
+		bool R2Equal = i_lhs.GetRow(2) == i_rhs.GetRow(2);
+		bool R3Equal = i_lhs.GetRow(3) == i_rhs.GetRow(3);
+		bool R4Equal = i_lhs.GetRow(4) == i_lhs.GetRow(4);
+
+		return (!R1Equal || !R2Equal || !R3Equal || !R4Equal);
 	}
 
 

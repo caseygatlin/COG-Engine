@@ -4,14 +4,8 @@
 
 namespace Engine
 {
-	const Matrix4 Matrix4::IdentityMatrix(
-		1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 0.0f, 1.0f
-		);
 
-	Matrix4 Matrix4::ScaleMatrix(const float& i_xScale, const float& i_yScale, const float& i_zScale)
+	inline Matrix4 Matrix4::ScaleMatrix(const float& i_xScale, const float& i_yScale, const float& i_zScale)
 	{
 		return Matrix4(
 			i_xScale, 0.0f		, 0.0f		, 0.0f, 
