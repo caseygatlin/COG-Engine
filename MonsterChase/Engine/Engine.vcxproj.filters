@@ -355,5 +355,8 @@
     <ClCompile Include="Containers\Private\Matrix4.cpp">
       <Filter>Source Files\Containers\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Containers\Private\Vector4.cpp">
+      <Filter>Source Files\Containers\Private</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
