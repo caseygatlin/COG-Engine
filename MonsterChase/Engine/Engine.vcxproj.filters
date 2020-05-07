@@ -263,6 +263,12 @@
     <ClInclude Include="Containers\Public\Matrix4-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Components\Public\CollisionResponse_GOComponent.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\Health_GOComponent.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine.cpp">

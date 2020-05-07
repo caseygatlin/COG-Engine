@@ -6,8 +6,7 @@ namespace Engine
 	{
 
 		HEALTH,
-		USER_INPUT_MOVEMENT,
-		RANDOM_DEATH
+		COLLISION_RESPONSE
 
 	};
 }

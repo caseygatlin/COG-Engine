@@ -24,6 +24,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Public\CollisionResponse_GOComponent.h" />
     <ClInclude Include="Components\Public\ComponentType.h" />
     <ClInclude Include="Components\Public\Health_GOComponent.h" />
     <ClInclude Include="Components\Public\IGOComponent.h" />
