@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector4.h"
+#include "Point2D.h"
 
 namespace Engine
 {
@@ -14,6 +15,8 @@ namespace Engine
 
 		inline static Matrix4 TranslationMatrix_RowVector(const float& i_xTranslation, const float& i_yTranslation, const float& i_zTranslation);
 		inline static Matrix4 TranslationMatrix_ColVector(const float& i_xTranslation, const float& i_yTranslation, const float& i_zTranslation);
+		inline static Matrix4 TranslationMatrix_RowVector(const Point2D& i_point);
+		inline static Matrix4 TranslationMatrix_ColVector(const Point2D& i_point);
 
 		inline static Matrix4 XRotationMatrix_RowVector(const float& i_angle_Radians);
 		inline static Matrix4 YRotationMatrix_RowVector(const float& i_angle_Radians);

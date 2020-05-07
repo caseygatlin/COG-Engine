@@ -35,6 +35,16 @@ namespace Engine
 			);
 	}
 
+	inline Matrix4 Matrix4::TranslationMatrix_RowVector(const Point2D& i_point)
+	{
+		return TranslationMatrix_RowVector(i_point.X(), i_point.Y(), 0.0f);
+	}
+
+	inline Matrix4 Matrix4::TranslationMatrix_ColVector(const Point2D& i_point)
+	{
+		return TranslationMatrix_ColVector(i_point.X(), i_point.Y(), 0.0f);
+	}
+
 	inline Matrix4 Matrix4::XRotationMatrix_RowVector(const float& i_angle_Radians)
 	{
 		float sin = sinf(i_angle_Radians);
