@@ -1,4 +1,6 @@
 #pragma once
+#include "Point2D.h"
+#include "Vector4.h"
 
 namespace Engine
 {
@@ -10,6 +12,14 @@ namespace Engine
 
 		m_x = src.m_x;
 		m_y = src.m_y;
+
+		return (*this);
+	}
+
+	inline Point2D& Point2D::operator=(const Vector4& src)
+	{
+		m_x = src.X();
+		m_y = src.Y();
 
 		return (*this);
 	}
