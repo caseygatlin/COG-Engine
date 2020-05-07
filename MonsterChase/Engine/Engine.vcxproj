@@ -25,13 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Public\ComponentType.h" />
-    <ClInclude Include="Components\Public\FollowPlayerMovement-inl.h" />
-    <ClInclude Include="Components\Public\FollowPlayerMovement.h" />
+    <ClInclude Include="Components\Public\Health_GOComponent.h" />
     <ClInclude Include="Components\Public\IGOComponent.h" />
-    <ClInclude Include="Components\Public\RandomDeath-inl.h" />
-    <ClInclude Include="Components\Public\RandomDeath.h" />
-    <ClInclude Include="Components\Public\UserInputMovement-inl.h" />
-    <ClInclude Include="Components\Public\UserInputMovement.h" />
     <ClInclude Include="Console\Public\ConsolePrint.h" />
     <ClInclude Include="Containers\Public\Matrix4-inl.h" />
     <ClInclude Include="Containers\Public\Matrix4.h" />
@@ -71,9 +66,7 @@
     <ClInclude Include="World\Public\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Components\Private\FollowPlayerMovement.cpp" />
     <ClCompile Include="Components\Private\RandomDeath.cpp" />
-    <ClCompile Include="Components\Private\UserInputMovement.cpp" />
     <ClCompile Include="Console\Private\ConsolePrint.Win32.cpp" />
     <ClCompile Include="Containers\Private\Matrix4.cpp" />
     <ClCompile Include="Containers\Private\Vector4.cpp" />

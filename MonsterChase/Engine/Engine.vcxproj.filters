@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -155,25 +155,7 @@
     <ClInclude Include="Components\Public\ComponentType.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Public\FollowPlayerMovement.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Public\FollowPlayerMovement-inl.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Public\IGOComponent.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Public\RandomDeath.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Public\RandomDeath-inl.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Public\UserInputMovement.h">
-      <Filter>Source Files\Components\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Public\UserInputMovement-inl.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\Public\Graphics.h">
@@ -289,13 +271,7 @@
     <ClCompile Include="Physics\Private\Physics.cpp">
       <Filter>Source Files\Physics\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Private\FollowPlayerMovement.cpp">
-      <Filter>Source Files\Components\Private</Filter>
-    </ClCompile>
     <ClCompile Include="Components\Private\RandomDeath.cpp">
-      <Filter>Source Files\Components\Private</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Private\UserInputMovement.cpp">
       <Filter>Source Files\Components\Private</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\Private\Graphics.cpp">

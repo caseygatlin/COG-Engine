@@ -2,9 +2,6 @@
 #include "../../Containers/Public/Point2D.h"
 #include "../../Components/Public/IGOComponent.h"
 #include "../../Components/Public/ComponentType.h"
-#include "../../Components/Public/UserInputMovement.h"
-#include "../../Components/Public/FollowPlayerMovement.h"
-#include "../../Components/Public/RandomDeath.h"
 #include <stdlib.h>
 #include <vector>
 
@@ -79,16 +76,10 @@ namespace Engine
 				switch (compType)
 				{
 
-				case ComponentType::USER_INPUT_MOVEMENT:
-					compToAdd = new UserInputMovement();
-					break;
+				//case ComponentType::HEALTH:
+				//	compToAdd = new Health_GOComponent();
+				//	break;
 
-				case ComponentType::FOLLOW_PLAYER_MOVEMENT:
-					compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
-					break;
-
-				case ComponentType::RANDOM_DEATH:
-					compToAdd = new RandomDeath();
 
 				default:
 					compToAdd = nullptr;

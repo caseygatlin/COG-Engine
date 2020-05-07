@@ -5,7 +5,7 @@ namespace Engine
 	enum class ComponentType
 	{
 
-		FOLLOW_PLAYER_MOVEMENT,
+		HEALTH,
 		USER_INPUT_MOVEMENT,
 		RANDOM_DEATH
 
