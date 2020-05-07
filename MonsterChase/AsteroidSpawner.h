@@ -10,6 +10,8 @@ public:
 	
 	void operator() ();
 
+	void OnCollision();
+
 private:
 	bool m_bContinueSpawning;
 };
