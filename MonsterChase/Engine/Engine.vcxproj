@@ -53,6 +53,10 @@
     <ClInclude Include="JobSystem\Public\JobSystem.h" />
     <ClInclude Include="JobSystem\Public\SharedJobQueue-inl.h" />
     <ClInclude Include="JobSystem\Public\SharedJobQueue.h" />
+    <ClInclude Include="Physics\Collision\Public\AABB.h" />
+    <ClInclude Include="Physics\Collision\Public\Collideable-inl.h" />
+    <ClInclude Include="Physics\Collision\Public\Collideable.h" />
+    <ClInclude Include="Physics\Collision\Public\Collision.h" />
     <ClInclude Include="Physics\Public\Physics.h" />
     <ClInclude Include="Physics\Public\PhysicsInfo.h" />
     <ClInclude Include="Public\Engine.h" />
@@ -81,6 +85,7 @@
     <ClCompile Include="JobSystem\Private\JobRunner.cpp" />
     <ClCompile Include="JobSystem\Private\JobSystem.cpp" />
     <ClCompile Include="JobSystem\Private\SharedJobQueue.cpp" />
+    <ClCompile Include="Physics\Collision\Private\Collision.cpp" />
     <ClCompile Include="Physics\Private\Physics.cpp" />
     <ClCompile Include="Physics\Private\PhysicsInfo.cpp" />
     <ClCompile Include="Private\Engine.cpp" />

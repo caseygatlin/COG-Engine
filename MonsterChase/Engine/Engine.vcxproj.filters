@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -144,6 +144,15 @@
     <Filter Include="Source Files\Containers\Private">
       <UniqueIdentifier>{21c7dd00-93c9-4e08-9a18-c57fa65e55ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics\Collision">
+      <UniqueIdentifier>{4a8220a2-bd7e-46ca-9cff-8a12e3901dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\Collision\Public">
+      <UniqueIdentifier>{6d9bb952-31f6-4082-8f41-519339b3a536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\Collision\Private">
+      <UniqueIdentifier>{3926332a-b1f9-4a5c-bfdb-4e724aec6d16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public\Engine.h">
@@ -263,6 +272,18 @@
     <ClInclude Include="Containers\Public\Matrix4-inl.h">
       <Filter>Source Files\Containers\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Collision\Public\AABB.h">
+      <Filter>Source Files\Physics\Collision\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collision\Public\Collideable.h">
+      <Filter>Source Files\Physics\Collision\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collision\Public\Collision.h">
+      <Filter>Source Files\Physics\Collision\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collision\Public\Collideable-inl.h">
+      <Filter>Source Files\Physics\Collision\Public</Filter>
+    </ClInclude>
     <ClInclude Include="Components\Public\CollisionResponse_GOComponent.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
@@ -339,6 +360,9 @@
     </ClCompile>
     <ClCompile Include="Containers\Private\Vector4.cpp">
       <Filter>Source Files\Containers\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Collision\Private\Collision.cpp">
+      <Filter>Source Files\Physics\Collision\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
