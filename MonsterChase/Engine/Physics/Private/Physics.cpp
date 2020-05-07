@@ -5,6 +5,7 @@
 #include "../../Containers/Public/Point2D.h"
 #include "../../World/Public/World.h"
 #include "../../Containers/Public/Pointers.h"
+#include "../Collision/Public/Collision.h"
 #include "GLib.h"
 #include <vector>
 
@@ -25,6 +26,17 @@ namespace Engine
             for (int i = 0; i < physicsInfo.size(); i++)
             {
                 physicsInfo.at(i).Update(i_dt);
+            }
+
+            WeakPtr<Collideable> collideable_1;
+            WeakPtr<Collideable> collideable_2;
+
+            if (FindCollision(i_dt, collideable_1, collideable_2))
+            {
+
+                collideable_1.Acquire()->ExecuteCallback();
+                collideable_2.Acquire()->ExecuteCallback();
+
             }
         }
 	}
