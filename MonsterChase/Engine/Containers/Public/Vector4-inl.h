@@ -6,6 +6,7 @@
 
 namespace Engine
 {
+
 	inline Vector4& Vector4::operator=(const Vector4& i_rhs)
 	{
 
