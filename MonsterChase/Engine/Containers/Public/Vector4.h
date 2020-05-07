@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Point2D.h"
 
 namespace Engine
 {
+	class Point2D;
 
 	class Vector4
 	{
@@ -35,12 +35,7 @@ namespace Engine
 			m_w(i_src.m_w)
 		{}
 
-		Vector4(const Point2D& i_src, const float& i_z = 0.0f, const float& i_w = 0.0f) :
-			m_x(i_src.X()),
-			m_y(i_src.Y()),
-			m_z(i_z),
-			m_w(i_w)
-		{}
+		Vector4(const Point2D& i_src, const float& i_z = 1.0f, const float& i_w = 1.0f);
 
 		// Assignment operators - with Vector4.
 		inline Vector4& operator=(const Vector4& i_rhs);
