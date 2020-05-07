@@ -17,12 +17,6 @@ namespace Engine
 		return m_dir;
 	}
 
-	//Returns name
-	inline char* GameObject::getName() const
-	{
-		return m_name;
-	}
-
 	// Check if health is zero
 	inline bool GameObject::IsAlive() const
 	{

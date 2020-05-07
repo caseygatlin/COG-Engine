@@ -21,8 +21,6 @@ namespace Engine
 
 
 		//Destruct current character
-		delete[] m_name;
-
 		for (int i = 0; i < m_components.size(); i++)
 		{
 
@@ -37,29 +35,6 @@ namespace Engine
 		m_position		= i_src.m_position;
 		m_health		= i_src.m_health;
 		m_dir			= i_src.m_dir;
-		m_nameLength	= i_src.m_nameLength;
-
-
-		//Copy over name
-		if (m_nameLength != 0)
-		{
-
-			m_name = new char[m_nameLength];
-			for (int i = 0; i < m_nameLength; i++)
-			{
-
-				m_name[i] = i_src.m_name[i];
-
-			}
-
-		}
-
-		else
-		{
-
-			m_name = nullptr;
-
-		}
 
 
 		//Copy over components
@@ -105,8 +80,6 @@ namespace Engine
 	GameObject::~GameObject()
 	{
 		
-		delete[] m_name;
-
 		for (int i = 0; i < m_components.size(); i++)
 		{
 
@@ -209,27 +182,6 @@ namespace Engine
 	//		}
 	//	}
 	//}
-
-
-
-	// Sets the name of the GameObject
-	void GameObject::setName(char* i_name, int i_length)
-	{
-
-		delete m_name;
-
-		m_name			= new char[i_length];
-		m_nameLength	= i_length;
-
-		for (int i = 0; i < i_length; i++)
-		{
-
-			m_name[i]	= i_name[i];
-
-		}
-
-	}
-
 
 
 	// Updates each component
