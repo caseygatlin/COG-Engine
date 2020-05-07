@@ -7,6 +7,7 @@
 #include "../Spawning/Public/ObjectSpawner.h"
 #include "../World/Public/World.h"
 #include "../Physics/Public/Physics.h"
+#include "../Physics/Collision/Public/Collision.h"
 #include "../Console/Public/ConsolePrint.h"
 #include <Windows.h>
 
@@ -61,11 +62,14 @@ namespace Engine
 	//Announces engine shutdown
 	void Shutdown()
 	{
+
         DEBUG_PRINT("Engine Shutting Down...\n");
 
         Graphics::Shutdown();
+        Physics::Destroy();
         World::Destroy();
         ObjectSpawner::ClearControllers();
+
 	}
 
     
