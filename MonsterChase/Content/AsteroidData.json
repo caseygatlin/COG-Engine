@@ -1,6 +1,6 @@
 {
 	"Name": "Asteroid",
-	"SpawnPoint": [ -180.0, 100],
+	"SpawnPoint": [ -180.0, 100 ],
 
 	"PhysicsInfo": {
 		"Mass": 2.0,
@@ -9,5 +9,12 @@
 
 	"RenderData": {
 		"Texture": "Content\\Asteroid.dds"
+	},
+
+	"Collision": {
+		"Bounding Box": {
+			"Center": [ 1.0, 1.0 ],
+			"Extents": [ 10.0, 10.0 ]
+		}
 	}
 }
