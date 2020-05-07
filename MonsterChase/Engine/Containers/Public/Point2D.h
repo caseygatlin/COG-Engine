@@ -1,5 +1,5 @@
-#ifndef POINT2D_H
-#define POINT2D_H
+#pragma once
+#include "Vector4.h"
 #include <iostream>
 
 namespace Engine
@@ -9,13 +9,25 @@ namespace Engine
 	{
 	public:
 		//Constructor
-		Point2D(const float& x = 0.0F, const float& y = 0.0F) : m_x(x), m_y(y)				{}
+		Point2D(const float& x = 0.0F, const float& y = 0.0F) : 
+			m_x(x), 
+			m_y(y)				
+		{}
 
 		//Copy constructor
-		Point2D(const Point2D& src)					: m_x(src.m_x), m_y(src.m_y)	{}
+		Point2D(const Point2D& src)	: 
+			m_x(src.m_x), 
+			m_y(src.m_y)	
+		{}
+
+		Point2D(const Vector4& src) :
+			m_x(src.X()),
+			m_y(src.Y())
+		{}
 
 		//Assignment operators
 		inline Point2D& operator=(const Point2D& src);
+		inline Point2D& operator=(const Vector4& src);
 		inline Point2D& operator+=(const Point2D& rhs);
 		inline Point2D& operator-=(const Point2D& rhs);
 		inline Point2D& operator*=(const Point2D& rhs);
@@ -57,6 +69,3 @@ namespace Engine
 }
 
 #include "Point2D-inl.h"
-
-
-#endif
