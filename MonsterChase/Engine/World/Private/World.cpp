@@ -23,7 +23,7 @@ namespace Engine
 
 			for (auto& gameObject : GameObjects)
 			{
-				if (gameObject == i_Object)
+				if (gameObject == objectToRemove)
 				{
 					if (gameObject != GameObjects.back())
 					{
