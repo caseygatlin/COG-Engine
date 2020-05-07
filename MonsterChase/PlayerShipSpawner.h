@@ -6,4 +6,6 @@ public:
 
 	void SpawnShip();
 
+	void OnCollision();
+
 };
