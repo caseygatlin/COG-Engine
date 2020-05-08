@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -29,9 +29,6 @@
     </Filter>
     <Filter Include="Source Files\Components\Public">
       <UniqueIdentifier>{473735ca-3f7e-4234-a41a-6a1caaa57562}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components\Private">
-      <UniqueIdentifier>{9e237f45-ea58-4c96-9d51-86bfbe48f340}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{af1bfa6d-cb05-4742-a053-ecc99791a183}</UniqueIdentifier>
@@ -297,9 +294,6 @@
     </ClCompile>
     <ClCompile Include="Physics\Private\Physics.cpp">
       <Filter>Source Files\Physics\Private</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Private\RandomDeath.cpp">
-      <Filter>Source Files\Components\Private</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\Private\Graphics.cpp">
       <Filter>Source Files\Graphics\Private</Filter>
