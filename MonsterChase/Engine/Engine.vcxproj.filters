@@ -281,10 +281,16 @@
     <ClInclude Include="Physics\Collision\Public\Collideable-inl.h">
       <Filter>Source Files\Physics\Collision\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Public\CollisionResponse_GOComponent.h">
+    <ClInclude Include="Components\Public\HealthComponent.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Public\Health_GOComponent.h">
+    <ClInclude Include="Components\Public\HealthComponent-inl.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\RandomSpawnComponent.h">
+      <Filter>Source Files\Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Public\RandomSpawnComponent-inl.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
   </ItemGroup>

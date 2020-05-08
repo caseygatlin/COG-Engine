@@ -27,7 +27,8 @@
     <ClInclude Include="Components\Public\RandomSpawnComponent-inl.h" />
     <ClInclude Include="Components\Public\RandomSpawnComponent.h" />
     <ClInclude Include="Components\Public\ComponentType.h" />
-    <ClInclude Include="Components\Public\Health_GOComponent.h" />
+    <ClInclude Include="Components\Public\HealthComponent-inl.h" />
+    <ClInclude Include="Components\Public\HealthComponent.h" />
     <ClInclude Include="Components\Public\IGOComponent.h" />
     <ClInclude Include="Console\Public\ConsolePrint.h" />
     <ClInclude Include="Containers\Public\Matrix4-inl.h" />
