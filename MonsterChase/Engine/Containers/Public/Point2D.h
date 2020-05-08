@@ -8,6 +8,7 @@ namespace Engine
 	class Point2D
 	{
 	public:
+
 		//Constructor
 		Point2D(const float& x = 0.0F, const float& y = 0.0F) : 
 			m_x(x), 
@@ -45,6 +46,8 @@ namespace Engine
 		//Getters
 		inline float X() const;
 		inline float Y() const;
+
+		void MakeUnit();
 
 	private:
 		//X and Y coordinates
