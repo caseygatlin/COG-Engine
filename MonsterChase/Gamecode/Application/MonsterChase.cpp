@@ -2,7 +2,7 @@
 //Last updated 1/17/20
 
 #include <iostream>
-#include "Game.h"
+#include "../Game/Public/Game.h"
 #include "Public/Engine.h"
 #include <Windows.h>
 

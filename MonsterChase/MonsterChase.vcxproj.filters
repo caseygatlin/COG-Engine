@@ -13,30 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Gamecode">
+      <UniqueIdentifier>{62d61e91-9533-47d3-8eb9-7f4a95a75941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Application">
+      <UniqueIdentifier>{c085a965-c553-4af0-b864-50e832521f51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Asteroids">
+      <UniqueIdentifier>{cbc038f1-d7d7-404d-ac39-e97a63a3afdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Custom Components">
+      <UniqueIdentifier>{d2174a9d-4fd1-4c9d-bbff-b4b47f91052a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Game">
+      <UniqueIdentifier>{0a995671-5bdc-48c5-9953-db113464335b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Player Ship">
+      <UniqueIdentifier>{762a9307-a73f-4ee2-9ed9-9fd33a3e37a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Asteroids\Public">
+      <UniqueIdentifier>{223061ab-dff0-4235-9f4f-a6d74a4bb71f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Asteroids\Private">
+      <UniqueIdentifier>{c122a297-ba49-443b-acea-2f3f59ad7c57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Custom Components\Public">
+      <UniqueIdentifier>{1558f640-6b77-4f06-8b28-c9068e369528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Game\Public">
+      <UniqueIdentifier>{008095e4-9da6-4d66-874b-7db0a559cc72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Game\Private">
+      <UniqueIdentifier>{457311bb-789c-4dfc-b160-c21b444bfd8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Player Ship\Public">
+      <UniqueIdentifier>{b170fc89-7117-47ea-bab5-8517cf14e485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Player Ship\Private">
+      <UniqueIdentifier>{0d48671f-69fb-4f7b-a841-38a6b9c0aa74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Gamecode\Asteroids\Public\AsteroidSpawner.h">
+      <Filter>Source Files\Gamecode\Asteroids\Public</Filter>
     </ClInclude>
-    <ClInclude Include="AsteroidSpawner.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Gamecode\Custom Components\Public\RandomSpawnComponent.h">
+      <Filter>Source Files\Gamecode\Custom Components\Public</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerShipSpawner.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Gamecode\Custom Components\Public\RandomSpawnComponent-inl.h">
+      <Filter>Source Files\Gamecode\Custom Components\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamecode\Game\Public\Game.h">
+      <Filter>Source Files\Gamecode\Game\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamecode\Player Ship\Public\PlayerShipSpawner.h">
+      <Filter>Source Files\Gamecode\Player Ship\Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MonsterChase.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Gamecode\Application\MonsterChase.cpp">
+      <Filter>Source Files\Gamecode\Application</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Gamecode\Asteroids\Private\AsteroidSpawner.cpp">
+      <Filter>Source Files\Gamecode\Asteroids\Private</Filter>
     </ClCompile>
-    <ClCompile Include="AsteroidSpawner.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Gamecode\Game\Private\Game.cpp">
+      <Filter>Source Files\Gamecode\Game\Private</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerShipSpawner.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Gamecode\Player Ship\Private\PlayerShipSpawner.cpp">
+      <Filter>Source Files\Gamecode\Player Ship\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
