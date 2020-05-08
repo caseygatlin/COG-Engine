@@ -6,7 +6,7 @@ namespace Engine
 	{
 
 		HEALTH,
-		COLLISION_RESPONSE
+		RANDOM_SPAWN
 
 	};
 }
