@@ -17,7 +17,7 @@ namespace Engine
 		inline void Collideable::Update()
 		{
 
-			m_RelativeToWorld = Matrix4::TranslationMatrix_ColVector(m_pObject.Acquire()->getPosition());
+			m_RelativeToWorld = Matrix4::TranslationMatrix_ColVector(m_pObject.Acquire()->GetPosition());
 			m_BoundingBoxCenterInWorld = m_RelativeToWorld * m_BoundingBox.Center ;
 
 		}

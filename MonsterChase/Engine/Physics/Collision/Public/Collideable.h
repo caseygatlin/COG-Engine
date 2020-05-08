@@ -89,7 +89,7 @@ namespace Engine
 			Collideable(WeakPtr<GameObject> i_pObject, AABB i_boundingBox) :
 				m_pObject(i_pObject),
 				m_BoundingBox(i_boundingBox),
-				m_RelativeToWorld(Matrix4::TranslationMatrix_ColVector(i_pObject.Acquire()->getPosition())),
+				m_RelativeToWorld(Matrix4::TranslationMatrix_ColVector(i_pObject.Acquire()->GetPosition())),
 				m_BoundingBoxCenterInWorld(m_RelativeToWorld* i_boundingBox.Center),
 				m_CollisionCallback(),
 				m_IsCallbackBound(false)
