@@ -1,60 +1,100 @@
 #pragma once
 #include "GameObject.h"
 #include "../../Containers/Public/Point2D.h"
+#include "../../Components/Public/ComponentType.h"
+#include "../../Containers/Public/Pointers.h"
 
 
 namespace Engine
 {
 	//Returns current position
-	inline Point2D GameObject::getPosition() const
+	inline Point2D GameObject::GetPosition() const
 	{
-		return m_position;
+
+		return m_Position;
+
 	}
 
 	// Returns current direction
-	inline char GameObject::getDir() const
+	inline Point2D GameObject::GetDir() const
 	{
-		return m_dir;
+
+		return m_Dir;
+
 	}
 
-	// Check if health is zero
-	inline bool GameObject::IsAlive() const
-	{
-		return (m_health > 0);
-	}
-
-    inline Point2D GameObject::getVelocity() const
+    inline Point2D GameObject::GetVelocity() const
     {
-        return m_velocity;
+
+        return m_Velocity;
+
     }
 
 	// Changes the current direction of the object
-	inline void GameObject::changeDir(char& i_dir)
+	inline void GameObject::ChangeDir(const Point2D& i_dir)
 	{
-		m_dir = i_dir;
+
+		m_Dir = i_dir;
+
 	}
 
 	// Adds a given point to current location
-	inline void GameObject::changePosition(const Point2D& i_addPoint)
+	inline void GameObject::ChangePosition(const Point2D& i_addPoint)
 	{
-		m_position += i_addPoint;
+
+		m_Position += i_addPoint;
+
+	}
+
+	inline void GameObject::SetPosition(const Point2D& i_position)
+	{
+
+		m_Position = i_position;
+
 	}
 
 	// Attaches a component
-	inline void GameObject::Attach(IGOComponent* i_component)
+	inline void GameObject::Attach(SmartPtr<IGOComponent> i_component)
 	{
-		m_components.push_back(i_component);
+		i_component->OnAttach(this);
+		m_Components.push_back(i_component);
+
 	}
 
-	// Reduces health
-	inline void GameObject::ReduceHealth()
+	inline bool GameObject::HasComponent(const ComponentType& i_componentType) const
 	{
-		m_health--;
+
+		for (WeakPtr<IGOComponent> component : m_Components)
+		{
+			if (component.Acquire()->IsComponentType(i_componentType))
+			{
+				return true;
+			}
+		}
+
+		return false;
+
+	}
+
+	inline bool GameObject::GetComponent(const ComponentType& i_componentType, WeakPtr<IGOComponent>& o_component) const
+	{
+		for (WeakPtr<IGOComponent> component : m_Components)
+		{
+			if (component.Acquire()->IsComponentType(i_componentType))
+			{
+				o_component = component;
+				return true;
+			}
+		}
+
+		return false;
 	}
 
     inline void GameObject::SetVelocity(Point2D i_velocity)
     {
-        m_velocity = i_velocity;
+
+        m_Velocity = i_velocity;
+
     }
 
 	

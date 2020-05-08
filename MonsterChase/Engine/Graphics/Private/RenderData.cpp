@@ -23,7 +23,7 @@ namespace Engine
 
             SmartPtr<GameObject> gameObject = m_gameObject.Acquire();
 
-            Point2D position = gameObject->getPosition();
+            Point2D position = gameObject->GetPosition();
             GLib::Point2D glibPosition;
             glibPosition = { position.X(), position.Y() };
 

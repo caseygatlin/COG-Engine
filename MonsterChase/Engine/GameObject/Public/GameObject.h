@@ -1,15 +1,15 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
 
 #include "../../Containers/Public/Point2D.h"
 #include "../../Containers/Public/Pointers.h"
+#include "../../Components/Public/IGOComponent.h"
+#include "../../Components/Public/ComponentType.h"
+
 #include <vector>
 
 
 namespace Engine
 {
-	class IGOComponent;
-
 
 	//Class for all objects with a position
 	class GameObject
@@ -18,77 +18,77 @@ namespace Engine
 
 		static SmartPtr<GameObject> CreateGameObject()
 		{
+
 			SmartPtr<GameObject> gameObject(new GameObject());
 			return gameObject;
+
 		}
 
 		static SmartPtr<GameObject> CreateGameObject(const Point2D& i_spawnPoint, const Point2D& i_spawnVelocity = Point2D(0.0F, 0.0F))
 		{
+
 			SmartPtr<GameObject> gameObject(new GameObject(i_spawnPoint, i_spawnVelocity));
 			return gameObject;
+
 		}
 
 		// Destructor
 		~GameObject();
 
 		// Assignment operator
-		GameObject&		operator=(const GameObject& i_src);
+		GameObject& operator=(const GameObject& i_src);
 
 		//Accessors --
-		inline	Point2D	getPosition()	const;
-		inline	char	getDir()		const;
-		inline	bool	IsAlive()		const;
-        inline  Point2D getVelocity()   const;
+		inline	Point2D	GetPosition()	const;
+		inline	Point2D	GetDir()		const;
+		inline  Point2D GetVelocity()   const;
 
 
 		// Mutators --
 		// Changes GameObject direction
-		inline	void changeDir(char& i_dir);
-		
-		// Adds given point to current position
-		inline	void changePosition(const Point2D& i_addPoint);
+		inline void ChangeDir(const Point2D& i_dir);
+
+		// Adds given point to current position.
+		inline void ChangePosition(const Point2D& i_addPoint);
+
+		// Sets the position to the one given.
+		inline void  SetPosition(const Point2D& i_position);
 
 		// Attaches a component
-		inline	void Attach(IGOComponent* i_component);
+		inline void Attach(SmartPtr<IGOComponent> i_component);
 
-		// Reduces health
-		inline	void ReduceHealth();
+		inline bool HasComponent(const ComponentType& i_componentType) const;
+		inline bool GetComponent(const ComponentType& i_componentType, WeakPtr<IGOComponent>& o_component) const;
 
-        inline  void SetVelocity(Point2D i_velocity);
-
+		// Sets the velocity of this object.
+		inline void SetVelocity(Point2D i_velocity);
 
 		// Updates each component
-				void Update();
+		void Update();
 
 	private:
 
 		//Constructors
 		GameObject() :
-			m_position(0.0f, 0.0f),
-			m_velocity(0, 0),
-			m_dir('n'),
-			m_health(1),
-			m_components(std::vector<IGOComponent*>())
+			m_Position(0.0f, 0.0f),
+			m_Velocity(0.0f, 0.0f),
+			m_Dir(0.0f, 0.0f),
+			m_Components(std::vector<SmartPtr<IGOComponent>>())
 		{ }
 
 		GameObject(const Point2D& i_spawnPosition, const Point2D& i_spawnVelocity = Point2D(0.0F, 0.0F)) :
-			m_position(i_spawnPosition),
-			m_velocity(i_spawnVelocity),
-			m_dir('n'),
-			m_health(1),
-			m_components(std::vector<IGOComponent*>())
+			m_Position(i_spawnPosition),
+			m_Velocity(i_spawnVelocity),
+			m_Dir(0.0f, 0.0f),
+			m_Components(std::vector<SmartPtr<IGOComponent>>())
 		{ }
 
-		Point2D						m_position;
-        Point2D                     m_velocity;
-		char						m_dir;
-		int							m_health;
-		std::vector<IGOComponent*>	m_components;
+		Point2D								m_Position;
+		Point2D								m_Velocity;
+		Point2D								m_Dir;
+		std::vector<SmartPtr<IGOComponent>>	m_Components;
 	};
 
 }
 
 #include "GameObject-inl.h"
-
-
-#endif

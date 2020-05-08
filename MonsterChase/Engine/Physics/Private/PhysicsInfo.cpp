@@ -12,25 +12,26 @@ namespace Engine
         {
             SmartPtr<GameObject> gameObject = m_pObject.Acquire();
 
-            Point2D objectVelocity = gameObject->getVelocity();
+            Point2D objectVelocity = gameObject->GetVelocity();
 
             Point2D forces(0.0F, 0.0F);
 
-            if (gameObject->getDir() == 'u')
+            if (gameObject->GetDir().Y() > 0)
             {
-                forces = Point2D(0.0F, .1F);
+                forces += Point2D(0.0F, .1F);
             }
-            else if (gameObject->getDir() == 'd')
+            else if (gameObject->GetDir().Y() < 0)
             {
-                forces = Point2D(0.0F, -.1F);
+                forces += Point2D(0.0F, -.1F);
             }
-            else if (gameObject->getDir() == 'l')
+
+            if (gameObject->GetDir().X() < 0)
             {
-                forces = Point2D(-.1F, 0.0F);
+                forces += Point2D(-.1F, 0.0F);
             }
-            else if (gameObject->getDir() == 'r')
+            else if (gameObject->GetDir().X() > 0)
             {
-                forces = Point2D(.1F, 0.0F);
+                forces += Point2D(.1F, 0.0F);
             }
 
             Point2D dragForce(0.0F, 0.0F);
@@ -56,8 +57,8 @@ namespace Engine
 
             Point2D acceleration = forces / m_mass;
 
-            gameObject->SetVelocity(gameObject->getVelocity() + acceleration * i_dt);
-            gameObject->changePosition(gameObject->getVelocity() * i_dt);
+            gameObject->SetVelocity(gameObject->GetVelocity() + acceleration * i_dt);
+            gameObject->ChangePosition(gameObject->GetVelocity() * i_dt);
         }
     }
 }

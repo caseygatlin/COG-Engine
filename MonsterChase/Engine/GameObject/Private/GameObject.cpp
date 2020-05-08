@@ -11,187 +11,43 @@ namespace Engine
 	// Assignment Operator
 	GameObject& GameObject::operator=(const GameObject& i_src)
 	{
+
 		//Check for aliasing
-		if (&i_src == this)
+		if (&i_src != this)
 		{
+			//Destruct current character
+			m_Components.clear();
 
-			return (*this);
+			//Copy over src character non-pointer vars
+			m_Position = i_src.m_Position;
+			m_Dir = i_src.m_Dir;
 
-		}
+			m_Components = i_src.m_Components;
 
-
-		//Destruct current character
-		for (int i = 0; i < m_components.size(); i++)
-		{
-
-			delete m_components[i];
-
-		}
-
-		m_components.~vector();
-
-
-		//Copy over src character non-pointer vars
-		m_position		= i_src.m_position;
-		m_health		= i_src.m_health;
-		m_dir			= i_src.m_dir;
-
-
-		//Copy over components
-		if (!i_src.m_components.empty())
-		{
-
-			for (int i = 0; i < i_src.m_components.size(); i++)
-			{
-
-				ComponentType compType = i_src.m_components[i]->GetComponentType();
-				IGOComponent* compToAdd;
-
-
-				switch (compType)
-				{
-
-				//case ComponentType::HEALTH:
-				//	compToAdd = new Health_GOComponent();
-				//	break;
-
-
-				default:
-					compToAdd = nullptr;
-					break;
-
-				}
-
-				if (compToAdd)
-				{
-
-					m_components.push_back(compToAdd);
-
-				}
-			}
 		}
 
 		return (*this);
-	}
 
+	}
 
 
 	// Destructor
 	GameObject::~GameObject()
 	{
 		
-		for (int i = 0; i < m_components.size(); i++)
-		{
-
-			delete m_components[i];
-
-		}
-
-		m_components.~vector();
+		m_Components.clear();
 
 	}
-
-
-
-	//// Copy constructor with option to change health
-	//GameObject::GameObject(const GameObject& i_src, int i_health)
-	//{
-
-	//	//Copy over src character non-pointer vars
-	//	m_position		= i_src.m_position;
-	//	m_dir			= i_src.m_dir;
-	//	m_nameLength	= i_src.m_nameLength;
-	//	
-
-	//	// Change health if specified
-	//	if (i_health == -1)
-	//	{
-
-	//		m_health = i_src.m_health;
-
-	//	}
-
-	//	else
-	//	{
-
-	//		m_health = i_health;
-
-	//	}
-
-
-	//	//Copy over name
-	//	if (m_nameLength != 0)
-	//	{
-
-	//		m_name = new char[m_nameLength];
-
-	//		for (int i = 0; i < m_nameLength; i++)
-	//		{
-
-	//			m_name[i] = i_src.m_name[i];
-
-	//		}
-
-	//	}
-
-	//	else
-	//	{
-
-	//		m_name = nullptr;
-
-	//	}
-
-
-	//	//Copy over components
-	//	if (!(i_src.m_components.empty()))
-	//	{
-
-	//		for (int i = 0; i < i_src.m_components.size(); i++)
-	//		{
-
-	//			ComponentType compType = i_src.m_components[i]->GetComponentType();
-	//			IGOComponent* compToAdd;
-
-
-	//			switch (compType)
-	//			{
-
-	//			case ComponentType::USER_INPUT_MOVEMENT:
-	//				compToAdd = new UserInputMovement();
-	//				break;
-
-	//			case ComponentType::FOLLOW_PLAYER_MOVEMENT:
-	//				compToAdd = new FollowPlayerMovement(static_cast<const GameObject*>(i_src.m_components[i]->GetMemberVariables()));
-	//				break;
-
-	//			case ComponentType::RANDOM_DEATH:
-	//				compToAdd = new RandomDeath();
-
-	//			default:
-	//				compToAdd = nullptr;
-	//				break;
-
-	//			}
-
-	//			if (compToAdd)
-	//			{
-
-	//				m_components.push_back(compToAdd);
-
-	//			}
-	//		}
-	//	}
-	//}
 
 
 	// Updates each component
 	void GameObject::Update()
 	{
 
-		for (int i = 0; i < m_components.size(); i++)
+		for (WeakPtr<IGOComponent> component : m_Components)
 		{
 
-			m_components[i]->Update(*this);
+			component.Acquire()->Update(this);
 
 		}
 	}
