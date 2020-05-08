@@ -27,36 +27,48 @@ namespace Engine
 	template<class T>
 	inline SmartPtr<T>::SmartPtr(const WeakPtr<T>& i_WeakPtr)
 	{
-		// If there are no smart pointers, create one and set the object to nullptr
-		if (i_WeakPtr.m_pReferenceCount->NumSmartPtrs == 0)
+		if (i_WeakPtr.m_pReferenceCount)
 		{
-
-			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
-			m_pObject = nullptr;
-
-			if (m_pReferenceCount)
+			// If there are no smart pointers, create one and set the object to nullptr
+			if (i_WeakPtr.m_pReferenceCount->NumSmartPtrs == 0)
 			{
 
-				m_pReferenceCount->NumSmartPtrs++;
+				m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
+				m_pObject = nullptr;
+
+				if (m_pReferenceCount)
+				{
+
+					m_pReferenceCount->NumSmartPtrs++;
+
+				}
+			}
+
+			// if there are smart pointers, create one and add reference count
+			else
+			{
+
+				m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
+				m_pObject = i_WeakPtr.m_pObject;
+
+				if (m_pReferenceCount)
+				{
+
+					m_pReferenceCount->NumSmartPtrs++;
+
+				}
 
 			}
 		}
 
-		// if there are smart pointers, create one and add reference count
 		else
 		{
 
-			m_pReferenceCount = i_WeakPtr.m_pReferenceCount;
-			m_pObject = i_WeakPtr.m_pObject;
-
-			if (m_pReferenceCount)
-			{
-
-				m_pReferenceCount->NumSmartPtrs++;
-
-			}
+			m_pReferenceCount = nullptr;
+			m_pObject = nullptr;
 
 		}
+		
 	}
 
 	template<class T>
