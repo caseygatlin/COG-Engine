@@ -3,7 +3,7 @@
 	"SpawnPoint": [ -180.0, 100 ],
 
 	"PhysicsInfo": {
-		"Mass": 2.0,
+		"Mass": 5.0,
 		"Drag": 2.0
 	},
 
