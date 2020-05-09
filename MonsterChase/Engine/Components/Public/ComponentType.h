@@ -6,7 +6,8 @@ namespace Engine
 	{
 
 		HEALTH,
-		RANDOM_SPAWN
+		PLAYER_INPUT,
+		RANDOM_SPAWN,
 
 	};
 }
