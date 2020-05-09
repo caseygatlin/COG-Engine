@@ -117,13 +117,13 @@ namespace Engine
 
 
 	// Updates each component
-	void GameObject::Update()
+	void GameObject::Update(const float& i_dt)
 	{
 
 		for (WeakPtr<IGOComponent> component : m_Components)
 		{
 
-			component.Acquire()->Update(this);
+			component.Acquire()->Update(this, i_dt);
 
 		}
 	}

@@ -68,7 +68,7 @@ namespace Engine
 		inline void SetVelocity(Point2D i_velocity);
 
 		// Updates each component
-		void Update();
+		void Update(const float& i_dt);
 
 	private:
 		ComponentType GetComponentType(const size_t& i_index) const;
