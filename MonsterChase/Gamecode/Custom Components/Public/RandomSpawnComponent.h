@@ -11,8 +11,10 @@ class RandomSpawnComponent : public Engine::IGOComponent
 public:
 
 	RandomSpawnComponent() :
-		m_RandMax(400.0f),
-		m_RandMin(-400.0f)
+		m_RandMax_X(300.0f),
+		m_RandMin_X(-300.0f),
+		m_RandMax_Y(400.0f),
+		m_RandMin_Y(-400.0f)
 	{}
 
 	inline virtual ~RandomSpawnComponent() {}
