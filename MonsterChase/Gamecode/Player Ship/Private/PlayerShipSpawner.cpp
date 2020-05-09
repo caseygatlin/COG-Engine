@@ -44,5 +44,26 @@ void PlayerShipSpawner::SpawnShip()
 
 void PlayerShipSpawner::OnCollision()
 {
-	DEBUG_PRINT("Player Ship Collision Detected...\n");
+
+	using namespace Engine;
+	using namespace Engine::ObjectSpawner;
+
+
+	WeakPtr<GameObject> playerShipWeakPtr;
+
+	if (GetFirstGameObjectWithController("Player", playerShipWeakPtr))
+	{
+
+		WeakPtr<IGOComponent> healthComponentWeakPtr;
+
+		if (playerShipWeakPtr.Acquire()->GetComponent(ComponentType::HEALTH, healthComponentWeakPtr))
+		{
+			SmartPtr<HealthComponent> healthComponent = healthComponentWeakPtr.Acquire();
+
+			if (healthComponent->TakeDamage())
+			{
+				m_GameInstance->EndGame();
+			}
+		}
+	}
 }
