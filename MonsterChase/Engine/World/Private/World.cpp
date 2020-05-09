@@ -3,6 +3,7 @@
 #include "../Public/World.h"
 #include "../../GameObject/Public/GameObject.h"
 #include "../../Containers/Public/Pointers.h"
+#include "../../Physics/Collision/Public/Collision.h"
 #include <vector>
 
 
@@ -15,6 +16,22 @@ namespace Engine
 		void AddGameObject(SmartPtr<GameObject>& i_Object)
 		{
 			GameObjects.push_back(i_Object);
+		}
+
+		void DestroyGameObject(GameObject* i_Object)
+		{
+			WeakPtr<GameObject> objectToDestroy;
+
+			for (SmartPtr<GameObject> gameObject : GameObjects)
+			{
+				if (*gameObject == *i_Object)
+				{
+					objectToDestroy = gameObject;
+				}
+			}
+
+			RemoveGameObject(objectToDestroy);
+			Physics::RemoveCollideable(objectToDestroy);
 		}
 
 		void RemoveGameObject(WeakPtr<GameObject>& i_Object)
