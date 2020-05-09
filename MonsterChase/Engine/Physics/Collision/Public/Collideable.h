@@ -71,7 +71,7 @@ namespace Engine
 			inline void Update();
 			inline void ExecuteCallback();
 
-			inline WeakPtr<GameObject> GetObject() const;
+			inline WeakPtr<GameObject> GetGameObject() const;
 			inline AABB GetBoundingBox() const;
 			inline Matrix4 GetRelativeToWorld() const;
 			inline Point2D GetBoundingBoxCenterInWorld() const;

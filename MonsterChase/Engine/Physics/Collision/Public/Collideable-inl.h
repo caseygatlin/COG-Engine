@@ -34,7 +34,7 @@ namespace Engine
 			}
 		}
 
-		inline WeakPtr<GameObject> Collideable::GetObject() const
+		inline WeakPtr<GameObject> Collideable::GetGameObject() const
 		{
 
 			return m_pObject;
@@ -63,7 +63,7 @@ namespace Engine
 		inline bool operator==(const Collideable& i_lhs, const Collideable& i_rhs)
 		{
 
-			bool objectEqual = i_lhs.GetObject() == i_rhs.GetObject();
+			bool objectEqual = i_lhs.GetGameObject() == i_rhs.GetGameObject();
 			bool boundingBoxEqual = i_lhs.GetBoundingBox() == i_rhs.GetBoundingBox();
 			bool relativeToWorldEqual = i_lhs.GetRelativeToWorld() == i_rhs.GetRelativeToWorld();
 
@@ -74,7 +74,7 @@ namespace Engine
 		inline bool operator!=(const Collideable& i_lhs, const Collideable& i_rhs)
 		{
 
-			bool objectEqual = i_lhs.GetObject() == i_rhs.GetObject();
+			bool objectEqual = i_lhs.GetGameObject() == i_rhs.GetGameObject();
 			bool boundingBoxEqual = i_lhs.GetBoundingBox() == i_rhs.GetBoundingBox();
 			bool relativeToWorldEqual = i_lhs.GetRelativeToWorld() == i_rhs.GetRelativeToWorld();
 
