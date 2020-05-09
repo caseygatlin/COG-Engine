@@ -18,14 +18,31 @@ namespace Engine
 
         void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo)
         {
+
             physicsInfo.push_back(i_physicsInfo);
+
+        }
+
+        void RemovePhysicsInfo(const size_t& i_index)
+        {
+
+            physicsInfo.erase(physicsInfo.begin() + i_index);
+
         }
 
         void Update(float i_dt)
         {
+
             for (int i = 0; i < physicsInfo.size(); i++)
             {
-                physicsInfo.at(i).Update(i_dt);
+
+                if (!physicsInfo.at(i).Update(i_dt))
+                {
+
+                    RemovePhysicsInfo(i);
+                    i--;
+
+                }
             }
 
             WeakPtr<Collideable> collideable_1;

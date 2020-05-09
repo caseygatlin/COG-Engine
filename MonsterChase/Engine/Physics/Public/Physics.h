@@ -17,6 +17,8 @@ namespace Engine
 
 		void AddPhysicsInfo(const PhysicsInfo& i_physicsInfo);
 
+		void RemovePhysicsInfo(const size_t& i_index);
+
         void Update(float i_dt);
 	}
 }

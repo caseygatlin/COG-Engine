@@ -56,7 +56,7 @@ namespace Engine
 
             }
 
-            void Update(float i_dt);
+            bool Update(float i_dt);
 
         private:
             
