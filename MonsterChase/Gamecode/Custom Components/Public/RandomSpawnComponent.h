@@ -19,7 +19,7 @@ public:
 
 	inline virtual void OnAttach(Engine::GameObject* i_gameObject);
 
-	inline virtual void Update(Engine::GameObject* i_gameObject);
+	inline virtual void Update(Engine::GameObject* i_gameObject, const float& i_dt);
 
 	inline virtual bool IsComponentType(const Engine::ComponentType& i_componentType) const;
 
