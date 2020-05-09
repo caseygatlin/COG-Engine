@@ -443,20 +443,33 @@ namespace Engine
 	template<class T>
 	inline WeakPtr<T>& WeakPtr<T>::operator=(const WeakPtr& i_src)
 	{
-		if (m_pObject != i_src.m_pObject)
+		if (i_src.m_pReferenceCount)
 		{
-			Release();
-
-			m_pObject = i_src.m_pObject;
-			m_pReferenceCount = i_src.m_pReferenceCount;
-
-			if (m_pReferenceCount)
+			if (m_pObject != i_src.m_pObject)
 			{
-				m_pReferenceCount->NumWeakPtrs++;
+				Release();
+
+				m_pObject = i_src.m_pObject;
+				m_pReferenceCount = i_src.m_pReferenceCount;
+
+				if (m_pReferenceCount)
+				{
+					m_pReferenceCount->NumWeakPtrs++;
+				}
 			}
+
+		}
+		else
+		{
+			m_pReferenceCount = nullptr;
+			m_pObject = nullptr;
 		}
 
+
 		return *this;
+
+
+
 	}
 
 	template<class T>
