@@ -12,7 +12,7 @@ inline void RandomSpawnComponent::OnAttach(Engine::GameObject* i_gameObject)
 	i_gameObject->SetPosition(Engine::Point2D(randX, randY));
 }
 
-inline void RandomSpawnComponent::Update(Engine::GameObject* i_gameObject)
+inline void RandomSpawnComponent::Update(Engine::GameObject* i_gameObject, const float& i_dt)
 {
 
 }
