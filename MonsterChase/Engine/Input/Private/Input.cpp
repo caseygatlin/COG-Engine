@@ -5,7 +5,11 @@
 #include "../../World/Public/World.h"
 #include "../../Containers/Public/Point2D.h"
 #include "../../Containers/Public/Pointers.h"
+#include "../../Components/Public/ComponentType.h"
+#include "../../Components/Public/PlayerControllerComponent.h"
+#include "../../Components/Public/IGOComponent.h"
 #include "../../Console/Public/ConsolePrint.h"
+
 #include <Windows.h>
 
 namespace Engine
@@ -17,60 +21,104 @@ namespace Engine
 
             if (World::GetNumGameObjects() > 0)
             {
-                SmartPtr<GameObject> player = World::GetGameObject(0).Acquire();
 
-                Point2D dir = player->GetDir();
-
-                if (i_bWentDown)
+                WeakPtr<GameObject> playerWeakPtr;
+                if (World::GetFirstGameObjectWithController("Player", playerWeakPtr))
                 {
-                    if (i_VKeyID == 0x0057)
+
+                    SmartPtr<GameObject> player = playerWeakPtr.Acquire();
+                    
+                    WeakPtr<IGOComponent> playerControllerWeakPtr;
+                    if (player->GetComponent(ComponentType::PLAYER_INPUT, playerControllerWeakPtr))
                     {
-                        dir += Point2D(0.0f, 1.0f);
-                    }
-                    else if (i_VKeyID == 0x0053)
-                    {
-                        dir += Point2D(0.0f, -1.0f);
-                    }
-                    else if (i_VKeyID == 0x0044)
-                    {
-                        dir += Point2D(1.0f, 0.0f);
-                    }
-                    else if (i_VKeyID == 0x0041)
-                    {
-                        dir += Point2D(-1.0f, 0.0f);
-                    }
-                    else
-                    {
-                        dir = Point2D(0.0f, 0.0f);
+                        SmartPtr<IGOComponent> playerControllerBase = playerControllerWeakPtr.Acquire();
+                        SmartPtr<PlayerControllerComponent> playerController = playerControllerBase;
+
+                        Point2D dir = player->GetDir();
+
+                        if (i_bWentDown)
+                        {
+
+                            if (i_VKeyID == playerController->GetVKeyIDUp())
+                            {
+
+                                dir += Point2D(0.0f, 1.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDDown())
+                            {
+
+                                dir += Point2D(0.0f, -1.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDRight())
+                            {
+
+                                dir += Point2D(1.0f, 0.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDLeft())
+                            {
+
+                                dir += Point2D(-1.0f, 0.0f);
+
+                            }
+
+                            else
+                            {
+
+                                dir = Point2D(0.0f, 0.0f);
+
+                            }
+                        }
+
+                        else
+                        {
+
+                            if (i_VKeyID == playerController->GetVKeyIDUp())
+                            {
+
+                                dir -= Point2D(0.0f, 1.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDDown())
+                            {
+
+                                dir -= Point2D(0.0f, -1.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDRight())
+                            {
+
+                                dir -= Point2D(1.0f, 0.0f);
+
+                            }
+
+                            else if (i_VKeyID == playerController->GetVKeyIDLeft())
+                            {
+
+                                dir -= Point2D(-1.0f, 0.0f);
+
+                            }
+
+                            else
+                            {
+
+                                dir = Point2D(0.0f, 0.0f);
+
+                            }
+                        }
+
+                        dir.MakeUnit();
+                        player->ChangeDir(dir);
+
                     }
                 }
-                else
-                {
-                    if (i_VKeyID == 0x0057)
-                    {
-                        dir -= Point2D(0.0f, 1.0f);
-                    }
-                    else if (i_VKeyID == 0x0053)
-                    {
-                        dir -= Point2D(0.0f, -1.0f);
-                    }
-                    else if (i_VKeyID == 0x0044)
-                    {
-                        dir -= Point2D(1.0f, 0.0f);
-                    }
-                    else if (i_VKeyID == 0x0041)
-                    {
-                        dir -= Point2D(-1.0f, 0.0f);
-                    }
-                    else
-                    {
-                        dir = Point2D(0.0f, 0.0f);
-                    }
-                }
-
-                dir.MakeUnit();
-                player->ChangeDir(dir);
-
             }
 
             
@@ -80,8 +128,10 @@ namespace Engine
 
         void Read()
         {
+
             // IMPORTANT (if we want keypress info from GLib): Set a callback for notification of key presses
             GLib::SetKeyStateChangeCallback(MoveObject);
+
         }
 
         
