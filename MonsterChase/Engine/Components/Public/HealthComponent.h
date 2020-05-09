@@ -14,7 +14,7 @@ namespace Engine
 
 		inline virtual void OnAttach(GameObject* i_gameObject) {}
 
-		inline virtual void Update(GameObject* i_gameObject);
+		inline virtual void Update(GameObject* i_gameObject, const float& i_dt);
 
 		inline virtual bool IsComponentType(const ComponentType& i_componentType) const;
 
