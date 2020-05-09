@@ -10,6 +10,13 @@ namespace Engine
 	{
 	public:
 
+		HealthComponent() :
+			m_Health(1),
+			m_CurrentHitBufferTime(0.0f),
+			m_MaxHitBufferTime(0.0f),
+			m_TookDamage(false)
+		{}
+
 		inline virtual ~HealthComponent() {}
 
 		inline virtual void OnAttach(GameObject* i_gameObject) {}
@@ -25,11 +32,14 @@ namespace Engine
 		size_t GetHealth() const;
 
 		void SetHealth(const size_t& i_Health);
+		void SetMaxHitBufferTime(const float& i_MaxTime);
 
 	private:
 
 		size_t m_Health;
-
+		float m_CurrentHitBufferTime;
+		float m_MaxHitBufferTime;
+		bool m_TookDamage;
 	};
 
 }
