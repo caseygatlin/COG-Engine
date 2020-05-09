@@ -170,12 +170,14 @@
     <ClInclude Include="Gamecode\Asteroids\Public\AsteroidSpawner.h" />
     <ClInclude Include="Gamecode\Custom Components\Public\RandomSpawnComponent-inl.h" />
     <ClInclude Include="Gamecode\Custom Components\Public\RandomSpawnComponent.h" />
+    <ClInclude Include="Gamecode\Game\Game Over\Public\GameOverScreen.h" />
     <ClInclude Include="Gamecode\Game\Public\Game.h" />
     <ClInclude Include="Gamecode\Player Ship\Public\PlayerShipSpawner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Gamecode\Application\MonsterChase.cpp" />
     <ClCompile Include="Gamecode\Asteroids\Private\AsteroidSpawner.cpp" />
+    <ClCompile Include="Gamecode\Game\Game Over\Private\GameOverScreen.cpp" />
     <ClCompile Include="Gamecode\Game\Private\Game.cpp" />
     <ClCompile Include="Gamecode\Player Ship\Private\PlayerShipSpawner.cpp" />
   </ItemGroup>

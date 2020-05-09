@@ -52,6 +52,15 @@
     <Filter Include="Source Files\Gamecode\Player Ship\Private">
       <UniqueIdentifier>{0d48671f-69fb-4f7b-a841-38a6b9c0aa74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gamecode\Game\Game Over">
+      <UniqueIdentifier>{280332a6-6ef4-4f89-8282-eaa43426f27f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Game\Game Over\Public">
+      <UniqueIdentifier>{ed540af9-8df3-4175-ae6d-566f48d5a80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gamecode\Game\Game Over\Private">
+      <UniqueIdentifier>{1b2563ac-73db-476f-ab8c-240adbad6a9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamecode\Asteroids\Public\AsteroidSpawner.h">
@@ -69,6 +78,9 @@
     <ClInclude Include="Gamecode\Player Ship\Public\PlayerShipSpawner.h">
       <Filter>Source Files\Gamecode\Player Ship\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Gamecode\Game\Game Over\Public\GameOverScreen.h">
+      <Filter>Source Files\Gamecode\Game\Game Over\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Gamecode\Application\MonsterChase.cpp">
@@ -82,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="Gamecode\Player Ship\Private\PlayerShipSpawner.cpp">
       <Filter>Source Files\Gamecode\Player Ship\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamecode\Game\Game Over\Private\GameOverScreen.cpp">
+      <Filter>Source Files\Gamecode\Game\Game Over\Private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
