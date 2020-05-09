@@ -317,6 +317,52 @@ namespace Engine
 	{
 		return m_pObject != nullptr;
 	}
+
+	template<class T>
+	inline bool SmartPtr<T>::operator==(const SmartPtr<T>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return (objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	template<class S>
+	inline bool SmartPtr<T>::operator==(const SmartPtr<S>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return (objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	inline bool SmartPtr<T>::operator!=(const SmartPtr<T>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return !(objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	template<class S>
+	inline bool SmartPtr<T>::operator!=(const SmartPtr<S>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return !(objectsEqual && countEqual);
+
+	}
 	
 	template<class T>
 	inline void SmartPtr<T>::Release()
@@ -461,7 +507,58 @@ namespace Engine
 	template<class T>
 	inline WeakPtr<T>::operator bool()
 	{
-		return m_pReferenceCount->NumSmartPtrs > 0;
+		if (m_pReferenceCount)
+		{
+			return m_pReferenceCount->NumSmartPtrs > 0;
+		}
+
+		return false;
+	}
+
+	template<class T>
+	inline bool WeakPtr<T>::operator==(const WeakPtr<T>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return (objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	template<class S>
+	inline bool WeakPtr<T>::operator==(const WeakPtr<S>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return (objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	inline bool WeakPtr<T>::operator!=(const WeakPtr<T>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return !(objectsEqual && countEqual);
+
+	}
+
+	template<class T>
+	template<class S>
+	inline bool WeakPtr<T>::operator!=(const WeakPtr<S>& i_rhs)
+	{
+
+		bool objectsEqual = m_pObject == i_rhs.m_pObject;
+		bool countEqual = m_pReferenceCount == i_rhs.m_pReferenceCount;
+
+		return !(objectsEqual && countEqual);
+
 	}
 
 	template<class T>

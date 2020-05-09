@@ -180,6 +180,25 @@ namespace Engine
 		// Bool operator
 		inline operator bool();
 
+#pragma region Equality / Inequality Operators
+
+		// Equality with SmartPtr of same template class.
+		inline bool operator==(const SmartPtr& i_rhs);
+
+		// Equality with SmartPtr of different template class.
+		template<class S>
+		inline bool operator==(const SmartPtr<S> & i_rhs);
+
+		// Inequality with SmartPtr of same template class.
+		inline bool operator!=(const SmartPtr& i_rhs);
+
+		// Inequality with SmartPtr of different template class.
+		template<class S>
+		inline bool operator!=(const SmartPtr<S>& i_src);
+
+#pragma endregion
+
+
 	private:
 
 		// Release this SmartPtr as an owner
@@ -299,6 +318,24 @@ namespace Engine
 
 		// Boolean operator
 		inline operator bool();
+
+#pragma region Equality / Inequality Operators
+
+		// Equality with WeakPtr of same template class.
+		inline bool operator==(const WeakPtr& i_rhs);
+
+		// Equality with WeakPtr of different template class.
+		template<class S>
+		inline bool operator==(const WeakPtr<S>& i_rhs);
+
+		// Inequality with WeakPtr of same template class.
+		inline bool operator!=(const WeakPtr& i_rhs);
+
+		// Inequality with WeakPtr of different template class.
+		template<class S>
+		inline bool operator!=(const WeakPtr<S>& i_src);
+
+#pragma endregion
 
 	private:
 
