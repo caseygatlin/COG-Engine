@@ -44,7 +44,7 @@ namespace Engine
                 return (*this);
             }
 
-            void Present();
+            bool Present();
             void ReleaseSprite();
 
         private:

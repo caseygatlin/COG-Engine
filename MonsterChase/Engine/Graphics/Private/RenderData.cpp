@@ -7,6 +7,7 @@ namespace Engine
 {
     namespace Graphics
     {
+
         RenderData& RenderData::operator=(const RenderData& i_src)
         {
             if (this != &i_src)
@@ -18,22 +19,33 @@ namespace Engine
             return (*this);
         }
 
-        void RenderData::Present()
+        bool RenderData::Present()
         {
+            if (m_gameObject)
+            {
 
-            SmartPtr<GameObject> gameObject = m_gameObject.Acquire();
+                SmartPtr<GameObject> gameObject = m_gameObject.Acquire();
 
-            Point2D position = gameObject->GetPosition();
-            GLib::Point2D glibPosition;
-            glibPosition = { position.X(), position.Y() };
+                Point2D position = gameObject->GetPosition();
+                GLib::Point2D glibPosition;
+                glibPosition = { position.X(), position.Y() };
 
-            // Tell GLib to render this sprite at our calculated location
-            GLib::Sprites::RenderSprite(*m_texture, glibPosition, 0.0f);
+                // Tell GLib to render this sprite at our calculated location
+                GLib::Sprites::RenderSprite(*m_texture, glibPosition, 0.0f);
+
+                return true;
+
+            }
+
+            return false;
+
         }
 
         void RenderData::ReleaseSprite()
         {
+
             GLib::Sprites::Release(m_texture);
+
         }
     }
 }

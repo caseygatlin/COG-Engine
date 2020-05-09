@@ -16,22 +16,35 @@ namespace Engine
     {
         void Init(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
         {
+
             // IMPORTANT: first we need to initialize GLib
             bool bSuccess = GLib::Initialize(i_hInstance, i_nCmdShow, "MonsterChase", -1, 800, 600);
 
             if (bSuccess)
             {
 
+                // Initialize more graphics features here if needed.
+
             }
         }
 
         void AddRenderData(const RenderData& i_renderData)
         {
+
             renderData.push_back(i_renderData);
+
+        }
+
+        void RemoveRenderData(const size_t& i_index)
+        {
+
+            renderData.erase(renderData.begin() + i_index);
+
         }
 
         void* LoadFile(const char* i_pFilename, size_t& o_sizeFile)
         {
+
             assert(i_pFilename != NULL);
 
             FILE* pFile = NULL;
@@ -62,10 +75,12 @@ namespace Engine
             o_sizeFile = FileSize;
 
             return pBuffer;
+
         }
 
         GLib::Sprites::Sprite* CreateSprite(const char* i_pFilename)
         {
+
             assert(i_pFilename);
 
             size_t sizeTextureFile = 0;
@@ -110,10 +125,12 @@ namespace Engine
             GLib::Sprites::SetTexture(*pSprite, *pTexture);
 
             return pSprite;
+
         }
 
         void TestKeyCallback(unsigned int i_VKeyID, bool bWentDown)
         {
+
 #ifdef _DEBUG
             const size_t	lenBuffer = 65;
             char			Buffer[lenBuffer];
@@ -121,28 +138,39 @@ namespace Engine
             sprintf_s(Buffer, lenBuffer, "VKey 0x%04x went %s\n", i_VKeyID, bWentDown ? "down" : "up");
             OutputDebugStringA(Buffer);
 #endif // __DEBUG
+
         }
 
 
         void Present()
         {
 
-                // IMPORTANT: Tell GLib that we want to start rendering
-                GLib::BeginRendering();
-                // Tell GLib that we want to render some sprites
-                GLib::Sprites::BeginRendering();
+            // IMPORTANT: Tell GLib that we want to start rendering
+            GLib::BeginRendering();
+
+            // Tell GLib that we want to render some sprites
+            GLib::Sprites::BeginRendering();
 
 
-                for (int i = 0; i < renderData.size(); i++)
+            for (int i = 0; i < renderData.size(); i++)
+            {
+
+                if (!renderData.at(i).Present())
                 {
-                    renderData.at(i).Present();
+
+                    renderData.at(i).ReleaseSprite();
+                    RemoveRenderData(i);
+                    --i;
+
                 }
+            }
 
 
-                // Tell GLib we're done rendering sprites
-                GLib::Sprites::EndRendering();
-                // IMPORTANT: Tell GLib we're done rendering
-                GLib::EndRendering();
+            // Tell GLib we're done rendering sprites
+            GLib::Sprites::EndRendering();
+
+            // IMPORTANT: Tell GLib we're done rendering
+            GLib::EndRendering();
 
         }
 
@@ -150,16 +178,18 @@ namespace Engine
         {
             for (int i = 0; i < renderData.size(); i++)
             {
+
                 renderData.at(i).ReleaseSprite();
+                RemoveRenderData(i);
+                --i;
+
             }
 
-            for (int i = 0; i < renderData.size(); i++)
-            {
-                renderData.erase(renderData.begin());
-            }
+            renderData.clear();
 
             // IMPORTANT:  Tell GLib to shutdown, releasing resources.
             GLib::Shutdown();
+
         }
     }
 }
