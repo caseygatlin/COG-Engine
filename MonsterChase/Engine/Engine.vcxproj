@@ -24,12 +24,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Components\Public\RandomSpawnComponent-inl.h" />
-    <ClInclude Include="Components\Public\RandomSpawnComponent.h" />
     <ClInclude Include="Components\Public\ComponentType.h" />
     <ClInclude Include="Components\Public\HealthComponent-inl.h" />
     <ClInclude Include="Components\Public\HealthComponent.h" />
     <ClInclude Include="Components\Public\IGOComponent.h" />
+    <ClInclude Include="Components\Public\PlayerControllerComponent-inl.h" />
+    <ClInclude Include="Components\Public\PlayerControllerComponent.h" />
     <ClInclude Include="Console\Public\ConsolePrint.h" />
     <ClInclude Include="Containers\Public\Matrix4-inl.h" />
     <ClInclude Include="Containers\Public\Matrix4.h" />

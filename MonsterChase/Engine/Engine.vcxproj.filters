@@ -287,10 +287,10 @@
     <ClInclude Include="Components\Public\HealthComponent-inl.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Public\RandomSpawnComponent.h">
+    <ClInclude Include="Components\Public\PlayerControllerComponent.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Public\RandomSpawnComponent-inl.h">
+    <ClInclude Include="Components\Public\PlayerControllerComponent-inl.h">
       <Filter>Source Files\Components\Public</Filter>
     </ClInclude>
   </ItemGroup>
