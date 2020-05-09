@@ -2,6 +2,7 @@
 
 #include "../../GameObject/Public/GameObject.h"
 #include "../../Containers/Public/Pointers.h"
+#include "../../HashedString/Public/HashedString.h"
 
 namespace Engine
 {
@@ -15,6 +16,7 @@ namespace Engine
 		void Update(const float& i_dt);
 
 		WeakPtr<GameObject> GetGameObject(const size_t& i_index);
+		bool GetFirstGameObjectWithController(HashedString i_ControllerName, WeakPtr<GameObject>& o_GameObject);
 		size_t GetNumGameObjects();
 
 		void Destroy();

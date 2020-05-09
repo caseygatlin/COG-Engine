@@ -4,6 +4,7 @@
 #include "../../GameObject/Public/GameObject.h"
 #include "../../Containers/Public/Pointers.h"
 #include "../../Physics/Collision/Public/Collision.h"
+#include "../../Spawning/Public/ObjectSpawner.h"
 #include <vector>
 
 
@@ -71,19 +72,32 @@ namespace Engine
 
 		WeakPtr<GameObject> GetGameObject(const size_t& i_index)
 		{
+
 			WeakPtr<GameObject> gameObject = GameObjects.at(i_index);
 			return gameObject;
+
+		}
+
+		bool GetFirstGameObjectWithController(HashedString i_ControllerName, WeakPtr<GameObject>& o_GameObject)
+		{
+
+			return ObjectSpawner::GetFirstGameObjectWithController(i_ControllerName, o_GameObject);
+
 		}
 
 		size_t GetNumGameObjects()
 		{
+
 			return GameObjects.size();
+
 		}
 
 		void Destroy()
 		{
+
 			GameObjects.clear();
 			GameObjects.shrink_to_fit();
+
 		}
 	}
 }
