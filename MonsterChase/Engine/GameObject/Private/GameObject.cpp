@@ -30,6 +30,82 @@ namespace Engine
 
 	}
 
+	// Equality operator
+	bool GameObject::operator==(const GameObject& i_rhs)
+	{
+
+		bool positionEqual = m_Position == i_rhs.m_Position;
+		bool velocityEqual = m_Velocity == i_rhs.m_Velocity;
+		bool directionEqual = m_Dir == i_rhs.m_Dir;
+
+		bool componentsEqual = true;
+		size_t thisComponentsSize = m_Components.size();
+		size_t rhsComponentsSize = i_rhs.m_Components.size();
+
+		if (thisComponentsSize == rhsComponentsSize)
+		{
+
+			for (size_t i = 0; i < thisComponentsSize; i++)
+			{
+
+				if (GetComponentType(i) != i_rhs.GetComponentType(i))
+				{
+
+					componentsEqual = false;
+
+				}
+			}
+		}
+
+		else
+		{
+
+			componentsEqual = false;
+
+		}
+
+		return (positionEqual && velocityEqual && directionEqual && componentsEqual);
+
+	}
+
+	// Inequality operator
+	bool GameObject::operator!=(const GameObject& i_rhs)
+	{
+
+		bool positionEqual = m_Position == i_rhs.m_Position;
+		bool velocityEqual = m_Velocity == i_rhs.m_Velocity;
+		bool directionEqual = m_Dir == i_rhs.m_Dir;
+
+		bool componentsEqual = true;
+		size_t thisComponentsSize = m_Components.size();
+		size_t rhsComponentsSize = i_rhs.m_Components.size();
+
+		if (thisComponentsSize == rhsComponentsSize)
+		{
+
+			for (size_t i = 0; i < thisComponentsSize; i++)
+			{
+
+				if (GetComponentType(i) != i_rhs.GetComponentType(i))
+				{
+
+					componentsEqual = false;
+
+				}
+			}
+		}
+
+		else
+		{
+
+			componentsEqual = false;
+
+		}
+
+		return (!positionEqual || !velocityEqual || !directionEqual || !componentsEqual);
+
+	}
+
 
 	// Destructor
 	GameObject::~GameObject()

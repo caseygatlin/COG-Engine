@@ -38,6 +38,10 @@ namespace Engine
 		// Assignment operator
 		GameObject& operator=(const GameObject& i_src);
 
+		// Equality/inequality operators
+		bool operator==(const GameObject& i_rhs);
+		bool operator!=(const GameObject& i_rhs);
+
 		//Accessors --
 		inline	Point2D	GetPosition()	const;
 		inline	Point2D	GetDir()		const;
@@ -67,6 +71,7 @@ namespace Engine
 		void Update();
 
 	private:
+		ComponentType GetComponentType(const size_t& i_index) const;
 
 		//Constructors
 		GameObject() :
