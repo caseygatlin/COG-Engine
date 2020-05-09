@@ -6,7 +6,7 @@
 
 namespace Engine
 {
-	inline void HealthComponent::Update(GameObject* i_gameObject)
+	inline void HealthComponent::Update(GameObject* i_gameObject, const float& i_dt)
 	{
 
 	}
