@@ -7,6 +7,7 @@
 #include <Windows.h>
 #include <vector>
 
+// Class for the game to run
 class Game
 {
 public:

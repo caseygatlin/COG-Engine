@@ -16,6 +16,7 @@ namespace Engine
 	{
 	public:
 
+		// Creation of GameObject through SmartPtr
 		static SmartPtr<GameObject> CreateGameObject()
 		{
 
@@ -24,6 +25,7 @@ namespace Engine
 
 		}
 
+		// Creation of GameObject through SmartPtr with specific member variables
 		static SmartPtr<GameObject> CreateGameObject(const Point2D& i_spawnPoint, const Point2D& i_spawnVelocity = Point2D(0.0F, 0.0F))
 		{
 
@@ -48,7 +50,6 @@ namespace Engine
 		inline  Point2D GetVelocity()   const;
 
 
-		// Mutators --
 		// Changes GameObject direction
 		inline void ChangeDir(const Point2D& i_dir);
 
@@ -61,7 +62,10 @@ namespace Engine
 		// Attaches a component
 		inline void Attach(SmartPtr<IGOComponent> i_component);
 
+		// Checks whether this object has a component of the given type
 		inline bool HasComponent(const ComponentType& i_componentType) const;
+
+		// Outputs the desired component if possible
 		inline bool GetComponent(const ComponentType& i_componentType, WeakPtr<IGOComponent>& o_component) const;
 
 		// Sets the velocity of this object.
@@ -91,6 +95,7 @@ namespace Engine
 			m_Components(std::vector<SmartPtr<IGOComponent>>())
 		{ }
 
+		// Member variables
 		Point2D								m_Position;
 		Point2D								m_Velocity;
 		Point2D								m_Dir;

@@ -16,9 +16,9 @@
 namespace Engine
 {
 
-	//Announces engine initialization
 	void Init(HINSTANCE i_hInstance, HINSTANCE i_hPrevInstance, LPWSTR i_lpCmdLine, int i_nCmdShow)
 	{
+
         DEBUG_PRINT("Starting Engine...\n");
 
 
@@ -27,22 +27,27 @@ namespace Engine
         JobSystem::CreateQueue("Default", 2);
 
         DEBUG_PRINT("Engine Initialized.\n");
+
 	}
 
     bool QuitRequested()
     {
+
         bool bQuit = false;
 
         // IMPORTANT: We need to let GLib do it's thing. 
         GLib::Service(bQuit);
 
         return bQuit;
+
     }
 
     void Run()
     {
+
         while (1)
         {
+
             float dt = Timing::CalcTimeSinceLastCall_ms();
 
             Input::Read();
@@ -55,11 +60,11 @@ namespace Engine
             Physics::Update(dt);
 
             Graphics::Present();
+
         }
-        
     }
 
-	//Announces engine shutdown
+
 	void Shutdown()
 	{
 

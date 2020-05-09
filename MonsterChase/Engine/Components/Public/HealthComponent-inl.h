@@ -9,11 +9,17 @@ namespace Engine
 {
 	inline void HealthComponent::Update(GameObject* i_gameObject, const float& i_dt)
 	{
+
+		// If took damage, decrease hit buffer timer
 		if (m_TookDamage)
 		{
+
 			m_CurrentHitBufferTime -= i_dt;
+
 		}
 
+
+		// If hit buffer timer is timed out, reset it as well as the TookDamage variable
 		if (m_CurrentHitBufferTime < 0.0f)
 		{
 
@@ -32,21 +38,27 @@ namespace Engine
 
 	inline ComponentType HealthComponent::GetComponentType() const
 	{
+
 		return ComponentType::HEALTH;
+
 	}
 
 	inline bool HealthComponent::TakeDamage()
 	{
-		DEBUG_PRINT("Health: %d\n", m_Health);
 
+		// If hasn't taken damage yet, decrease health
+		// and signal if dead.
 		if (!m_TookDamage)
 		{
+
 			m_TookDamage = true;
 
 			if (--m_Health <= 0)
 			{
+
 				m_Health = 0;
 				return true;
+
 			}
 		}
 

@@ -16,9 +16,12 @@ namespace Engine
 {
     namespace Graphics
     {
+
+        // Renders the sprite for a GameObject
         class RenderData
         {
         public:
+
             RenderData() :
                 m_gameObject(),
                 m_texture()
@@ -34,6 +37,7 @@ namespace Engine
                 m_texture(i_src.m_texture)
             {}
 
+            // Assignment operators
             RenderData& operator=(const RenderData& i_src);
 
             RenderData& operator=(RenderData&& i_src) noexcept
@@ -44,12 +48,17 @@ namespace Engine
                 return (*this);
             }
 
+            // Renders sprite
             bool Present();
+
+            // Releases sprite
             void ReleaseSprite();
 
         private:
+
             WeakPtr<GameObject> m_gameObject;
             GLib::Sprites::Sprite* m_texture;
+
         };
     }
 }

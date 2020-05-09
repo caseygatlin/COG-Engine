@@ -5,6 +5,8 @@
 namespace Engine
 {
 
+	// Keeps track of the number of Smart and Weak ptrs
+	// an object has.
 	struct ReferenceCount
 	{
 
