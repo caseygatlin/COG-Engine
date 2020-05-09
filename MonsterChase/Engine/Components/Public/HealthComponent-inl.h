@@ -18,6 +18,11 @@ namespace Engine
 
 	}
 
+	inline ComponentType HealthComponent::GetComponentType() const
+	{
+		return ComponentType::HEALTH;
+	}
+
 	inline bool HealthComponent::TakeDamage()
 	{
 

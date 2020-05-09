@@ -18,6 +18,8 @@ namespace Engine
 
 		inline virtual bool IsComponentType(const ComponentType& i_componentType) const;
 
+		inline virtual ComponentType GetComponentType() const;
+
 		inline bool TakeDamage();
 
 		size_t GetHealth() const;
