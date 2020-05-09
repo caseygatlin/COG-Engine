@@ -154,6 +154,34 @@ namespace Engine
 			return false;
 
 		}
+
+		void RegisterController(HashedString i_ControllerName, WeakPtr<GameObject> o_GameObject)
+		{
+			Controllers.insert({ i_ControllerName, o_GameObject });
+
+			if (i_ControllerName == "Player")
+			{
+
+				o_GameObject.Acquire()->Attach(CreateComponent<PlayerControllerComponent>());
+
+			}
+		}
+
+		void RemoveController(HashedString i_ControllerName)
+		{
+			Controllers.erase(i_ControllerName);
+		}
+
+		bool GetFirstGameObjectWithController(HashedString i_ControllerName, WeakPtr<GameObject>& o_GameObject)
+		{
+			if (Controllers.find(i_ControllerName) != Controllers.end())
+			{
+
+				o_GameObject = Controllers.at(i_ControllerName);
+				return true;
+
+			}
+
 			return false;
 		}
 

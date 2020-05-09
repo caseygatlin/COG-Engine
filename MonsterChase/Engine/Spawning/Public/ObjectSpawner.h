@@ -24,6 +24,10 @@ namespace Engine
 
 		void RegisterController(HashedString i_ControllerName, WeakPtr<GameObject> o_GameObject);
 
+		void RemoveController(HashedString i_ControllerName);
+
+		bool GetFirstGameObjectWithController(HashedString i_ControllerName, WeakPtr<GameObject>& o_GameObject);
+
 		void ClearControllers();
 
 	}
