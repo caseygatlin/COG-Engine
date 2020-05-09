@@ -1,6 +1,10 @@
 {
 	"Name": "PlayerShip",
-	"SpawnPoint": [ 0.0, 0.0],
+	"SpawnPoint": [ 0.0, 0.0 ],
+
+	"Controller" : {
+		"Type" : "Player"
+	},
 
 	"PhysicsInfo": {
 		"Mass": 10.0,
