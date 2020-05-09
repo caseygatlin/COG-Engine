@@ -6,6 +6,8 @@
 #include "../../Physics/Public/PhysicsInfo.h"
 #include "../../Physics/Collision/Public/AABB.h"
 #include "../../Containers/Public/Matrix4.h"
+#include "../../HashedString/Public/HashedString.h"
+#include "../../Physics/Collision/Public/Collideable.h"
 #include "../../External/json.h"
 
 #include <assert.h>
@@ -16,9 +18,11 @@ namespace Engine
 	namespace ObjectSpawner
 	{
 
-		void SpawnGameObject(const std::string& i_jsonFileName);
+		bool SpawnGameObject(const std::string& i_jsonFileName, SmartPtr<GameObject>& o_gameObject);
 
-		void SpawnCollideable(const std::string& i_jsonFileName);
+		bool SpawnCollideable(const std::string& i_jsonFileName, SmartPtr<Physics::Collideable>& o_collideable);
+
+		void RegisterController(HashedString i_ControllerName, WeakPtr<GameObject> o_GameObject);
 
 		void ClearControllers();
 

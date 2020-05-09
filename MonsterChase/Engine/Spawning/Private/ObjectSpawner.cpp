@@ -8,6 +8,9 @@
 #include "../../World/Public/World.h"
 #include "../../Graphics/Public/RenderData.h"
 #include "../../Graphics/Public/Graphics.h"
+#include "../../HashedString/Public/HashedString.h"
+#include "../../Components/Public/PlayerControllerComponent.h"
+#include "../../Components/Public/IGOComponent.h"
 #include "../../Physics/Collision/Public/Collision.h"
 #include "../../Physics/Collision/Public/Collideable.h"
 #include "../../Physics/Collision/Public/AABB.h"
@@ -22,9 +25,9 @@ namespace Engine
 {
 	namespace ObjectSpawner
 	{
-		static std::map<std::string, WeakPtr<GameObject>> Controllers;
+		static std::map<HashedString, WeakPtr<GameObject>> Controllers;
 
-		void SpawnGameObject(const std::string& i_jsonFileName)
+		bool SpawnGameObject(const std::string& i_jsonFileName, SmartPtr<GameObject>& o_gameObject)
 		{
 			SmartPtr<GameObject> spawnedObject;
 			Physics::PhysicsInfo objectPhysicsInfo;
@@ -40,11 +43,17 @@ namespace Engine
 
 				World::AddGameObject(spawnedObject);
 
-				std::string controllerName = JSONReader::JSONToController(jsonData);
-				if (!controllerName.empty())
+				std::string controllerNameStr = JSONReader::JSONToController(jsonData);
+
+				char* controllerName = new char[controllerNameStr.size() + 1];
+				strcpy_s(controllerName, controllerNameStr.size() + 1, controllerNameStr.c_str());
+
+				if (!controllerNameStr.empty())
 				{
-					Controllers.insert({ controllerName, World::GetGameObject(World::GetNumGameObjects() - 1) });
+					Controllers.insert({ HashedString(controllerName), World::GetGameObject(World::GetNumGameObjects() - 1) });
 				}
+
+				delete[] controllerName;
 
 				objectPhysicsInfo = Physics::PhysicsInfo(
 					World::GetGameObject(World::GetNumGameObjects() - 1),
@@ -69,10 +78,16 @@ namespace Engine
 				Physics::AddPhysicsInfo(objectPhysicsInfo);
 				Graphics::AddRenderData(objectRenderData);
 
+				o_gameObject = spawnedObject;
+				return true;
+
 			}
+
+			return false;
+
 		}
 
-		void SpawnCollideable(const std::string& i_jsonFileName)
+		bool SpawnCollideable(const std::string& i_jsonFileName, SmartPtr<Physics::Collideable>& o_collideable)
 		{
 			SmartPtr<GameObject> spawnedObject;
 			Physics::PhysicsInfo objectPhysicsInfo;
@@ -90,20 +105,26 @@ namespace Engine
 				World::AddGameObject(spawnedObject);
 
 				spawnedCollideable = Physics::Collideable::CreateCollideable(
-					World::GetGameObject(World::GetNumGameObjects() - 1),
+					spawnedObject,
 					JSONReader::JSONToAABB(jsonData)
 					);
 
 				Physics::AddCollideable(spawnedCollideable);
 
-				std::string controllerName = JSONReader::JSONToController(jsonData);
-				if (!controllerName.empty())
+				std::string controllerNameStr = JSONReader::JSONToController(jsonData);
+
+				char* controllerName = new char[controllerNameStr.size() + 1];
+				strcpy_s(controllerName, controllerNameStr.size() + 1, controllerNameStr.c_str());
+
+				if (!controllerNameStr.empty())
 				{
-					Controllers.insert({ controllerName, World::GetGameObject(World::GetNumGameObjects() - 1) });
+					RegisterController(HashedString(controllerName), spawnedObject);
 				}
 
+				delete[] controllerName;
+
 				objectPhysicsInfo = Physics::PhysicsInfo(
-					World::GetGameObject(World::GetNumGameObjects() - 1),
+					spawnedObject,
 					JSONReader::JSONToMass(jsonData),
 					JSONReader::JSONToDrag(jsonData)
 				);
@@ -118,13 +139,22 @@ namespace Engine
 				delete[] texturePath;
 
 				objectRenderData = Graphics::RenderData(
-					World::GetGameObject(World::GetNumGameObjects() - 1),
+					spawnedObject,
 					texture
 				);
 
 				Physics::AddPhysicsInfo(objectPhysicsInfo);
 				Graphics::AddRenderData(objectRenderData);
+
+				o_collideable = spawnedCollideable;
+				return true;
+
 			}
+
+			return false;
+
+		}
+			return false;
 		}
 
 		void ClearControllers()
