@@ -33,6 +33,21 @@ namespace Engine
 					}
 
 					GameObjects.pop_back();
+
+				}
+			}
+		}
+
+		void Update(const float& i_dt)
+		{
+
+			for (SmartPtr<GameObject>& gameObject : GameObjects)
+			{
+				if (gameObject)
+				{
+
+					gameObject->Update(i_dt);
+
 				}
 			}
 		}
