@@ -1,0 +1,14 @@
+{
+	"Name": "Game Over",
+	"SpawnPoint": [ 0.0, 0.0 ],
+
+	"PhysicsInfo": {
+		"Mass": 1.0,
+		"Drag": 0.0
+	},
+
+	"RenderData": {
+		"Texture": "Content\\GameOver.dds"
+	}
+
+}
