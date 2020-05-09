@@ -17,6 +17,7 @@ public:
     {}
 
     void Init();
+    void EndGame();
     void ShutDown();
 
 private:
