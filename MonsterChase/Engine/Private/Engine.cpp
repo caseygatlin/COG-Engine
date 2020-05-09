@@ -50,7 +50,7 @@ namespace Engine
             if (QuitRequested())
                 break;
 
-            //AI::Run(dt);
+            World::Update(dt);
 
             Physics::Update(dt);
 
