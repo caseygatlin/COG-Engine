@@ -2,6 +2,7 @@
 #include "../../Containers/Public/Point2D.h"
 #include "../../Components/Public/IGOComponent.h"
 #include "../../Components/Public/ComponentType.h"
+#include "../../World/Public/World.h"
 #include <stdlib.h>
 #include <vector>
 
@@ -127,6 +128,14 @@ namespace Engine
 
 		}
 	}
+
+	void GameObject::Destroy()
+	{
+
+		World::DestroyGameObject(this);
+
+	}
+
 	ComponentType GameObject::GetComponentType(const size_t& i_index) const
 	{
 

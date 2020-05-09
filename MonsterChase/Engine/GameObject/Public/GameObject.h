@@ -70,6 +70,9 @@ namespace Engine
 		// Updates each component
 		void Update(const float& i_dt);
 
+		// Removes this object from the world and collideables list
+		void Destroy();
+
 	private:
 		ComponentType GetComponentType(const size_t& i_index) const;
 
@@ -93,6 +96,8 @@ namespace Engine
 		Point2D								m_Dir;
 		std::vector<SmartPtr<IGOComponent>>	m_Components;
 	};
+
+
 
 }
 
