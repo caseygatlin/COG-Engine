@@ -60,7 +60,7 @@ namespace Engine
 		template<class S>
 		SmartPtr(const SmartPtr<S>& i_src) :
 			m_pReferenceCount(i_src.m_pReferenceCount),
-			m_pObject(i_src.m_pObject)
+			m_pObject(static_cast<T*>(const_cast<S*>(i_src.m_pObject)))
 		{
 			if (m_pReferenceCount)
 			{
@@ -74,7 +74,7 @@ namespace Engine
 		template<class S>
 		SmartPtr(SmartPtr<S>&& i_src) :
 			m_pReferenceCount(i_src.m_pReferenceCount),
-			m_pObject(i_src.m_pObject)
+			m_pObject(static_cast<T*>(i_src.m_pObject))
 		{
 
 			i_src.m_pReferenceCount = nullptr;
