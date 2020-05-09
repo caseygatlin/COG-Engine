@@ -11,7 +11,7 @@ public:
 	{}
 	
 	void SpawnAsteroids();
-
+	void StopSpawning();
 	void OnCollision();
 
 private:

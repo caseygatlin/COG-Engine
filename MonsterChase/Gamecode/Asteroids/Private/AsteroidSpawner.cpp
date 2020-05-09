@@ -60,13 +60,12 @@ void AsteroidSpawner::SpawnAsteroids()
 	}
 }
 
-	if (!JobSystem::ShutdownRequested())
-	{
-		JobSystem::RequestShutdown();
-	}
+void AsteroidSpawner::StopSpawning()
+{
+	m_bContinueSpawning = false;
 }
 
 void AsteroidSpawner::OnCollision()
 {
-	DEBUG_PRINT("Asteroid Collision Detected...\n");
+
 }
