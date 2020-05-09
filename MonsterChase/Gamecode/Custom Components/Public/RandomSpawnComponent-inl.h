@@ -24,6 +24,11 @@ inline bool RandomSpawnComponent::IsComponentType(const Engine::ComponentType& i
 
 }
 
+inline Engine::ComponentType RandomSpawnComponent::GetComponentType() const
+{
+	return Engine::ComponentType::RANDOM_SPAWN;
+}
+
 inline void RandomSpawnComponent::SetMaxMin(const float& i_RandMax_X, const float& i_RandMin_X, const float& i_RandMax_Y, const float& i_RandMin_Y)
 {
 

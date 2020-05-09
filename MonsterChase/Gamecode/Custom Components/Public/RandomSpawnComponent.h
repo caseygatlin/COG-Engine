@@ -25,6 +25,8 @@ public:
 
 	inline virtual bool IsComponentType(const Engine::ComponentType& i_componentType) const;
 
+	inline virtual Engine::ComponentType GetComponentType() const;
+
 	inline void SetMaxMin(const float& i_RandMax_X, const float& i_RandMin_X, const float& i_RandMax_Y, const float& i_RandMin_Y);
 
 private:
