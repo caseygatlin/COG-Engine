@@ -11,33 +11,54 @@
 
 #include <Windows.h>
 
-void AsteroidSpawner::operator() ()
+void AsteroidSpawner::SpawnAsteroids()
 {
+
 	using namespace Engine;
 
 	Sleep(2000);
 
-	const size_t MaxNumAsteroids = 10;
 	size_t numAsteroids = 0;
 
-	while (JobSystem::HasJobs("Default"))
+	while (m_bContinueSpawning)
 	{
-		Sleep(4000);
-		if (numAsteroids < MaxNumAsteroids)
-		{
-			numAsteroids++;
-			ObjectSpawner::SpawnCollideable("Content\\AsteroidData.json");
-			Physics::GetCollideable(numAsteroids).Acquire()->AssignCallback(std::bind(&AsteroidSpawner::OnCollision, this));
+		Sleep(1000);
 
-			SmartPtr<GameObject> asteroid = Engine::World::GetGameObject(numAsteroids).Acquire();
-			asteroid->Attach(CreateComponent<RandomSpawnComponent>());
-			Point2D asteroidPosition = asteroid->GetPosition();
-			float asteroidDirX = (asteroidPosition.X() > 0) ? -1.0f : 1.0f;
-			float asteroidDirY = (asteroidPosition.Y() > 0) ? -1.0f : 1.0f;
-			asteroid->ChangeDir(Point2D(asteroidDirX, asteroidDirY));
+		numAsteroids++;
+
+		SmartPtr<Physics::Collideable> asteroidCollideable;
+		ObjectSpawner::SpawnCollideable("Content\\AsteroidData.json", asteroidCollideable);
+		asteroidCollideable->AssignCallback(std::bind(&AsteroidSpawner::OnCollision, this));
+
+		SmartPtr<GameObject> asteroid = asteroidCollideable->GetGameObject().Acquire();
+
+		SmartPtr<IGOComponent> randomSpawnComponentBase = CreateComponent<RandomSpawnComponent>();
+		SmartPtr<RandomSpawnComponent> randomSpawnComponent = randomSpawnComponentBase;
+
+		if (numAsteroids % 2 == 0)
+		{
+
+			randomSpawnComponent->SetMaxMin(390, -390, 298, 299);
+
+		}
+		else
+		{
+
+			randomSpawnComponent->SetMaxMin(390, -390, -298, -299);
+
 		}
 
+		asteroid->Attach(randomSpawnComponentBase);
+
+
+		Point2D asteroidPosition = asteroid->GetPosition();
+
+		float asteroidDirX = (asteroidPosition.X() > 0) ? -1.0f : 1.0f;
+		float asteroidDirY = (asteroidPosition.Y() > 0) ? -1.0f : 1.0f;
+
+		asteroid->ChangeDir(Point2D(asteroidDirX, asteroidDirY));
 	}
+}
 
 	if (!JobSystem::ShutdownRequested())
 	{

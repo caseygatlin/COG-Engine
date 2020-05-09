@@ -1,17 +1,21 @@
 #pragma once
 
+class Game;
 
 class AsteroidSpawner
 {
 public:
-	AsteroidSpawner() :
+	AsteroidSpawner(Game* i_GameInstance) :
+		m_GameInstance(i_GameInstance),
 		m_bContinueSpawning(true)
 	{}
 	
-	void operator() ();
+	void SpawnAsteroids();
 
 	void OnCollision();
 
 private:
+	Game* m_GameInstance;
 	bool m_bContinueSpawning;
+
 };
