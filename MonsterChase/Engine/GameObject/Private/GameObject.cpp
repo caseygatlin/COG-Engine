@@ -127,4 +127,12 @@ namespace Engine
 
 		}
 	}
+	ComponentType GameObject::GetComponentType(const size_t& i_index) const
+	{
+
+		SmartPtr<IGOComponent> componentAtIndex = m_Components.at(i_index);
+		return componentAtIndex->GetComponentType();
+
+	}
+
 }
