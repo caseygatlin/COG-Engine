@@ -1,0 +1,24 @@
+{
+	"Name": "PlayerShip",
+	"SpawnPoint": [ 0.0, 0.0 ],
+
+	"Controller" : {
+		"Type" : "Player"
+	},
+
+	"PhysicsInfo": {
+		"Mass": 10.0,
+		"Drag": 1.25
+	},
+
+	"RenderData": {
+		"Texture": "Content\\Ship.dds"
+	},
+
+	"Collision": {
+		"Bounding Box": {
+			"Center": [ 1.0, 1.0 ],
+			"Extents": [ 10.0, 10.0 ]
+		}
+	}
+}
