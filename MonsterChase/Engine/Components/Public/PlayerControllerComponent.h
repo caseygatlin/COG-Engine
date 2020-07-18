@@ -10,6 +10,8 @@ namespace Engine
 	{
 	public:
 
+#pragma region Constructor Destructor
+
 		// Constructor
 		PlayerControllerComponent() :
 			m_VKeyID_Up(0x0057),
@@ -20,6 +22,10 @@ namespace Engine
 
 		// Destructor
 		inline virtual ~PlayerControllerComponent() {}
+		
+#pragma endregion
+
+#pragma region Virtual Overrides
 
 		// Executes on attachment to GameObject
 		inline virtual void OnAttach(GameObject* i_gameObject) {}
@@ -32,26 +38,58 @@ namespace Engine
 
 		// Returns ComponentType
 		inline virtual ComponentType GetComponentType() const;
+		
+#pragma endregion
 
-		// Getters for Key IDs
+#pragma region Getters
+
+		// Gets the Key ID for the Up Input.
 		inline unsigned int GetVKeyIDUp() const;
+		
+		// Gets the Key ID for the Down Input.
 		inline unsigned int GetVKeyIDDown() const;
+		
+		// Gets the Key ID for the Left Input.
 		inline unsigned int GetVKeyIDLeft() const;
+		
+		// Gets the Key ID for the Right Input.
 		inline unsigned int GetVKeyIDRight() const;
+		
+#pragma endregion
 
-		// Setters for Key IDs
+#pragma region Setters
+		
+		// Sets the Key ID for the Up Input.
 		inline void SetVKeyIDUp(const unsigned int& i_VKeyID_Up);
+		
+		// Sets the Key ID for the Down Input.
 		inline void SetVKeyIDDown(const unsigned int& i_VKeyID_Down);
+		
+		// Sets the Key ID for the Left Input.
 		inline void SetVKeyIDLeft(const unsigned int& i_VKeyID_Left);
+		
+		// Sets the Key ID for the Right Input.
 		inline void SetVKeyIDRight(const unsigned int& i_VKeyID_Right);
+		
+#pragma endregion
 
 	private:
 
-		// Key IDs for the four input keys
+#pragma region Key IDs
+
+		// Key ID for the Up Input.
 		unsigned int m_VKeyID_Up;
+		
+		// Key ID for the Down Input.
 		unsigned int m_VKeyID_Down;
+		
+		// Key ID for the Left Input.
 		unsigned int m_VKeyID_Left;
+		
+		// Key ID for the Right Input.
 		unsigned int m_VKeyID_Right;
+		
+#pragma endregion
 
 	};
 
