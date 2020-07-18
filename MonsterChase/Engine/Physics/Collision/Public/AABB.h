@@ -40,6 +40,7 @@ namespace Engine
 				}
 			}
 
+			// Equality operator
 			bool operator==(const AABB& i_rhs)
 			{
 				bool centerEqual = Center == i_rhs.Center;
@@ -48,6 +49,7 @@ namespace Engine
 				return (centerEqual && extentsEqual);
 			}
 
+			// Inequality operator
 			bool operator!=(const AABB& i_rhs)
 			{
 				bool centerEqual = Center == i_rhs.Center;
