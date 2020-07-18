@@ -25,24 +25,35 @@ namespace Engine
 {
 	namespace ObjectSpawner
 	{
+		
+		// A map of all of the registered controllers (Player Controllers, etc.)
 		static std::map<HashedString, WeakPtr<GameObject>> Controllers;
 
+		
 		bool SpawnGameObject(const std::string& i_jsonFileName, SmartPtr<GameObject>& o_gameObject)
 		{
+			
+			// Declare local variables for various systems to be initialized in spawning.
 			SmartPtr<GameObject> spawnedObject;
 			Physics::PhysicsInfo objectPhysicsInfo;
 			Graphics::RenderData objectRenderData;
 
+			
+			// Convert the JSON file into readable data.
 			std::vector<uint8_t> jsonFileData = JSONReader::LoadFile(i_jsonFileName);
 
+			
+			// If there is data
 			if (!jsonFileData.empty())
 			{
 
+				// Create a GameObject from the parsed JSON data and add it to the world.
 				nlohmann::json jsonData = nlohmann::json::parse(jsonFileData);
 				spawnedObject = JSONReader::JSONToGameObject(jsonData);
-
 				World::AddGameObject(spawnedObject);
 
+				
+				// Check to see if JSON data lists a Controller. If so add it to the Controllers list.
 				std::string controllerNameStr = JSONReader::JSONToController(jsonData);
 
 				char* controllerName = new char[controllerNameStr.size() + 1];
@@ -50,17 +61,23 @@ namespace Engine
 
 				if (!controllerNameStr.empty())
 				{
+					
 					Controllers.insert({ HashedString(controllerName), World::GetGameObject(World::GetNumGameObjects() - 1) });
+					
 				}
 
 				delete[] controllerName;
 
+				
+				// Initialize the PhysicsInfo of the Spawned Object based on parameters in JSON.
 				objectPhysicsInfo = Physics::PhysicsInfo(
 					World::GetGameObject(World::GetNumGameObjects() - 1),
 					JSONReader::JSONToMass(jsonData),
 					JSONReader::JSONToDrag(jsonData)
 					);
 
+				
+				// Locate the texture to be rendered for this Object and create a sprite with it.
 				std::string texturePathStr = JSONReader::JSONToTexture(jsonData);
 
 				char* texturePath = new char[texturePathStr.size() + 1];
@@ -70,47 +87,66 @@ namespace Engine
 
 				delete[] texturePath;
 
+				
+				// Initialize RenderData of the Spawned Object with sprite.
 				objectRenderData = Graphics::RenderData(
 					World::GetGameObject(World::GetNumGameObjects() - 1),
 					texture
 					);
 
+				
+				// Add the PhysicsInfo and RenderData to their respective lists.
 				Physics::AddPhysicsInfo(objectPhysicsInfo);
 				Graphics::AddRenderData(objectRenderData);
 
+				
+				// Output the Spawned Object and return success.
 				o_gameObject = spawnedObject;
 				return true;
 
 			}
 
+			// Otherwise return failure.
 			return false;
 
 		}
 
 		bool SpawnCollideable(const std::string& i_jsonFileName, SmartPtr<Physics::Collideable>& o_collideable)
 		{
+			
+			// Declare local variables for various systems to be initialized in spawning.
 			SmartPtr<GameObject> spawnedObject;
 			Physics::PhysicsInfo objectPhysicsInfo;
 			Graphics::RenderData objectRenderData;
 			SmartPtr<Physics::Collideable> spawnedCollideable;
 
+			
+			// Convert the JSON file into readable data.
 			std::vector<uint8_t> jsonFileData = JSONReader::LoadFile(i_jsonFileName);
 
+			
+			// If there is data
 			if (!jsonFileData.empty())
 			{
 
+				// Create a GameObject from the parsed JSON data and add it to the world.
 				nlohmann::json jsonData = nlohmann::json::parse(jsonFileData);
 				spawnedObject = JSONReader::JSONToGameObject(jsonData);
-
 				World::AddGameObject(spawnedObject);
 
+				
+				// Create a Collideable containing the GameObject with the bounding box specified in JSON.
 				spawnedCollideable = Physics::Collideable::CreateCollideable(
 					spawnedObject,
 					JSONReader::JSONToAABB(jsonData)
 					);
 
+				
+				// Add this created collideable to the Collideables list.
 				Physics::AddCollideable(spawnedCollideable);
 
+				
+				// Check to see if JSON data lists a Controller. If so add it to the Controllers list.
 				std::string controllerNameStr = JSONReader::JSONToController(jsonData);
 
 				char* controllerName = new char[controllerNameStr.size() + 1];
@@ -118,17 +154,23 @@ namespace Engine
 
 				if (!controllerNameStr.empty())
 				{
+					
 					RegisterController(HashedString(controllerName), spawnedObject);
+					
 				}
 
 				delete[] controllerName;
 
+				
+				// Initialize the PhysicsInfo of the Spawned Object based on parameters in JSON.
 				objectPhysicsInfo = Physics::PhysicsInfo(
 					spawnedObject,
 					JSONReader::JSONToMass(jsonData),
 					JSONReader::JSONToDrag(jsonData)
 				);
 
+				
+				// Locate the texture to be rendered for this Object and create a sprite with it.
 				std::string texturePathStr = JSONReader::JSONToTexture(jsonData);
 
 				char* texturePath = new char[texturePathStr.size() + 1];
@@ -138,27 +180,39 @@ namespace Engine
 
 				delete[] texturePath;
 
+				
+				// Initialize RenderData of the Spawned Object with sprite.
 				objectRenderData = Graphics::RenderData(
 					spawnedObject,
 					texture
 				);
 
+				
+				// Add the PhysicsInfo and RenderData to their respective lists.
 				Physics::AddPhysicsInfo(objectPhysicsInfo);
 				Graphics::AddRenderData(objectRenderData);
 
+				
+				// Output the Collideable and return success.
 				o_collideable = spawnedCollideable;
 				return true;
 
 			}
 
+			// Otherwise return failure.
 			return false;
 
 		}
 
 		void RegisterController(HashedString i_ControllerName, WeakPtr<GameObject> o_GameObject)
 		{
+			
+			// Add the controller to the Controllers list.
 			Controllers.insert({ i_ControllerName, o_GameObject });
 
+			
+			// If the controller is a Player Controller, 
+			// create and attach a Player Controller Component to the GameObject.
 			if (i_ControllerName == "Player")
 			{
 
@@ -169,20 +223,27 @@ namespace Engine
 
 		void RemoveController(HashedString i_ControllerName)
 		{
+			
 			Controllers.erase(i_ControllerName);
+			
 		}
 
 		bool GetFirstGameObjectWithController(HashedString i_ControllerName, WeakPtr<GameObject>& o_GameObject)
 		{
+			
+			// Find the specified controller in the list.
 			if (Controllers.find(i_ControllerName) != Controllers.end())
 			{
 
+				// Output GameObject and return success.
 				o_GameObject = Controllers.at(i_ControllerName);
 				return true;
 
 			}
 
+			// Otherwise return failure.
 			return false;
+			
 		}
 
 		void ClearControllers()
