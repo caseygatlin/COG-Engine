@@ -5,6 +5,10 @@
 The COG Engine is a personally developed game engine for creating 2D games.
 This project was programmed by myself with the help of open-source third-party libraries for sprite rendering, multithreading, and JSON file reading.
 
+Watch on YouTube ⤵
+
+[![Alt text](https://img.youtube.com/vi/zl_E3VoS-4g/0.jpg)](https://www.youtube.com/watch?v=zl_E3VoS-4g)
+
 ### Features:
 - 2D sprite rendering
 - 2D physics and collision
