@@ -1,4 +1,3 @@
-![EngineLogo](https://external-sjc3-1.xx.fbcdn.net/safe_image.php?d=AQCZyHYZhJO8ijBt&w=960&h=960&url=https%3A%2F%2Frepository-images.githubusercontent.com%2F278541113%2F3b55ec00-cfad-11ea-904f-27432adccd90&_nc_hash=AQCeYPpziC5bTVfx)
 
 # The COG Engine
 
@@ -10,13 +9,14 @@ Watch on YouTube ⤵
 [![Alt text](https://img.youtube.com/vi/zl_E3VoS-4g/0.jpg)](https://www.youtube.com/watch?v=zl_E3VoS-4g)
 
 ### Features:
-- 2D sprite rendering
-- 2D physics and collision
-- Job system for use in multithreading
-- Keyboard input handling
+- 2D sprite rendering.
+- 2D physics and collision. [`../Engine/Physics`](https://github.com/caseygatlin/COG-Engine/tree/master/MonsterChase/Engine/Physics), [`../Engine/Physics/Collision`](https://github.com/caseygatlin/COG-Engine/tree/master/MonsterChase/Engine/Physics/Collision)
+- Job system for use in multithreading. [`../Engine/JobSystem`](https://github.com/caseygatlin/COG-Engine/tree/master/MonsterChase/Engine/JobSystem)
+- Keyboard input handling. [`../Engine/Input`](https://github.com/caseygatlin/COG-Engine/tree/master/MonsterChase/Engine/Input)
 - Component system for adding functionality to GameObjects/Entities.
-- Smart and Weak ptrs for managing objects across systems.
+- Smart and Weak ptrs for managing objects across systems. [`Pointers.h`](https://github.com/caseygatlin/COG-Engine/blob/master/MonsterChase/Engine/Containers/Public/Pointers.h), [`Pointers-inl.h`](https://github.com/caseygatlin/COG-Engine/blob/master/MonsterChase/Engine/Containers/Public/Pointers-inl.h)
 - JSON file reading for data-driven object creation.
+
 
 # Asteroid Avoidance
 To demonstrate the capabilities of the engine, I've developed a simple asteroid avoidance game, which plays when running the project file. Its source code is found in [this](https://github.com/caseygatlin/2D-Game-Engine/tree/master/MonsterChase/Gamecode) folder in the repository.
